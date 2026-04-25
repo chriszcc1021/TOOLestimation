@@ -3,4 +3,4 @@
 cd "$(dirname "$0")"
 echo "🚀 Starting Product Forecast Server..."
 echo "📊 Open: http://localhost:3031"
-node server.js
+node --use-env-proxy server.js

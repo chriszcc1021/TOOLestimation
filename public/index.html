@@ -3,117 +3,1228 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Revenue Forecast</title>
+<title>第五人格前三年地区数据看板</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --b4:#60a5fa;--b5:#3b82f6;--b6:#2563eb;--b10:rgba(59,130,246,.10);--b20:rgba(59,130,246,.20);
-  --z95:#09090b;--z90:#18181b;--z80:#27272a;--z70:#3f3f46;--z60:#52525b;--z50:#71717a;--z40:#a1a1aa;--z30:#d4d4d8;--z10:#f4f4f5;
-  --red:#f87171;--amber:#fbbf24;--green:#4ade80;
-  --mono:'JetBrains Mono',monospace;--sans:'Inter',sans-serif;
-  --fs-meta:12px;--fs-data:13px;--fs-body:15px;--fs-head:19px;--fs-num-sm:22px;--fs-num:30px;
+  --bg:#f6f4ee;
+  --panel:#fffdf8;
+  --panel-2:#f0eee6;
+  --ink:#202124;
+  --muted:#696b70;
+  --soft:#8b8d93;
+  --line:#ddd8ca;
+  --line-strong:#c9c0ac;
+  --teal:#167d7f;
+  --teal-soft:#e0f3f2;
+  --coral:#c45a3f;
+  --coral-soft:#f8e5de;
+  --green:#4b7f38;
+  --green-soft:#e8f2e2;
+  --gold:#9a6a16;
+  --gold-soft:#f5ead2;
+  --shadow:0 18px 50px rgba(45,38,24,.08);
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+  --sans:"Inter","Microsoft YaHei",system-ui,sans-serif;
 }
-body{background:var(--z95);color:var(--z30);font-family:var(--sans);font-size:var(--fs-body);line-height:1.6;min-height:100vh}
-.topbar{border-bottom:1px solid var(--z80);padding:13px 28px;display:flex;align-items:center;justify-content:space-between;background:var(--z95);position:sticky;top:0;z-index:200}
-.logo{font-size:16px;font-weight:600;color:var(--z10)}
-.logo span{color:var(--z60);font-weight:400;margin-left:8px}
-.badge{font-family:var(--mono);font-size:var(--fs-meta);color:var(--z60);background:var(--z90);border:1px solid var(--z80);padding:3px 9px;border-radius:4px}
-.page{max-width:1400px;margin:0 auto;padding:28px}
-.steps{display:flex;align-items:center;gap:0;margin-bottom:28px}.si{display:flex;align-items:center;gap:8px;padding:8px 16px;border-radius:6px;font-size:var(--fs-data);font-weight:500;color:var(--z60);transition:all .2s}.si.active{color:var(--z10);background:var(--b10);border:1px solid rgba(59,130,246,.25)}.si.done{color:var(--b4)}.sn{font-family:var(--mono);font-size:var(--fs-meta);width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid currentColor;flex-shrink:0}.sarr{color:var(--z80);font-size:var(--fs-data);margin:0 4px}
-.sec-hd{display:flex;align-items:baseline;gap:10px;margin-bottom:16px}.sn2{font-family:var(--mono);font-size:var(--fs-data);color:var(--z60)}.st{font-size:var(--fs-head);font-weight:500;color:var(--z10)}.ss{font-size:var(--fs-data);color:var(--z50)}
-.card{background:rgba(24,24,27,.5);border:1px solid var(--z80);border-radius:10px;padding:20px}.mb16{margin-bottom:16px}.mb24{margin-bottom:24px}.hidden{display:none}
-textarea#desc{width:100%;background:var(--z90);border:1px solid var(--z80);border-radius:6px;color:var(--z30);font-family:var(--sans);font-size:var(--fs-body);padding:12px 14px;resize:vertical;min-height:88px;outline:none}textarea#desc:focus{border-color:var(--z70);box-shadow:0 0 0 2px rgba(59,130,246,.12)}
-.btn-row{display:flex;gap:8px;margin-top:12px;align-items:center;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:6px;font-family:var(--sans);font-size:var(--fs-data);font-weight:500;cursor:pointer;border:none;transition:all .15s;white-space:nowrap}.bp{background:var(--b5);color:#fff}.bp:hover{background:var(--b6)}.bp:disabled{opacity:.4;cursor:not-allowed}.bg{background:transparent;border:1px solid var(--z70);color:var(--z40)}.bg:hover{border-color:var(--z60);color:var(--z30)}.bb{background:var(--b10);border:1px solid rgba(59,130,246,.3);color:var(--b4)}.bb:hover{background:var(--b20)}.bd{background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2);color:var(--red)}.bd:hover{background:rgba(248,113,113,.15)}.btn-sm{padding:5px 12px;font-size:var(--fs-meta)}
-.status{display:none;align-items:center;gap:10px;padding:10px 14px;background:var(--z90);border:1px solid var(--z80);border-radius:6px;font-family:var(--mono);font-size:var(--fs-data);color:var(--z40);margin-top:12px}.status.show{display:flex}.sdot{width:7px;height:7px;border-radius:50%;flex-shrink:0}.sdot.spin{background:var(--b5);animation:blink 1s infinite}.sdot.ok{background:var(--green)}.sdot.err{background:var(--red)}@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
-.sum-card{display:none;margin-top:14px}.sum-card.show{display:block}.sum-card .card{border-left:2px solid var(--b5)}.stbar{display:none;align-items:center;gap:6px;font-family:var(--mono);font-size:var(--fs-data);color:var(--z50);margin-bottom:10px}.stbar.show{display:flex}.stcheck{color:var(--b4)}.slbl{font-family:var(--mono);font-size:var(--fs-meta);color:var(--z60);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}.stxt{font-size:var(--fs-body);color:var(--z30);line-height:1.7}.tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}.tag{font-size:var(--fs-meta);padding:3px 10px;border-radius:4px;background:var(--z90);border:1px solid var(--z80);color:var(--z40)}.tag.blue{background:var(--b10);border-color:rgba(59,130,246,.25);color:var(--b4)}.rbl{margin-top:10px;padding:10px 12px;background:var(--z95);border:1px solid var(--z80);border-radius:6px;display:none}.rbl.show{display:block}.rlbl2{font-family:var(--mono);font-size:var(--fs-meta);color:var(--z60);margin-bottom:5px}.rcore{font-size:var(--fs-data);color:var(--z30);margin-bottom:6px}.excl{font-family:var(--mono);font-size:var(--fs-meta);color:var(--z70);padding:1px 0}.excl::before{content:'✕ ';color:var(--z80)}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}@media(max-width:980px){.two-col{grid-template-columns:1fr}}
-.csu{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--z80);border-radius:9px;background:var(--z90);margin-bottom:8px}.csu.rm{opacity:.35;border-style:dashed}.csico{width:48px;height:48px;border-radius:12px;background:var(--z80);border:1px solid var(--z70);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:var(--b4);flex-shrink:0;overflow:hidden}.csico img{width:100%;height:100%;object-fit:cover;border-radius:11px}.csbody{flex:1;min-width:0}.csname{font-size:var(--fs-data);font-weight:600;color:var(--z10);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.csreason{font-size:var(--fs-meta);color:var(--z50);margin-top:3px;line-height:1.55}.bgi{display:inline-flex;align-items:center;padding:2px 8px;border-radius:4px;font-size:var(--fs-meta);font-weight:500;margin-top:4px}.badge-ip{background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.25);color:#c4b5fd}.badge-gp{background:var(--b10);border:1px solid rgba(59,130,246,.25);color:var(--b4)}.csact{flex-shrink:0}
-.add-row{display:flex;gap:8px;margin-top:10px;align-items:center}.add-row input{flex:1;background:var(--z90);border:1px solid var(--z80);border-radius:6px;color:var(--z30);font-family:var(--sans);font-size:var(--fs-data);padding:8px 12px;outline:none}
-.field-toggles{display:flex;align-items:center;gap:5px;margin-left:auto;flex-wrap:wrap}.ftag{display:inline-flex;align-items:center;gap:5px;padding:4px 11px;border-radius:5px;font-size:var(--fs-meta);font-weight:500;cursor:pointer;border:1px solid var(--z80);color:var(--z50);background:transparent;transition:all .15s;user-select:none}.ftag input{display:none}.ftag.on{background:var(--b10);border-color:rgba(59,130,246,.3);color:var(--b4)}.ftag.on.f-dl{background:rgba(212,212,216,.08);border-color:rgba(212,212,216,.2);color:var(--z30)}.ftag.on.f-rev{background:rgba(113,113,122,.1);border-color:rgba(113,113,122,.25);color:var(--z50)}.ftag.on.f-rpd{background:var(--b10);border-color:rgba(59,130,246,.3);color:var(--b4)}
-.forecast-dim-bar{display:flex;align-items:center;gap:12px;padding:10px 16px;background:var(--z90);border:1px solid var(--z80);border-radius:7px}.dim-lbl{font-family:var(--mono);font-size:var(--fs-meta);color:var(--z60);text-transform:uppercase;letter-spacing:.07em}.dim-val{font-family:var(--mono);font-size:var(--fs-data);font-weight:600;color:var(--b4);padding:3px 10px;background:var(--b10);border:1px solid rgba(59,130,246,.25);border-radius:5px}.dim-hint{font-family:var(--mono);font-size:var(--fs-meta);color:var(--z60);margin-left:auto}
-.dc{border:1px solid var(--z80);border-radius:10px;overflow:hidden;margin-bottom:12px;background:var(--z90)}.dc-header{display:flex;align-items:center;gap:14px;padding:14px 16px;border-bottom:1px solid var(--z80)}.dc-ico{width:60px;height:60px;border-radius:14px;background:var(--z80);border:1px solid var(--z70);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;color:var(--b4);flex-shrink:0;overflow:hidden;position:relative;cursor:pointer}.dc-ico img{width:100%;height:100%;object-fit:cover;border-radius:13px}.dc-ico-badge{position:absolute;bottom:3px;right:3px;width:10px;height:10px;background:var(--b5);border-radius:50%;border:2px solid var(--z90)}.dc-info{flex:1;min-width:0}.dc-name{font-size:15px;font-weight:600;color:var(--z10);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-bottom:5px}.dc-cats{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-bottom:4px}.dc-cat{font-size:var(--fs-meta);color:var(--z50)}.dc-cat-dot{font-size:var(--fs-meta);color:var(--z70)}.dc-pub{font-family:var(--mono);font-size:var(--fs-meta);color:var(--z60)}.dc-reason{font-size:var(--fs-data);color:var(--z50);padding:10px 16px 0;line-height:1.6}.dc-body{padding:12px 16px}.dc-err{font-family:var(--mono);font-size:var(--fs-data);color:var(--red);padding:10px 16px}.dc-loading{font-family:var(--mono);font-size:var(--fs-data);color:var(--z60);padding:10px 16px;animation:blink 1.2s infinite}
-.tree-tbl{width:100%;border-collapse:collapse;font-family:var(--mono)}.tree-tbl th{padding:5px 7px;font-size:var(--fs-meta);color:var(--z60);text-align:right;border-bottom:1px solid var(--z80);white-space:nowrap;letter-spacing:.02em}.tree-tbl th:first-child{text-align:left}.tree-tbl td{padding:5px 7px;font-size:var(--fs-data);text-align:right;border-bottom:1px solid rgba(255,255,255,.03);vertical-align:middle}.tree-tbl td:first-child{text-align:left}.tree-row{cursor:pointer}.tree-row:hover td{background:rgba(255,255,255,.03)}.tree-row.t-active td{background:rgba(59,130,246,.07)}.tree-arrow{display:inline-block;width:16px;font-size:10px;color:var(--z60)}.tree-indent-1{padding-left:18px !important}.tree-indent-2{padding-left:34px !important}.tcell-dl{color:var(--z30)}.tcell-rev{color:var(--z50)}.tcell-rpd{color:var(--b4);font-weight:500}.tcell-na{color:var(--z70);font-size:var(--fs-meta);text-align:right}
-.ag{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.abox{padding:14px 16px;background:var(--z90);border:1px solid var(--z80);border-radius:6px}.albl{font-family:var(--mono);font-size:var(--fs-meta);color:var(--z60);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}.aval{font-family:var(--mono);font-size:var(--fs-num-sm);font-weight:500;color:var(--b4);margin-bottom:8px}
-.rev-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--z80);border-radius:8px;overflow:hidden;margin-bottom:20px}.rcell{padding:18px 16px;background:var(--z90)}.rcell-lbl{font-family:var(--mono);font-size:var(--fs-meta);color:var(--z60);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}.rcell-tag{font-size:var(--fs-meta);font-weight:500;padding:2px 8px;border-radius:3px;display:inline-block;margin-bottom:8px}.rcell.cons .rcell-tag{background:rgba(113,113,122,.15);color:var(--z50)}.rcell.opti .rcell-tag{background:var(--b10);color:var(--b4)}.rv2{font-family:var(--mono);font-size:var(--fs-num);font-weight:500;line-height:1}.rcell.cons .rv2{color:var(--z50)}.rcell.opti .rv2{color:var(--b4)}.rv2-sub{font-family:var(--mono);font-size:var(--fs-meta);color:var(--z60);margin-top:4px}
-.chart-wrap{height:220px}.srow{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-family:var(--mono);font-size:var(--fs-data)}.snote{font-family:var(--mono);font-size:var(--fs-meta);color:var(--z60);margin-top:10px;line-height:1.8}
-.est-table-wrap{overflow:auto;border:1px solid var(--z80);border-radius:8px;background:var(--z90)}
-.est-table{width:100%;border-collapse:collapse;font-family:var(--mono)}
-.est-table th,.est-table td{padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.05);font-size:12px;white-space:nowrap;text-align:right}
-.est-table th:first-child,.est-table td:first-child{text-align:left}
-.est-table thead th{position:sticky;top:0;background:#121317;z-index:2;color:var(--z60)}
-.est-row:hover td{background:rgba(255,255,255,.02)}
-.est-input{width:64px;background:var(--z95);border:1px solid var(--z80);border-radius:5px;color:var(--z30);font-family:var(--mono);font-size:12px;padding:5px 6px;text-align:right}
-.est-input.rpd{width:72px}
-.est-val.cons{color:var(--z30)} .est-val.opti{color:var(--b4)}
-.warn{display:inline-flex;align-items:center;gap:4px;color:var(--amber);font-size:11px}
-.small-note{font-family:var(--mono);font-size:11px;color:var(--z60)}
-::-webkit-scrollbar{width:4px;height:4px}::-webkit-scrollbar-thumb{background:var(--z80);border-radius:2px}
+*{box-sizing:border-box}
+html,body{max-width:100%;overflow-x:hidden}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.45}
+button,input,textarea{font:inherit}
+.app{min-height:100vh}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(246,244,238,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.topbar-inner{width:100%;max-width:1480px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brand-mark{width:34px;height:34px;border-radius:8px;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:700}
+.brand h1{margin:0;font-size:18px;letter-spacing:0;font-weight:700;white-space:nowrap}
+.brand span{display:block;color:var(--muted);font-size:12px;margin-top:1px}
+.page{width:100%;max-width:1480px;margin:0 auto;padding:22px 24px 34px}
+.surface{min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow)}
+.intro{padding:22px 26px;display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:14px}
+.intro-title{font-size:22px;font-weight:700;margin:0 0 6px}
+.intro-copy{margin:0;color:var(--muted);max-width:800px}
+.summary-panel{padding:16px 18px;margin:-4px 0 14px;display:grid;gap:13px}
+.summary-top{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.summary-stat{border:1px solid var(--line);border-radius:8px;background:#fff;padding:12px}
+.summary-stat small{display:block;color:var(--muted);font-size:12px;margin-bottom:5px}
+.summary-stat strong{font-family:var(--mono);font-size:20px}
+.summary-copy{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.summary-copy p{margin:0;color:var(--muted)}
+.summary-copy strong{color:var(--ink)}
+.region-summary{display:flex;flex-wrap:wrap;gap:7px}
+.region-chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 9px;color:var(--muted);font-size:12px}
+.chips{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+.chip{height:28px;display:inline-flex;align-items:center;gap:6px;padding:0 9px;border-radius:6px;border:1px solid var(--line);background:#fff;color:var(--muted);font-size:12px;font-weight:600}
+.chip.teal{border-color:#b6dcda;background:var(--teal-soft);color:var(--teal)}
+.chip.gold{border-color:#e2c98f;background:var(--gold-soft);color:var(--gold)}
+.metric-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:14px}
+.metric-panel{display:grid;grid-template-columns:1fr;gap:10px}
+.metric{padding:15px 16px;background:var(--panel);border:1px solid var(--line);border-radius:8px}
+.metric small{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:12px;font-weight:600;margin-bottom:8px}
+.metric small svg{width:15px;height:15px}
+.metric strong{font-family:var(--mono);font-size:25px;line-height:1.1}
+.metric span{display:block;color:var(--soft);font-size:12px;margin-top:6px}
+.main-grid{display:grid;grid-template-columns:1fr;gap:14px}
+.main-grid>*{min-width:0}
+.section-head{padding:14px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.section-title{display:flex;align-items:center;gap:9px;font-weight:700}
+.section-title svg{width:18px;height:18px;color:var(--teal)}
+.seg{display:flex;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--panel-2)}
+.seg button{border:0;background:transparent;padding:7px 10px;cursor:pointer;color:var(--muted);font-weight:700;font-size:12px}
+.seg button.active{background:var(--ink);color:#fff}
+.table-wrap{overflow:auto;max-height:650px}
+.estimate-wrap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.estimate-panel{min-width:0;border:1px solid var(--line);border-radius:8px;background:#fff;overflow:hidden}
+.estimate-title{padding:12px 14px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:10px}
+.estimate-title strong{font-size:15px}
+.estimate-title span{color:var(--muted);font-size:12px}
+.estimate-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;padding:12px 14px;border-bottom:1px solid var(--line);background:#faf8f1}
+.estimate-summary small{display:block;color:var(--muted);font-size:11px;margin-bottom:3px}
+.estimate-summary strong{font-family:var(--mono);font-size:15px}
+.estimate-table-wrap{overflow:auto;max-height:520px}
+.estimate-table{min-width:1180px}
+.estimate-table th{position:sticky;top:0}
+.estimate-table input{width:76px;border:1px solid var(--line);border-radius:6px;padding:5px 6px;background:#fff;font-family:var(--mono);font-size:12px;text-align:right}
+.estimate-table .country-base{color:var(--muted);font-family:var(--mono)}
+.estimate-table .output{font-family:var(--mono);font-weight:600}
+.primary-btn{border:1px solid var(--ink);background:var(--ink);color:#fff;border-radius:6px;padding:7px 10px;font-weight:700;font-size:12px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.primary-btn svg{width:15px;height:15px}
+table{width:100%;border-collapse:separate;border-spacing:0}
+th,td{padding:10px 11px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+th{position:sticky;top:0;background:#f3f0e7;color:var(--muted);font-size:12px;font-weight:700;z-index:1}
+th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:inherit;z-index:2}
+thead tr:first-child th{top:0}
+thead tr:nth-child(2) th{top:39px}
+thead th:first-child{z-index:3}
+tbody tr{background:var(--panel)}
+tbody tr:hover{background:#f9f6ed}
+tbody tr.selected{background:#eaf5f4}
+tbody tr.region{background:#fbfaf4}
+tbody tr.country td:first-child{color:var(--muted)}
+td.num{font-family:var(--mono);font-weight:500}
+td.rpd{color:var(--teal);font-family:var(--mono);font-weight:600}
+.name-cell{display:flex;align-items:center;gap:8px;min-width:210px}
+.toggle{width:24px;height:24px;border:1px solid var(--line);border-radius:6px;background:#fff;display:inline-grid;place-items:center;cursor:pointer;flex:0 0 auto}
+.toggle svg{width:14px;height:14px}
+.toggle.empty{visibility:hidden}
+.level-1{padding-left:18px}.level-2{padding-left:36px}
+.region-pill{font-size:11px;border-radius:999px;padding:2px 7px;background:var(--panel-2);color:var(--muted);border:1px solid var(--line)}
+.empty{color:#b5afa1}
+.side{display:grid;grid-template-columns:1fr;gap:14px;align-content:start}
+.chart-box{padding:14px 16px 18px}
+.chart-wrap{height:260px}
+.detail-list{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:13px}
+.detail-item{border:1px solid var(--line);border-radius:8px;padding:11px;background:#fff}
+.detail-item small{display:block;color:var(--muted);font-size:11px;margin-bottom:6px}
+.detail-item strong{font-family:var(--mono);font-size:17px}
+.region-map{padding:14px 16px;display:grid;gap:10px}
+.map-row{display:grid;grid-template-columns:82px 1fr;gap:10px;align-items:start}
+.map-name{font-weight:700}
+.country-tags{display:flex;flex-wrap:wrap;gap:6px}
+.country-tag{border:1px solid var(--line);background:#fff;border-radius:999px;padding:3px 8px;color:var(--muted);font-size:12px}
+.missing{padding:14px 16px;color:var(--muted);font-size:13px}
+.missing-list{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
+.toast{position:fixed;right:22px;bottom:22px;background:var(--ink);color:#fff;padding:12px 14px;border-radius:8px;box-shadow:0 16px 38px rgba(0,0,0,.22);font-weight:600;font-size:13px;transform:translateY(18px);opacity:0;pointer-events:none;transition:.18s}
+.toast.show{transform:translateY(0);opacity:1}
+body .surface{box-shadow:0 10px 28px rgba(45,38,24,.06)}
+body .metric{padding:13px 15px}
+body .metric strong{font-size:24px}
+body th,body td{padding-top:9px;padding-bottom:9px}
+@media(max-width:900px){
+  .toolbar,.main-grid{grid-template-columns:1fr}
+  .metric-grid{grid-template-columns:1fr}
+  .summary-top,.summary-copy{grid-template-columns:1fr}
+  .estimate-wrap{grid-template-columns:1fr}
+}
+@media(max-width:720px){
+  .topbar-inner,.intro{align-items:stretch;flex-direction:column}
+  .metric-panel{grid-template-columns:1fr}
+  .page{padding:14px}
+  .detail-list{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
-<div class="topbar"><div class="logo">Revenue Forecast <span>产品收入预估</span></div><div class="badge">ST Live · v3</div></div>
-<div class="page">
-<div class="steps"><div class="si active" id="si1"><div class="sn">1</div> 输入 & 分析</div><div class="sarr">›</div><div class="si" id="si2"><div class="sn">2</div> 确认竞品</div><div class="sarr">›</div><div class="si" id="si3"><div class="sn">3</div> 数据 & 预估</div></div>
-<div id="s1">
-  <div class="sec-hd"><span class="sn2">01</span><h2 class="st">产品描述</h2><span class="ss">输入产品名称或背景</span></div>
-  <div class="card mb16"><textarea id="desc" placeholder="例如：奇葩战斗家 — 多人物理乱斗派对手游…"></textarea><div class="btn-row"><button class="btn bp" id="ab" onclick="step1()">AI 分析竞品</button><button class="btn bg" onclick="location.reload()">重置</button></div><div class="status" id="status"><div class="sdot spin" id="sdot"></div><span id="stxt"></span></div></div>
-  <div class="sum-card" id="sumCard"><div class="card"><div class="stbar" id="stbar"><span class="stcheck">✓ ST 已找到</span><span id="stinfo" style="margin-left:6px"></span></div><div class="slbl">AI 分析摘要</div><div class="stxt" id="sumTxt"></div><div class="rbl" id="rbl"><div class="rlbl2">// 核心玩法</div><div class="rcore" id="rcore"></div><div id="excl"></div></div><div class="tag-row" id="tags"></div></div></div>
-  <div class="hidden" id="suggestSec"><div class="two-col" style="margin-top:18px"><div><div class="sec-hd"><span class="sn2">02</span><h2 class="st">下载参考</h2><span class="ss">确认 / 删除 / 新增</span></div><div id="dlSug"></div><div class="add-row"><input id="addDl" placeholder="新增产品名…"><button class="btn bb btn-sm" onclick="addComp('dl')">+ 新增</button></div></div><div><div class="sec-hd"><span class="sn2">03</span><h2 class="st">RPD 参考</h2><span class="ss">确认 / 删除 / 新增</span></div><div id="rpdSug"></div><div class="add-row"><input id="addRpd" placeholder="新增产品名…"><button class="btn bb btn-sm" onclick="addComp('rpd')">+ 新增</button></div></div></div><div style="display:flex;justify-content:center;margin-top:20px"><button class="btn bp" id="confBtn" onclick="step2()">确认竞品，拉取数据 →</button></div></div>
+<div class="app">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">V</div>
+        <div>
+          <h1>第五人格前三年地区数据看板</h1>
+          <span>全球 - 地区 - 国家，折叠看汇总，展开看明细</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="surface intro">
+      <div>
+        <p class="intro-title">第五人格前三年地区表现</p>
+        <p class="intro-copy">全球、地区、国家三层聚合。各国家按首个有效月份起算前三年，下载和收入求和，RPD 按收入除以下载加权计算。</p>
+      </div>
+      <div class="chips">
+        <span class="chip teal"><i data-lucide="layers"></i>三层结构</span>
+        <span class="chip gold"><i data-lucide="sigma"></i>加权 RPD</span>
+        <span class="chip"><i data-lucide="calendar-range"></i>前三年</span>
+      </div>
+    </section>
+
+    <section class="surface summary-panel" id="marketSummary"></section>
+
+    <section class="metric-grid" id="metricGrid"></section>
+
+    <div class="main-grid">
+      <section class="surface">
+        <div class="section-head">
+          <div class="section-title"><i data-lucide="network"></i>分地区数据树</div>
+          <div class="seg" id="viewMode">
+            <button type="button" data-mode="all" class="active">全部指标</button>
+            <button type="button" data-mode="download">下载</button>
+            <button type="button" data-mode="revenue">收入</button>
+            <button type="button" data-mode="rpd">RPD</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table id="dataTable"></table>
+        </div>
+      </section>
+
+      <section class="surface">
+        <div class="section-head">
+          <div class="section-title"><i data-lucide="calculator"></i>产品预估</div>
+          <button class="primary-btn" type="button" id="saveEstimate"><i data-lucide="save"></i>保存预估</button>
+        </div>
+        <div class="chart-box">
+          <div class="estimate-wrap" id="estimateWorkbench"></div>
+        </div>
+      </section>
+
+      <aside class="side">
+        <section class="surface">
+          <div class="section-head">
+            <div class="section-title"><i data-lucide="bar-chart-3"></i>前三年趋势</div>
+          </div>
+          <div class="chart-box">
+            <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
+            <div class="detail-list" id="detailList"></div>
+          </div>
+        </section>
+
+        <section class="surface">
+          <div class="section-head">
+            <div class="section-title"><i data-lucide="map"></i>区域结构</div>
+          </div>
+          <div class="region-map" id="regionMap"></div>
+        </section>
+
+        <section class="surface">
+          <div class="section-head">
+            <div class="section-title"><i data-lucide="circle-alert"></i>区域完整性</div>
+          </div>
+          <div class="missing" id="missingBox"></div>
+        </section>
+      </aside>
+    </div>
+  </main>
 </div>
-<div class="hidden" id="s23">
-  <div class="forecast-dim-bar mb16"><span class="dim-lbl">预估维度</span><span class="dim-val" id="dimVal">🌐 全球</span><span class="dim-hint">点击数据卡任意地区切换预估维度</span></div>
-  <div class="two-col mb16">
-    <div><div class="sec-hd" style="flex-wrap:wrap"><span class="sn2">02</span><h2 class="st">下载参考</h2><span class="ss">前三年数据</span><div class="field-toggles"><label class="ftag on f-dl" id="ftDlDl"><input type="checkbox" checked onchange="toggleField('dl','dl',this.checked)">下载</label><label class="ftag on f-rev" id="ftDlRev"><input type="checkbox" checked onchange="toggleField('dl','rev',this.checked)">收入</label><label class="ftag on f-rpd" id="ftDlRpd"><input type="checkbox" checked onchange="toggleField('dl','rpd',this.checked)">RPD</label></div></div><div id="dlCards"></div></div>
-    <div><div class="sec-hd" style="flex-wrap:wrap"><span class="sn2">03</span><h2 class="st">RPD 参考</h2><span class="ss">前三年数据</span><div class="field-toggles"><label class="ftag on f-dl" id="ftRpdDl"><input type="checkbox" checked onchange="toggleField('rpd','dl',this.checked)">下载</label><label class="ftag on f-rev" id="ftRpdRev"><input type="checkbox" checked onchange="toggleField('rpd','rev',this.checked)">收入</label><label class="ftag on f-rpd" id="ftRpdRpd"><input type="checkbox" checked onchange="toggleField('rpd','rpd',this.checked)">RPD</label></div></div><div id="rpdCards"></div></div>
-  </div>
-  <div class="sec-hd" style="flex-wrap:wrap"><span class="sn2">04</span><h2 class="st">收入预估</h2><span id="regionLabel" class="ss">🌐 全球</span><div class="field-toggles"><label class="ftag on f-dl" id="ftY1"><input type="checkbox" checked onchange="toggleYear('y1',this.checked)">Year 1</label><label class="ftag on f-rev" id="ftY2"><input type="checkbox" checked onchange="toggleYear('y2',this.checked)">Year 2</label><label class="ftag on f-rpd" id="ftY3"><input type="checkbox" checked onchange="toggleYear('y3',this.checked)">Year 3</label></div></div>
-  <div class="rev-grid"><div class="rcell cons"><div class="rcell-lbl">首年收入</div><div class="rcell-tag">保守</div><div class="rv2" id="r1c">$—</div><div class="rv2-sub">Year 1</div></div><div class="rcell opti"><div class="rcell-lbl">首年收入</div><div class="rcell-tag">乐观</div><div class="rv2" id="r1o">$—</div><div class="rv2-sub">Year 1</div></div><div class="rcell cons"><div class="rcell-lbl">总收入</div><div class="rcell-tag">保守</div><div class="rv2" id="r3c">$—</div><div class="rv2-sub">Selected Years</div></div><div class="rcell opti"><div class="rcell-lbl">总收入</div><div class="rcell-tag">乐观</div><div class="rv2" id="r3o">$—</div><div class="rv2-sub">Selected Years</div></div></div>
-  <div class="card mb16"><div class="slbl">参数 + 结果一体表</div><div class="small-note" style="margin-bottom:10px">下载/收入统一 M 单位；小于 0.01M 显示 &lt;0.01M。下载转化按多个参考产品分别调；RPD 只有一组保守/乐观。</div><div class="est-table-wrap"><table class="est-table"><thead id="estHead"></thead><tbody id="estBody"></tbody></table></div></div>
-  <div class="two-col"><div class="card"><div class="sec-hd" style="margin-bottom:10px"><span class="sn2" style="font-size:12px">明细</span><span class="st" style="font-size:16px">年度拆分</span></div><table><thead><tr><th>年度</th><th>占比</th><th>用户（保守）</th><th>用户（乐观）</th><th>收入（保守）</th><th>收入（乐观）</th></tr></thead><tbody id="yTb"></tbody><tfoot><tr><td>合计</td><td>—</td><td id="ftUC">—</td><td id="ftUO">—</td><td id="ftRC">—</td><td id="ftRO">—</td></tr></tfoot></table></div><div class="card"><div class="sec-hd" style="margin-bottom:10px"><span class="sn2" style="font-size:12px">图表</span><span class="st" style="font-size:16px">收入分布</span></div><div class="chart-wrap"><canvas id="revChart"></canvas></div></div></div>
-  <div class="card" style="margin-top:16px"><div class="sec-hd" style="margin-bottom:10px"><span class="sn2" style="font-size:12px">REF</span><span class="st" style="font-size:16px">数据来源 · ST</span></div><div id="srcList"></div><div class="snote">* RPD 异常提示规则：RPD &gt; $5 且下载 &lt; 0.1M，或高于全球 RPD 3 倍时标黄。</div></div>
-</div>
-</div>
+<div class="toast" id="toast"></div>
+
 <script>
-const REGIONS={SEA:{label:'东南亚',countries:{ID:'印尼',VN:'越南',TH:'泰国',MY:'马来西亚',PH:'菲律宾'}},JPKR:{label:'日韩',countries:{JP:'日本',KR:'韩国'}},WEST:{label:'欧美',countries:{US:'美国',GB:'英国',DE:'德国',CA:'加拿大',IT:'意大利',FR:'法国',NZ:'新西兰',AU:'澳大利亚'}},MENA:{label:'中东',countries:{MA:'摩洛哥',SA:'沙特',IQ:'伊拉克',IR:'伊朗'}}};
-const C2NAME={WW:'全球'}; for(const r of Object.values(REGIONS)) for(const [c,n] of Object.entries(r.countries)) C2NAME[c]=n;
-const S={dlComps:[],rpdComps:[],rpdBase:1,rpdCons:0.5,rpdOpti:2,y1:60,y2:25,y3:15,forecastKey:'WW',treeOpen:{WW:false},fields:{dl:{dl:true,rev:true,rpd:true},rpd:{dl:true,rev:true,rpd:true}},yearsVisible:{y1:true,y2:true,y3:true},estimationOpen:{WW:true,SEA:false,JPKR:false,WEST:false,MENA:false},estimationParams:{}}; let chart=null; let _sliderOrder=['a3','a2','a1'];
-function fmt(n,d=1){if(n==null||isNaN(n))return'—';const a=Math.abs(n);if(a>=1e9)return`${(n/1e9).toFixed(d)}B`;if(a>=1e6)return`${(n/1e6).toFixed(d)}M`;if(a>=1e3)return`${(n/1e3).toFixed(d)}K`;return n.toFixed(d)}
-function fmtM(n){ if(n==null||isNaN(n)) return '—'; const m=n/1e6; if(m===0) return '0.00M'; if(Math.abs(m)<0.01) return '<0.01M'; return `${m.toFixed(2)}M`; }
-const $U=n=>(n&&!isNaN(n)&&n>0)?`$${fmt(n)}`:'$—'; const $R=n=>(n!=null&&n>0)?`$${Number(n).toFixed(2)}`:'$—';
-function setS(msg,t='loading'){const el=document.getElementById('status');el.classList.add('show');document.getElementById('sdot').className='sdot '+(t==='loading'?'spin':t==='ok'?'ok':'err');document.getElementById('stxt').textContent=msg} function hideS(){document.getElementById('status').classList.remove('show')} function setStep(n){[1,2,3].forEach(i=>{const el=document.getElementById('si'+i);el.className='si '+(i<n?'done':i===n?'active':'')})}
-function keyLabel(key){if(key==='WW')return '🌐 全球'; for(const [rk,rv] of Object.entries(REGIONS)){if(rk===key)return rv.label; if(rv.countries[key])return rv.countries[key];} return key}
-function getCodesForKey(key){if(key==='WW')return ['WW']; for(const [rk,rv] of Object.entries(REGIONS)){if(rk===key)return Object.keys(rv.countries); if(rv.countries[key]) return [key];} return ['WW'];}
-function aggregateYears(byCountry,codes){ if(!byCountry)return null; if(codes.length===1&&codes[0]==='WW') return byCountry['WW']||null; const result=[1,2,3].map(y=>({year:y,downloads:0,revenue:0,months:0,startDate:'',endDate:''})); for(const code of codes){const data=byCountry[code]; if(!data)continue; data.forEach((y,i)=>{result[i].downloads+=+y.downloads||0; result[i].revenue+=+y.revenue||0; result[i].months=Math.max(result[i].months,y.months||0); if(!result[i].startDate) result[i].startDate=y.startDate; if(!result[i].endDate) result[i].endDate=y.endDate;});} result.forEach(y=>y.rpd=y.downloads>0?parseFloat((y.revenue/y.downloads).toFixed(4)):0); return result; }
-function toggleTree(key,e){e&&e.stopPropagation(); S.treeOpen[key]=!S.treeOpen[key]; refreshAllCards();}
-function selectForecast(key,e){e&&e.stopPropagation(); S.forecastKey=key; document.getElementById('dimVal').textContent=keyLabel(key); document.getElementById('regionLabel').textContent=keyLabel(key); refreshAllCards(); computeRPDFromState(); calcRevenue(); renderEstimationTable();}
-function toggleField(section,field,checked){S.fields[section][field]=checked; const id=`ft${section==='dl'?'Dl':'Rpd'}${field==='dl'?'Dl':field==='rev'?'Rev':'Rpd'}`; const el=document.getElementById(id); if(el) el.className=`ftag ${checked?'on ':''}f-${field==='dl'?'dl':field==='rev'?'rev':'rpd'}`; refreshAllCards();}
-function toggleYear(yearKey,checked){S.yearsVisible[yearKey]=checked; const el=document.getElementById(`ft${yearKey.toUpperCase()}`); if(el) el.className=`ftag ${checked?'on ':''}${yearKey==='y1'?'f-dl':yearKey==='y2'?'f-rev':'f-rpd'}`; calcRevenue(); renderEstimationTable();}
-function refreshAllCards(){renderCards('dl',S.dlComps.filter(c=>!c.removed),false); renderCards('rpd',S.rpdComps.filter(c=>!c.removed),false);}
-async function post(url,body){const r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}); const text=await r.text(); if(text.trim().startsWith('<')) throw new Error('隧道不稳定，请刷新重试'); const d=JSON.parse(text); if(!d.ok) throw new Error(d.error||'error'); return d;}
-async function step1(){const desc=document.getElementById('desc').value.trim(); if(!desc)return; document.getElementById('ab').disabled=true; setS('AI 分析中...'); try{const a=await post('/api/analyze',{description:desc}); if(a.st_target){document.getElementById('stbar').classList.add('show');document.getElementById('stinfo').textContent=`${a.st_target.name} · ${a.st_target.publisher} · ${a.st_target.categories.join('/')}`;} document.getElementById('sumTxt').textContent=a.summary||''; if(a.reasoning){document.getElementById('rbl').classList.add('show'); document.getElementById('rcore').textContent=a.reasoning.core_loop||''; document.getElementById('excl').innerHTML=(a.reasoning.excluded_games||[]).map(g=>`<div class="excl">${g}</div>`).join('');} const tr=document.getElementById('tags'); tr.innerHTML=''; if(a.category) tr.innerHTML+=`<span class="tag blue">${a.category}</span>`; if(a.monetization_type) tr.innerHTML+=`<span class="tag">${a.monetization_type}</span>`; document.getElementById('sumCard').classList.add('show'); S.dlComps=(a.download_comps||[]).map(c=>({...c,removed:false,stData:null,convPct:c.relation==='same_ip'?5:8})); S.rpdComps=(a.monetization_comps||[]).map(c=>({...c,removed:false,stData:null})); renderSugList('dl',S.dlComps); renderSugList('rpd',S.rpdComps); document.getElementById('suggestSec').classList.remove('hidden'); hideS();}catch(e){setS('错误：'+e.message,'err')} finally{document.getElementById('ab').disabled=false;}}
-function renderSugList(type,comps){const el=document.getElementById(type+'Sug'); el.innerHTML=''; comps.forEach((c,i)=>{const d=document.createElement('div'); d.className='csu'+(c.removed?' rm':''); const iconInner=c.stData?.iconUrl?`<img src="${c.stData.iconUrl}" onerror="this.style.display='none'">`:(c.stData?.name||c.name)[0].toUpperCase(); const iconLoading=c._fetching?`<div style="font-size:10px;color:var(--b4);animation:blink 1s infinite">⟳</div>`:iconInner; const displayName=c.stData?.name||c.name; const cats=c.stData?.categories||[]; const catsHtml=cats.length?`<div style="display:flex;align-items:center;gap:4px;margin-top:2px;flex-wrap:wrap">${cats.map((ct,ci)=>`<span class="dc-cat">${ct}</span>${ci<cats.length-1?'<span class="dc-cat-dot">·</span>':''}`).join('')}</div>`:''; const badge=type==='dl'?`<span class="bgi ${c.relation==='same_ip'?'badge-ip':'badge-gp'}">${c.relation==='same_ip'?'同IP':'同玩法'}</span>`:''; const pub=c.stData?.publisher?`<div class="dc-pub" style="margin-top:2px">${c.stData.publisher}${c.stData.releaseDate?' · '+c.stData.releaseDate:''}</div>`:''; d.innerHTML=`<div class="csico">${iconLoading}</div><div class="csbody"><div class="csname">${displayName}</div>${catsHtml}${pub}<div class="csreason">${c.reason||''}</div><div style="margin-top:4px">${badge}</div></div><div class="csact"><button class="btn ${c.removed?'bb':'bd'} btn-sm" onclick="toggleComp('${type}',${i})">${c.removed?'恢复':'删除'}</button></div>`; el.appendChild(d);});}
-function toggleComp(type,i){const arr=type==='dl'?S.dlComps:S.rpdComps; arr[i].removed=!arr[i].removed; renderSugList(type,arr)}
-async function addComp(type){const inputId=type==='dl'?'addDl':'addRpd'; const name=document.getElementById(inputId).value.trim(); if(!name)return; const btn=document.getElementById(inputId).nextElementSibling; document.getElementById(inputId).value=''; btn.disabled=true; const arr=type==='dl'?S.dlComps:S.rpdComps; const newComp={name,reason:'手动新增',relation:'same_gameplay',removed:false,stData:null,convPct:8,_fetching:true}; arr.push(newComp); renderSugList(type,arr); try{const r=await post('/api/fetch-comp',{name}); newComp.stData=r.result; if(r.result?.found&&r.result.name)newComp.name=r.result.name;}catch(e){newComp.stData={found:false,error:e.message}} newComp._fetching=false; renderSugList(type,arr); btn.disabled=false;}
-async function step2(){document.getElementById('confBtn').disabled=true; setS('拉取 Sensor Tower 数据中...'); setStep(2); document.getElementById('s23').classList.remove('hidden'); document.getElementById('s23').scrollIntoView({behavior:'smooth'}); const activeDL=S.dlComps.filter(c=>!c.removed); const activeRPD=S.rpdComps.filter(c=>!c.removed); renderCards('dl',activeDL,true); renderCards('rpd',activeRPD,true); await Promise.all([...activeDL.map(fetchOne),...activeRPD.map(fetchOne)]); renderCards('dl',activeDL,false); renderCards('rpd',activeRPD,false); computeRPDFromState(); calcRevenue(); renderSources([...activeDL,...activeRPD]); renderEstimationTable(); setStep(3); setS('完成','ok'); document.getElementById('confBtn').disabled=false;}
-async function fetchOne(c){try{const r=await post('/api/fetch-comp',{name:c.name}); c.stData=r.result;}catch(e){c.stData={found:false,error:e.message}}}
-function buildTreeTable(byCountry,yearRanges,section='dl'){ if(!byCountry)return ''; const yrMeta=yearRanges||[{year:1,startDate:'',endDate:''},{year:2,startDate:'',endDate:''},{year:3,startDate:'',endDate:''}]; const regionAgg={}; for(const [rk,rv] of Object.entries(REGIONS)) regionAgg[rk]=aggregateYears(byCountry,Object.keys(rv.countries)); const visible=S.fields[section]; const active=[visible.dl?'dl':null,visible.rev?'rev':null,visible.rpd?'rpd':null].filter(Boolean); const fieldCell=(f,yd)=>{ if(!yd||(!yd.downloads&&!yd.revenue)) return `<td class="tcell-na">—</td>`; if(f==='dl') return `<td class="tcell-dl">${fmtM(yd.downloads)}</td>`; if(f==='rev') return `<td class="tcell-rev">$${fmtM(yd.revenue)}</td>`; let warn=''; const ww=byCountry['WW']; const wwRpd=ww&&ww[0]?ww[0].rpd:0; if(yd.rpd>5&&yd.downloads<100000 || (wwRpd&&yd.rpd>wwRpd*3)) warn=' <span class="warn">⚠</span>'; return `<td class="tcell-rpd">${$R(yd.rpd)}${warn}</td>`;}; const yrCells=arr=>arr.map(yd=>active.map(f=>fieldCell(f,yd)).join('')).join(''); const rowHtml=(key,label,tier,indent,hasChildren,yd)=>{const activeRow=S.forecastKey===key,isOpen=S.treeOpen[key]||false,arrow=hasChildren?`<span class="tree-arrow" onclick="toggleTree('${key}',event)">${isOpen?'▼':'▶'}</span>`:`<span class="tree-arrow" style="color:transparent">·</span>`; const cells=(yd&&yd.length)?yrCells(yd):`<td colspan="${Math.max(1,active.length*3)}" class="tcell-na">—</td>`; return `<tr class="tree-row ${tier} ${activeRow?'t-active':''}" onclick="selectForecast('${key}',event)"><td class="${indent}">${arrow}${label}</td>${cells}</tr>`}; let rows=rowHtml('WW','🌐 全球','t-ww','',true,byCountry['WW']||[]); if(S.treeOpen['WW']) for(const [rk,rv] of Object.entries(REGIONS)){rows+=rowHtml(rk,rv.label,'t-region','tree-indent-1',true,regionAgg[rk]||[]); if(S.treeOpen[rk]) for(const [cc,cn] of Object.entries(rv.countries)) rows+=rowHtml(cc,cn,'t-country','tree-indent-2',false,byCountry[cc]||[]);} const thRow1=yrMeta.map(y=>`<th colspan="${Math.max(1,active.length)}" data-tip="${y.startDate||''} ~ ${y.endDate||''}">Y${y.year} <span style="font-size:11px;color:var(--z70);font-weight:400">${y.startDate?y.startDate.slice(0,7):''}</span></th>`).join(''); const fieldLabel=f=>f==='dl'?`<th style="border-left:1px solid var(--z80)">下载</th>`:f==='rev'?`<th>收入</th>`:`<th style="color:var(--b4)">RPD</th>`; const thRow2=yrMeta.map(()=>active.map(fieldLabel).join('')).join(''); return `<table class="tree-tbl"><thead><tr><th style="min-width:120px">地区</th>${thRow1}</tr><tr><th></th>${thRow2}</tr></thead><tbody>${rows}</tbody></table>`; }
-function renderCards(type,comps,loading){const el=document.getElementById(type+'Cards'); el.innerHTML=''; comps.forEach(c=>{const d=c.stData; const div=document.createElement('div'); div.className='dc'; const icon=d?.iconUrl?`<img src="${d.iconUrl}" onerror="this.style.display='none'">`:(c.name[0]||'?').toUpperCase(); let body=''; if(loading||!d) body='<div class="dc-loading">⟳ 拉取中...</div>'; else if(!d.found) body=`<div class="dc-err">⚠ ST 未收录：${d.error||''}</div>`; else body=`<div class="dc-reason">${c.reason||''}</div><div class="dc-body">${buildTreeTable(d.byCountry,d.yearRanges,type)}</div>`; const stUrl=d?.appId?`https://app.sensortower.com/apps/overview?app_ids=${d.appId}`:null; const cats=d?.categories||[]; div.innerHTML=`<div class="dc-header"><div class="dc-ico" ${stUrl?`onclick="window.open('${stUrl}','_blank')"`:''}>${icon}${stUrl?'<div class="dc-ico-badge"></div>':''}</div><div class="dc-info"><div class="dc-name">${d?.name||c.name}</div><div class="dc-cats">${cats.map((ct,i)=>`<span class="dc-cat">${ct}</span>${i<cats.length-1?'<span class="dc-cat-dot">·</span>':''}`).join('')}</div><div class="dc-pub">${d?.publisher||''} ${d?.releaseDate?'· 上线 '+d.releaseDate:''}</div></div></div>${body}`; el.appendChild(div);});}
-function computeRPDFromState(){const comps=S.rpdComps.filter(c=>!c.removed&&c.stData?.found); const codes=getCodesForKey(S.forecastKey); const vals=comps.map(c=>{const yrs=aggregateYears(c.stData.byCountry,codes)||c.stData.byCountry?.WW; if(!yrs)return null; const dl=yrs.reduce((s,y)=>s+y.downloads,0), rev=yrs.reduce((s,y)=>s+y.revenue,0); return dl>0?rev/dl:null;}).filter(v=>v!=null).sort((a,b)=>a-b); if(!vals.length){S.rpdCons=0.5;S.rpdOpti=1.0;} else {S.rpdCons=vals[Math.floor(vals.length*0.25)]||vals[0]; S.rpdOpti=vals[Math.ceil(vals.length*0.75)-1]||vals[vals.length-1];} }
-function onAssume(id){_sliderOrder=_sliderOrder.filter(s=>s!==id); _sliderOrder.push(id); const oldest=_sliderOrder[0], ids=['a1','a2','a3']; const sum2=ids.filter(s=>s!==oldest).reduce((sum,s)=>sum+(+document.getElementById(s).value),0); let autoVal=Math.max(5,Math.round(100-sum2)); if(sum2>95){const mid=_sliderOrder[1], newest=_sliderOrder[2], newVal=+document.getElementById(newest).value; const midVal=Math.max(5,95-newVal); document.getElementById(mid).value=midVal; autoVal=5;} document.getElementById(oldest).value=autoVal; S.y1=+document.getElementById('a1').value; S.y2=+document.getElementById('a2').value; S.y3=+document.getElementById('a3').value; document.getElementById('av1').textContent=S.y1+'%';document.getElementById('av2').textContent=S.y2+'%';document.getElementById('av3').textContent=S.y3+'%'; calcRevenue(); renderEstimationTable();}
-function getForecastYears(){return [{k:'y1',label:'Year 1',pct:S.y1},{k:'y2',label:'Year 2',pct:S.y2},{k:'y3',label:'Year 3',pct:S.y3}].filter(y=>S.yearsVisible[y.k]);}
-function getEstNodeList(){const list=[{key:'WW',label:'🌐 全球',level:0,parent:null}]; for(const [rk,rv] of Object.entries(REGIONS)){list.push({key:rk,label:rv.label,level:1,parent:'WW'}); if(S.estimationOpen[rk]) for(const [cc,cn] of Object.entries(rv.countries)) list.push({key:cc,label:cn,level:2,parent:rk});} return list;}
-function ensureParams(key){if(!S.estimationParams[key]) S.estimationParams[key]={dl:{},rpdCons:S.rpdCons,rpdOpti:S.rpdOpti}; for(const comp of S.dlComps.filter(c=>!c.removed&&c.stData?.found)){const nm=comp.stData.name||comp.name; if(!S.estimationParams[key].dl[nm]) S.estimationParams[key].dl[nm]={cons:comp.convPct||5,opti:Math.round((comp.convPct||5)*1.8*10)/10};} return S.estimationParams[key];}
-function toggleEst(key,e){e&&e.stopPropagation(); S.estimationOpen[key]=!S.estimationOpen[key]; renderEstimationTable();}
-function onParamChange(key,compName,side,val){ensureParams(key).dl[compName][side]=parseFloat(val)||0; calcRevenue(); renderEstimationTable();}
-function onRpdParamChange(key,side,val){ensureParams(key)[side]=parseFloat(val)||0; calcRevenue(); renderEstimationTable();}
-function calcRowMetrics(key){const codes=getCodesForKey(key); const params=ensureParams(key); let usersCons=0,usersOpti=0; const comps=S.dlComps.filter(c=>!c.removed&&c.stData?.found); for(const comp of comps){const nm=comp.stData.name||comp.name; const yrs=aggregateYears(comp.stData.byCountry,codes)||comp.stData.byCountry?.WW; const pool=yrs?.[0]?.downloads||0; usersCons += pool*((params.dl[nm]?.cons||0)/100); usersOpti += pool*((params.dl[nm]?.opti||0)/100); } const years=getForecastYears(); let revCons=0, revOpti=0; years.forEach(y=>{revCons += usersCons*(y.pct/100)*(params.rpdCons||0); revOpti += usersOpti*(y.pct/100)*(params.rpdOpti||0);}); return {usersCons,usersOpti,revCons,revOpti}; }
-function renderEstimationTable(){const comps=S.dlComps.filter(c=>!c.removed&&c.stData?.found); const head=document.getElementById('estHead'); const body=document.getElementById('estBody'); let h1='<tr><th rowspan="2">地区</th>'; comps.forEach(c=>{const nm=c.stData?.name||c.name; h1+=`<th colspan="2">${nm}</th>`;}); h1+='<th colspan="2">RPD</th><th colspan="2">下载量</th><th colspan="2">收入</th></tr>'; let h2='<tr>'; comps.forEach(()=>h2+='<th>保守%</th><th>乐观%</th>'); h2+='<th>保守</th><th>乐观</th><th>保守</th><th>乐观</th><th>保守</th><th>乐观</th></tr>'; head.innerHTML=h1+h2; const rows=[]; for(const node of getEstNodeList()){const p=ensureParams(node.key); const m=calcRowMetrics(node.key); const arrow=node.level<2?`<span class="tree-arrow" onclick="toggleEst('${node.key}',event)">${S.estimationOpen[node.key]?'▼':'▶'}</span>`:`<span class="tree-arrow" style="color:transparent">·</span>`; let tr=`<tr class="est-row"><td style="padding-left:${node.level*18}px">${arrow}${node.label}</td>`; for(const c of comps){const nm=c.stData?.name||c.name; const v=p.dl[nm]||{cons:0,opti:0}; tr+=`<td><input class="est-input" value="${v.cons}" onchange="onParamChange('${node.key}',${JSON.stringify(nm)},'cons',this.value)"></td><td><input class="est-input" value="${v.opti}" onchange="onParamChange('${node.key}',${JSON.stringify(nm)},'opti',this.value)"></td>`;} tr+=`<td><input class="est-input rpd" value="${(p.rpdCons||0).toFixed(2)}" onchange="onRpdParamChange('${node.key}','rpdCons',this.value)"></td><td><input class="est-input rpd" value="${(p.rpdOpti||0).toFixed(2)}" onchange="onRpdParamChange('${node.key}','rpdOpti',this.value)"></td><td class="est-val cons">${fmtM(m.usersCons)}</td><td class="est-val opti">${fmtM(m.usersOpti)}</td><td class="est-val cons">$${fmtM(m.revCons)}</td><td class="est-val opti">$${fmtM(m.revOpti)}</td></tr>`; rows.push(tr);} body.innerHTML=rows.join(''); }
-function calcRevenue(){const m=calcRowMetrics(S.forecastKey); const years=getForecastYears(); const rCons=ensureParams(S.forecastKey).rpdCons||0, rOpti=ensureParams(S.forecastKey).rpdOpti||0; let yVals=[]; years.forEach(y=>{yVals.push({label:y.label, cons:m.usersCons*(y.pct/100)*rCons, opti:m.usersOpti*(y.pct/100)*rOpti, pct:y.pct});}); const y1=yVals[0]?.cons||0, y1o=yVals[0]?.opti||0; document.getElementById('r1c').textContent='$'+fmtM(y1); document.getElementById('r1o').textContent='$'+fmtM(y1o); document.getElementById('r3c').textContent='$'+fmtM(m.revCons); document.getElementById('r3o').textContent='$'+fmtM(m.revOpti); document.getElementById('yTb').innerHTML=yVals.map(y=>`<tr><td>${y.label}</td><td>${y.pct}%</td><td>${fmtM(m.usersCons*(y.pct/100))}</td><td>${fmtM(m.usersOpti*(y.pct/100))}</td><td>$${fmtM(y.cons)}</td><td>$${fmtM(y.opti)}</td></tr>`).join(''); document.getElementById('ftUC').textContent=fmtM(m.usersCons); document.getElementById('ftUO').textContent=fmtM(m.usersOpti); document.getElementById('ftRC').textContent='$'+fmtM(m.revCons); document.getElementById('ftRO').textContent='$'+fmtM(m.revOpti); renderChart(yVals.map(v=>v.cons),yVals.map(v=>v.opti),yVals.map(v=>v.label)); }
-function renderChart(cons,opti,labels){const ctx=document.getElementById('revChart').getContext('2d'); if(chart) chart.destroy(); chart=new Chart(ctx,{type:'bar',data:{labels,datasets:[{label:'保守',data:cons,backgroundColor:'rgba(113,113,122,.3)',borderColor:'#52525b',borderWidth:1.5,borderRadius:4},{label:'乐观',data:opti,backgroundColor:'rgba(59,130,246,.25)',borderColor:'#3b82f6',borderWidth:1.5,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#71717a',font:{family:'JetBrains Mono',size:11}}},tooltip:{callbacks:{label:c=>`${c.dataset.label}: $${fmtM(c.raw)}`}}},scales:{x:{ticks:{color:'#52525b',font:{family:'JetBrains Mono',size:10}},grid:{color:'rgba(255,255,255,.04)'}},y:{ticks:{color:'#52525b',font:{family:'JetBrains Mono',size:10},callback:v=>'$'+fmtM(v)},grid:{color:'rgba(255,255,255,.04)'}}}}});}
-function renderSources(comps){document.getElementById('srcList').innerHTML=comps.filter(c=>c.stData).map(c=>{const d=c.stData; const ww=d.byCountry?.WW; return `<div class="srow"><span>${c.name}</span><span>${d.found&&ww?`WW Y1下载: ${fmtM(ww[0]?.downloads)} · Y1收入: $${fmtM(ww[0]?.revenue)} · Y1RPD: ${$R(ww[0]?.rpd)} · 上线: ${d.releaseDate||'—'}`:'⚠ 未收录'}</span></div>`}).join('')}
+const YEARS = [
+  { key: "y1", label: "第 1 年" },
+  { key: "y2", label: "第 2 年" },
+  { key: "y3", label: "第 3 年" }
+];
+
+const REGIONS = [
+  { id: "sea", label: "东南亚", countries: [
+    ["ID", "印尼"], ["VN", "越南"], ["TH", "泰国"], ["MY", "马来西亚"], ["PH", "菲律宾"]
+  ]},
+  { id: "jktw", label: "日韩台", countries: [
+    ["JP", "日本"], ["KR", "韩国"], ["TW", "台湾"]
+  ]},
+  { id: "west", label: "欧美", countries: [
+    ["US", "美国"], ["GB", "英国"], ["DE", "德国"], ["IT", "意大利"], ["CA", "加拿大"], ["FR", "法国"], ["AU", "澳大利亚"], ["NZ", "新西兰"]
+  ]},
+  { id: "mena", label: "中东", countries: [
+    ["IQ", "伊拉克"], ["SA", "沙特阿拉伯"], ["DZ", "阿尔及利亚"], ["EG", "埃及"], ["MA", "摩洛哥"]
+  ]},
+  { id: "latam", label: "拉美", countries: [
+    ["BR", "巴西"], ["MX", "墨西哥"], ["PE", "秘鲁"], ["CO", "哥伦比亚"], ["CL", "智利"], ["AR", "阿根廷"]
+  ]}
+];
+
+const PRODUCTS = {
+  "/mobile-legends.html": {
+    query: "Mobile Legends: Bang Bang",
+    fallbackName: "Mobile Legends",
+    title: "Mobile Legends 前三年地区数据看板",
+    heading: "Mobile Legends 前三年地区表现",
+    mark: "ML"
+  },
+  "/brawl-stars.html": {
+    query: "Brawl Stars",
+    fallbackName: "Brawl Stars",
+    title: "Brawl Stars 前三年地区数据看板",
+    heading: "Brawl Stars 前三年地区表现",
+    mark: "BS"
+  },
+  default: {
+    query: "Identity V",
+    fallbackName: "第五人格",
+    title: "第五人格前三年地区数据看板",
+    heading: "第五人格前三年地区表现",
+    mark: "V"
+  }
+};
+
+const PRODUCT = PRODUCTS[location.pathname] || PRODUCTS.default;
+
+const COUNTRY_ALIASES = (() => {
+  const aliases = { UK: "GB", UAE: "AE" };
+  for (const region of REGIONS) {
+    for (const [code, label] of region.countries) {
+      aliases[code] = code;
+      aliases[label] = code;
+    }
+  }
+  aliases["美国"] = "US";
+  aliases["英国"] = "GB";
+  aliases["韩国"] = "KR";
+  aliases["日本"] = "JP";
+  return aliases;
+})();
+
+const state = {
+  source: "Sensor Tower",
+  selected: "WW",
+  mode: "all",
+  open: { WW: true, sea: false, jktw: false, west: false, mena: false, latam: false },
+  countryData: {},
+  estimate: { conservative: {}, optimistic: {} },
+  estimateReady: false,
+  chart: null
+};
+
+function blankYear() {
+  return { downloads: null, revenue: null, rpd: null, startDate: null, endDate: null };
+}
+
+function yearFromValues(downloads, revenue, rpd, meta = {}) {
+  const d = finiteOrNull(downloads);
+  const rev = finiteOrNull(revenue);
+  let cellRpd = finiteOrNull(rpd);
+  if (cellRpd == null && d && rev != null) cellRpd = rev / d;
+  return { downloads: d, revenue: rev, rpd: cellRpd, startDate: meta.startDate || null, endDate: meta.endDate || null };
+}
+
+function finiteOrNull(value) {
+  const n = Number(value);
+  return Number.isFinite(n) ? n : null;
+}
+
+function resetData() {
+  const next = {};
+  for (const region of REGIONS) {
+    for (const [code] of region.countries) next[code] = [blankYear(), blankYear(), blankYear()];
+  }
+  state.countryData = next;
+}
+
+function normalizeApiData(result) {
+  resetData();
+  const byCountry = result?.byCountry || {};
+  for (const region of REGIONS) {
+    for (const [code] of region.countries) {
+      const rows = byCountry[code] || [];
+      state.countryData[code] = YEARS.map((_, index) => {
+        const row = rows[index] || {};
+        return yearFromValues(row.downloads, row.revenue, row.rpd, row);
+      });
+    }
+  }
+  state.source = result?.name || "Sensor Tower";
+  state.estimate = { conservative: {}, optimistic: {} };
+  state.estimateReady = false;
+}
+
+function aggregate(codes) {
+  const out = YEARS.map(() => ({ downloads: 0, revenue: 0, rpd: null, hasDownloads: false, hasRevenue: false }));
+  for (const code of codes) {
+    const rows = state.countryData[code] || [];
+    rows.forEach((row, index) => {
+      if (row.downloads != null) {
+        out[index].downloads += row.downloads;
+        out[index].hasDownloads = true;
+      }
+      if (row.revenue != null) {
+        out[index].revenue += row.revenue;
+        out[index].hasRevenue = true;
+      }
+    });
+  }
+  return out.map(row => {
+    const downloads = row.hasDownloads ? row.downloads : null;
+    const revenue = row.hasRevenue ? row.revenue : null;
+    return yearFromValues(downloads, revenue, downloads && revenue != null ? revenue / downloads : null);
+  });
+}
+
+function allCountryCodes() {
+  return REGIONS.flatMap(region => region.countries.map(([code]) => code));
+}
+
+function codesForKey(key) {
+  if (key === "WW") return allCountryCodes();
+  const region = REGIONS.find(item => item.id === key);
+  if (region) return region.countries.map(([code]) => code);
+  return [key];
+}
+
+function dataForKey(key) {
+  if (key === "WW" || REGIONS.some(region => region.id === key)) return aggregate(codesForKey(key));
+  return state.countryData[key] || [blankYear(), blankYear(), blankYear()];
+}
+
+function labelForKey(key) {
+  if (key === "WW") return "全球";
+  for (const region of REGIONS) {
+    if (region.id === key) return region.label;
+    const country = region.countries.find(([code]) => code === key);
+    if (country) return country[1];
+  }
+  return key;
+}
+
+function totals(rows) {
+  let downloads = 0;
+  let revenue = 0;
+  let hasDownloads = false;
+  let hasRevenue = false;
+  for (const row of rows) {
+    if (row.downloads != null) { downloads += row.downloads; hasDownloads = true; }
+    if (row.revenue != null) { revenue += row.revenue; hasRevenue = true; }
+  }
+  const finalDownloads = hasDownloads ? downloads : null;
+  const finalRevenue = hasRevenue ? revenue : null;
+  return yearFromValues(finalDownloads, finalRevenue, finalDownloads && finalRevenue != null ? finalRevenue / finalDownloads : null);
+}
+
+function clamp(value, min, max) {
+  return Math.min(max, Math.max(min, value));
+}
+
+function roundInput(value, digits = 2) {
+  if (!Number.isFinite(value)) return 0;
+  return Number(value.toFixed(digits));
+}
+
+function baselineForCountry(code) {
+  const rows = state.countryData[code] || [];
+  const y1 = rows[0] || blankYear();
+  const y2 = rows[1] || blankYear();
+  const y3 = rows[2] || blankYear();
+  const y1Downloads = y1.downloads || 0;
+  const y2Downloads = y2.downloads || 0;
+  const totalRevenue = rows.reduce((sum, row) => sum + (row.revenue || 0), 0);
+  return {
+    y1Downloads,
+    totalRevenue,
+    y1Rpd: y1.rpd || 0,
+    y2Decay: y1Downloads ? y2Downloads / y1Downloads : 0,
+    y2Rpd: y2.rpd || 0,
+    y3Decay: y2Downloads ? (y3.downloads || 0) / y2Downloads : 0,
+    y3Rpd: y3.rpd || 0
+  };
+}
+
+function percentileRank(values, value) {
+  const clean = values.filter(item => Number.isFinite(item)).sort((a, b) => a - b);
+  if (!clean.length) return .5;
+  if (clean.length === 1) return .5;
+  const index = clean.findIndex(item => item >= value);
+  const position = index < 0 ? clean.length - 1 : index;
+  return position / (clean.length - 1);
+}
+
+function countryPerformanceScore(code) {
+  const baselines = allCountryCodes().map(country => baselineForCountry(country));
+  const base = baselineForCountry(code);
+  const downloadValues = baselines.map(item => Math.log1p(item.y1Downloads));
+  const revenueValues = baselines.map(item => Math.log1p(item.totalRevenue));
+  const downloadRank = percentileRank(downloadValues, Math.log1p(base.y1Downloads));
+  const revenueRank = percentileRank(revenueValues, Math.log1p(base.totalRevenue));
+  const strongestSignal = Math.max(downloadRank, revenueRank);
+  const blendedSignal = downloadRank * .55 + revenueRank * .45;
+  return strongestSignal * .65 + blendedSignal * .35;
+}
+
+function capDefaultRevenueMultiple(params, base, scenario) {
+  const y1Downloads = base.y1Downloads * Number(params.y1Coef || 0);
+  const y2Downloads = y1Downloads * Number(params.y2Decay || 0);
+  const y3Downloads = y2Downloads * Number(params.y3Decay || 0);
+  const y1Revenue = y1Downloads * Number(params.y1Rpd || 0);
+  const laterRevenue = y2Downloads * Number(params.y2Rpd || 0) + y3Downloads * Number(params.y3Rpd || 0);
+  const maxRatio = scenario === "conservative" ? 2.35 : 2.75;
+  const maxLaterRevenue = y1Revenue * (maxRatio - 1);
+  if (y1Revenue > 0 && laterRevenue > maxLaterRevenue && laterRevenue > 0) {
+    const factor = maxLaterRevenue / laterRevenue;
+    params.y2Rpd = roundInput(params.y2Rpd * factor);
+    params.y3Rpd = roundInput(params.y3Rpd * factor);
+  }
+  return params;
+}
+
+function defaultEstimateParams(code, scenario) {
+  const base = baselineForCountry(code);
+  const conservative = scenario === "conservative";
+  const performance = countryPerformanceScore(code);
+  const downloadScale = conservative
+    ? 0.78 + performance * 0.17
+    : 0.98 + performance * 0.28;
+  const rpdScale = conservative ? 0.8 : 1.15;
+  const decayScale = conservative ? 0.85 : 1.1;
+  const y1Rpd = base.y1Rpd * rpdScale;
+  const y2RpdLift = conservative ? 1.25 : 1.4;
+  const y3RpdLift = conservative ? 1.4 : 1.65;
+  return capDefaultRevenueMultiple({
+    y1Coef: roundInput(downloadScale),
+    y1Rpd: roundInput(y1Rpd),
+    y2Decay: roundInput(clamp(base.y2Decay * decayScale, 0, 3)),
+    y2Rpd: roundInput(Math.min(base.y2Rpd * rpdScale, y1Rpd * y2RpdLift)),
+    y3Decay: roundInput(clamp(base.y3Decay * decayScale, 0, 3)),
+    y3Rpd: roundInput(Math.min(base.y3Rpd * rpdScale, y1Rpd * y3RpdLift))
+  }, base, scenario);
+}
+
+function initEstimateState(force = false) {
+  if (state.estimateReady && !force) return;
+  for (const scenario of ["conservative", "optimistic"]) {
+    for (const code of allCountryCodes()) {
+      if (!state.estimate[scenario][code] || force) {
+        state.estimate[scenario][code] = defaultEstimateParams(code, scenario);
+      }
+    }
+  }
+  state.estimateReady = true;
+}
+
+function estimateCountry(code, scenario) {
+  const params = state.estimate[scenario]?.[code] || defaultEstimateParams(code, scenario);
+  const base = baselineForCountry(code);
+  const y1Downloads = base.y1Downloads * Number(params.y1Coef || 0);
+  const y2Downloads = y1Downloads * Number(params.y2Decay || 0);
+  const y3Downloads = y2Downloads * Number(params.y3Decay || 0);
+  const y1Revenue = y1Downloads * Number(params.y1Rpd || 0);
+  const y2Revenue = y2Downloads * Number(params.y2Rpd || 0);
+  const y3Revenue = y3Downloads * Number(params.y3Rpd || 0);
+  return {
+    y1Downloads,
+    y1Revenue,
+    totalDownloads: y1Downloads + y2Downloads + y3Downloads,
+    totalRevenue: y1Revenue + y2Revenue + y3Revenue
+  };
+}
+
+function estimateTotals(scenario) {
+  return allCountryCodes().reduce((sum, code) => {
+    const row = estimateCountry(code, scenario);
+    sum.y1Downloads += row.y1Downloads;
+    sum.y1Revenue += row.y1Revenue;
+    sum.totalDownloads += row.totalDownloads;
+    sum.totalRevenue += row.totalRevenue;
+    return sum;
+  }, { y1Downloads: 0, y1Revenue: 0, totalDownloads: 0, totalRevenue: 0 });
+}
+
+function buildRows() {
+  const rows = [{ key: "WW", label: "全球", level: 0, kind: "world", children: true }];
+  if (!state.open.WW) return rows;
+  for (const region of REGIONS) {
+    rows.push({ key: region.id, label: region.label, level: 1, kind: "region", children: true });
+    if (state.open[region.id]) {
+      for (const [code, label] of region.countries) rows.push({ key: code, label, code, level: 2, kind: "country", children: false });
+    }
+  }
+  return rows;
+}
+
+function renderTable() {
+  const table = document.getElementById("dataTable");
+  const metricHeaders = {
+    download: ["下载"],
+    revenue: ["收入"],
+    rpd: ["RPD"],
+    all: ["下载", "收入", "RPD"]
+  }[state.mode];
+  const yearHeaders = YEARS.map(year => `<th colspan="${metricHeaders.length}">${year.label}</th>`).join("");
+  const subHeaders = YEARS.map(() => metricHeaders.map(metric => `<th>${metric}</th>`).join("")).join("");
+  const totalHeaders = metricHeaders.map(metric => `<th>${metric}</th>`).join("");
+  const body = buildRows().map(node => {
+    const rows = dataForKey(node.key);
+    const total = totals(rows);
+    const cells = rows.map(row => metricHeaders.map(metric => metricCell(metric, row)).join("")).join("");
+    const totalCells = metricHeaders.map(metric => metricCell(metric, total)).join("");
+    const toggle = node.children
+      ? `<button class="toggle" type="button" onclick="toggleNode('${node.key}', event)"><i data-lucide="${state.open[node.key] ? "chevron-down" : "chevron-right"}"></i></button>`
+      : `<span class="toggle empty"></span>`;
+    const code = node.code ? `<span class="region-pill">${node.code}</span>` : "";
+    return `<tr class="${node.kind} ${state.selected === node.key ? "selected" : ""}" onclick="selectNode('${node.key}')">
+      <td><div class="name-cell level-${node.level}">${toggle}<strong>${node.label}</strong>${code}</div></td>
+      ${cells}${totalCells}
+    </tr>`;
+  }).join("");
+  table.innerHTML = `<thead>
+    <tr><th rowspan="2">范围</th>${yearHeaders}<th colspan="${metricHeaders.length}">三年合计</th></tr>
+    <tr>${subHeaders}${totalHeaders}</tr>
+  </thead><tbody>${body}</tbody>`;
+}
+
+function inputCell(scenario, code, field, value, step = "0.01") {
+  return `<input type="number" min="0" step="${step}" value="${Number(value || 0).toFixed(2)}" data-scenario="${scenario}" data-code="${code}" data-field="${field}">`;
+}
+
+function renderEstimatePanel(scenario, title, note) {
+  const total = estimateTotals(scenario);
+  const rows = REGIONS.map(region => {
+    const regionHeader = `<tr class="region"><td colspan="12"><strong>${region.label}</strong></td></tr>`;
+    const countryRows = region.countries.map(([code, label]) => {
+      const params = state.estimate[scenario][code] || defaultEstimateParams(code, scenario);
+      const base = baselineForCountry(code);
+      const out = estimateCountry(code, scenario);
+      return `<tr>
+        <td><strong>${label}</strong> <span class="region-pill">${code}</span></td>
+        <td class="country-base">${metricText(base.y1Downloads, "compact")}</td>
+        <td>${inputCell(scenario, code, "y1Coef", params.y1Coef)}</td>
+        <td>${inputCell(scenario, code, "y1Rpd", params.y1Rpd)}</td>
+        <td>${inputCell(scenario, code, "y2Decay", params.y2Decay)}</td>
+        <td>${inputCell(scenario, code, "y2Rpd", params.y2Rpd)}</td>
+        <td>${inputCell(scenario, code, "y3Decay", params.y3Decay)}</td>
+        <td>${inputCell(scenario, code, "y3Rpd", params.y3Rpd)}</td>
+        <td class="output">${metricText(out.y1Downloads, "compact")}</td>
+        <td class="output">${metricText(out.y1Revenue, "money")}</td>
+        <td class="output">${metricText(out.totalDownloads, "compact")}</td>
+        <td class="output">${metricText(out.totalRevenue, "money")}</td>
+      </tr>`;
+    }).join("");
+    return regionHeader + countryRows;
+  }).join("");
+
+  return `<div class="estimate-panel">
+    <div class="estimate-title"><strong>${title}</strong><span>${note}</span></div>
+    <div class="estimate-summary">
+      <div><small>首年下载</small><strong>${metricText(total.y1Downloads, "compact")}</strong></div>
+      <div><small>首年收入</small><strong>${metricText(total.y1Revenue, "money")}</strong></div>
+      <div><small>前三年下载</small><strong>${metricText(total.totalDownloads, "compact")}</strong></div>
+      <div><small>前三年收入</small><strong>${metricText(total.totalRevenue, "money")}</strong></div>
+    </div>
+    <div class="estimate-table-wrap">
+      <table class="estimate-table">
+        <thead>
+          <tr>
+            <th>国家</th><th>第五人格首年下载</th>
+            <th>首年下载系数</th><th>首年 RPD</th>
+            <th>次年下载衰减</th><th>次年 RPD</th>
+            <th>第三年下载衰减</th><th>第三年 RPD</th>
+            <th>首年下载</th><th>首年收入</th><th>前三年下载</th><th>前三年收入</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+  </div>`;
+}
+
+function renderEstimate() {
+  initEstimateState();
+  document.getElementById("estimateWorkbench").innerHTML =
+    renderEstimatePanel("conservative", "保守版", "按国家表现分层，三年收入约束在首年 2.35x 内") +
+    renderEstimatePanel("optimistic", "乐观版", "按国家表现分层，三年收入约束在首年 2.75x 内");
+}
+
+function metricCell(metric, row) {
+  if (metric === "下载") return `<td class="num">${formatCount(row.downloads)}</td>`;
+  if (metric === "收入") return `<td class="num">${formatMoney(row.revenue)}</td>`;
+  return `<td class="rpd">${formatRpd(row.rpd)}</td>`;
+}
+
+function formatCount(value) {
+  if (value == null) return `<span class="empty">-</span>`;
+  if (Math.abs(value) >= 1000000) return `${(value / 1000000).toFixed(2)}M`;
+  if (Math.abs(value) >= 1000) return `${(value / 1000).toFixed(1)}K`;
+  return Math.round(value).toLocaleString("en-US");
+}
+
+function formatMoney(value) {
+  if (value == null) return `<span class="empty">-</span>`;
+  if (Math.abs(value) >= 1000000) return `$${(value / 1000000).toFixed(2)}M`;
+  if (Math.abs(value) >= 1000) return `$${(value / 1000).toFixed(1)}K`;
+  return `$${Math.round(value).toLocaleString("en-US")}`;
+}
+
+function formatRpd(value) {
+  if (value == null || value === 0) return `<span class="empty">-</span>`;
+  return `$${value.toFixed(1)}`;
+}
+
+function metricText(value, type) {
+  if (type === "money") return value == null ? "-" : formatMoney(value).replace(/<[^>]+>/g, "");
+  if (type === "rpd") return value == null ? "-" : `$${value.toFixed(1)}`;
+  if (type === "compact") return formatCount(value).replace(/<[^>]+>/g, "");
+  return value == null ? "-" : Math.round(value).toLocaleString("en-US");
+}
+
+function renderMetrics() {
+  const rows = dataForKey(state.selected);
+  const total = totals(rows);
+  const y1 = rows[0] || blankYear();
+  const firstYearCards = [
+    ["download", "首年下载", metricText(y1.downloads, "compact"), "各国家首年汇总"],
+    ["circle-dollar-sign", "首年收入", metricText(y1.revenue, "money"), "各国家首年汇总"],
+    ["gauge", "首年平均 RPD", metricText(y1.rpd, "rpd"), "收入 / 下载"]
+  ];
+  const threeYearCards = [
+    ["download", "前三年下载", metricText(total.downloads, "compact"), "选中范围子节点求和"],
+    ["circle-dollar-sign", "前三年收入", metricText(total.revenue, "money"), "选中范围子节点求和"],
+    ["gauge", "前三年平均 RPD", metricText(total.rpd, "rpd"), "收入 / 下载"]
+  ];
+  const renderPanel = cards => `<div class="metric-panel">${cards.map(([icon, label, value, note]) => `
+      <div class="metric">
+        <small><i data-lucide="${icon}"></i>${label}</small>
+        <strong>${value}</strong>
+        <span>${note}</span>
+      </div>
+    `).join("")}</div>`;
+  document.getElementById("metricGrid").innerHTML = renderPanel(firstYearCards) + renderPanel(threeYearCards);
+}
+
+function renderDetail() {
+  const rows = dataForKey(state.selected);
+  document.getElementById("detailList").innerHTML = rows.map((row, index) => `
+    <div class="detail-item">
+      <small>${YEARS[index].label}</small>
+      <strong>${metricText(row.downloads, "compact")}</strong>
+      <small>${metricText(row.revenue, "money")} / ${metricText(row.rpd, "rpd")}</small>
+    </div>
+  `).join("");
+  renderChart(rows);
+}
+
+function renderChart(rows) {
+  const canvas = document.getElementById("trendChart");
+  const ctx = canvas.getContext("2d");
+  const styles = getComputedStyle(document.body);
+  const accent = styles.getPropertyValue("--teal").trim() || "#167d7f";
+  const revenue = styles.getPropertyValue("--coral").trim() || "#c45a3f";
+  const rpd = styles.getPropertyValue("--green").trim() || "#4b7f38";
+  const muted = styles.getPropertyValue("--muted").trim() || "#696b70";
+  const grid = "rgba(105,107,112,.12)";
+  const fontFamily = "Inter";
+  if (state.chart) state.chart.destroy();
+  state.chart = new Chart(ctx, {
+    data: {
+      labels: YEARS.map(year => year.label),
+      datasets: [
+        {
+          type: "bar",
+          label: "下载",
+          data: rows.map(row => row.downloads || 0),
+          backgroundColor: colorMix(accent, .22),
+          borderColor: accent,
+          borderWidth: 1.5,
+          borderRadius: 5,
+          yAxisID: "downloads"
+        },
+        {
+          type: "bar",
+          label: "收入",
+          data: rows.map(row => row.revenue || 0),
+          backgroundColor: colorMix(revenue, .18),
+          borderColor: revenue,
+          borderWidth: 1.5,
+          borderRadius: 5,
+          yAxisID: "revenue"
+        },
+        {
+          type: "line",
+          label: "RPD",
+          data: rows.map(row => row.rpd || 0),
+          borderColor: rpd,
+          backgroundColor: rpd,
+          tension: .35,
+          pointRadius: 4,
+          yAxisID: "rpd"
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: "index", intersect: false },
+      plugins: {
+        legend: { labels: { color: muted, boxWidth: 12, font: { family: fontFamily, size: 12 } } },
+        tooltip: {
+          callbacks: {
+            label: context => {
+              if (context.dataset.label === "RPD") return `RPD: $${Number(context.raw || 0).toFixed(1)}`;
+              if (context.dataset.label === "收入") return `收入: ${metricText(context.raw, "money")}`;
+              return `下载: ${metricText(context.raw, "count")}`;
+            }
+          }
+        }
+      },
+      scales: {
+        downloads: { position: "left", grid: { color: grid }, ticks: { callback: value => formatAxis(value), color: muted } },
+        revenue: { display: false, position: "right", grid: { drawOnChartArea: false }, ticks: { callback: value => formatAxis(value) } },
+        rpd: { position: "right", grid: { drawOnChartArea: false }, ticks: { callback: value => `$${Number(value).toFixed(1)}`, color: rpd } },
+        x: { grid: { display: false }, ticks: { color: muted } }
+      }
+    }
+  });
+}
+
+function colorMix(hex, alpha) {
+  const value = hex.replace("#", "").trim();
+  if (value.length !== 6) return hex;
+  const r = parseInt(value.slice(0, 2), 16);
+  const g = parseInt(value.slice(2, 4), 16);
+  const b = parseInt(value.slice(4, 6), 16);
+  return `rgba(${r},${g},${b},${alpha})`;
+}
+
+function formatAxis(value) {
+  if (Math.abs(value) >= 1000000) return `${(value / 1000000).toFixed(1)}M`;
+  if (Math.abs(value) >= 1000) return `${Math.round(value / 1000)}K`;
+  return value;
+}
+
+function renderRegionMap() {
+  document.getElementById("regionMap").innerHTML = REGIONS.map(region => `
+    <div class="map-row">
+      <div class="map-name">${region.label}</div>
+      <div class="country-tags">${region.countries.map(([code, label]) => `<span class="country-tag">${label} ${code}</span>`).join("")}</div>
+    </div>
+  `).join("");
+}
+
+function renderMissing() {
+  const missing = [];
+  for (const region of REGIONS) {
+    for (const [code, label] of region.countries) {
+      const rows = state.countryData[code] || [];
+      const hasAny = rows.some(row => row.downloads != null || row.revenue != null || row.rpd != null);
+      if (!hasAny) missing.push(`${label} ${code}`);
+    }
+  }
+  const text = missing.length
+    ? `还有 ${missing.length} 个国家没有数据，折叠汇总会自动跳过空值。`
+    : "指定国家都有可用数据。";
+  document.getElementById("missingBox").innerHTML = `${text}<div class="missing-list">${missing.map(item => `<span class="country-tag">${item}</span>`).join("")}</div>`;
+}
+
+function monthValue(value) {
+  if (!value) return null;
+  const [year, month] = String(value).split("-").map(Number);
+  if (!year || !month) return null;
+  return year * 12 + month;
+}
+
+function monthLabel(value) {
+  if (!value) return "-";
+  const [year, month] = String(value).split("-");
+  return `${Number(year)}年${Number(month)}月`;
+}
+
+function launchRows() {
+  return REGIONS.flatMap(region => region.countries.map(([code, label]) => {
+    const firstYear = state.countryData[code]?.[0] || {};
+    return {
+      code,
+      label,
+      region: region.label,
+      regionId: region.id,
+      startDate: firstYear.startDate,
+      downloads: firstYear.downloads,
+      revenue: firstYear.revenue
+    };
+  })).filter(item => item.startDate);
+}
+
+function topBy(items, getter) {
+  return items.reduce((best, item) => {
+    const value = getter(item);
+    if (value == null) return best;
+    if (!best || value > getter(best)) return item;
+    return best;
+  }, null);
+}
+
+function renderSummary() {
+  const el = document.getElementById("marketSummary");
+  const launches = launchRows();
+  const rows = dataForKey("WW");
+  const total = totals(rows);
+  const y1 = rows[0] || blankYear();
+
+  if (!launches.length || total.downloads == null) {
+    el.innerHTML = `<p class="intro-copy">正在等待 Sensor Tower 返回各国家首个有效月份和前三年表现。</p>`;
+    return;
+  }
+
+  const earliestValue = Math.min(...launches.map(item => monthValue(item.startDate)).filter(Boolean));
+  const latestValue = Math.max(...launches.map(item => monthValue(item.startDate)).filter(Boolean));
+  const earliest = launches.find(item => monthValue(item.startDate) === earliestValue)?.startDate;
+  const latest = launches.find(item => monthValue(item.startDate) === latestValue)?.startDate;
+  const firstWave = launches
+    .filter(item => item.startDate === earliest)
+    .slice(0, 5)
+    .map(item => `${item.label}${item.code}`)
+    .join("、");
+  const staggered = latestValue > earliestValue;
+
+  const regionStats = REGIONS.map(region => {
+    const regionRows = dataForKey(region.id);
+    const regionTotal = totals(regionRows);
+    const starts = region.countries
+      .map(([code]) => state.countryData[code]?.[0]?.startDate)
+      .filter(Boolean)
+      .sort();
+    return {
+      label: region.label,
+      firstStart: starts[0],
+      lastStart: starts[starts.length - 1],
+      y1: regionRows[0] || blankYear(),
+      total: regionTotal
+    };
+  }).filter(item => item.total.downloads != null);
+
+  const topRevenue = topBy(regionStats, item => item.total.revenue || 0);
+  const topDownloads = topBy(regionStats, item => item.total.downloads || 0);
+  const topRpd = topBy(regionStats, item => item.total.rpd || 0);
+  const y3 = rows[2] || blankYear();
+  const revenueTrend = y3.revenue != null && y1.revenue
+    ? (y3.revenue >= y1.revenue ? "收入在第三年仍高于首年" : "收入峰值更集中在前两年")
+    : "收入趋势随有效国家数据更新";
+
+  el.innerHTML = `
+    <div class="summary-top">
+      <div class="summary-stat"><small>海外最早有效发布</small><strong>${monthLabel(earliest)}</strong></div>
+      <div class="summary-stat"><small>发布节奏</small><strong>${staggered ? "陆续发布" : "基本同步"}</strong></div>
+      <div class="summary-stat"><small>前三年海外规模</small><strong>${metricText(total.downloads, "compact")} / ${metricText(total.revenue, "money")}</strong></div>
+    </div>
+    <div class="summary-copy">
+      <p><strong>海外发布：</strong>样本国家最早在 ${monthLabel(earliest)} 出现有效下载或收入，首批包括 ${firstWave || "部分国家"}；最晚首个有效月为 ${monthLabel(latest)}，${staggered ? "可以看作其他地区随后陆续放量。" : "样本地区基本同月起量。"}</p>
+      <p><strong>整体表现：</strong>首年下载 ${metricText(y1.downloads, "compact")}、收入 ${metricText(y1.revenue, "money")}、RPD ${metricText(y1.rpd, "rpd")}；前三年累计下载 ${metricText(total.downloads, "compact")}、收入 ${metricText(total.revenue, "money")}、平均 RPD ${metricText(total.rpd, "rpd")}，${revenueTrend}。</p>
+      <p><strong>大区表现：</strong>${topRevenue?.label || "-"}贡献前三年收入最高，${topDownloads?.label || "-"}下载规模最大，${topRpd?.label || "-"}RPD最高；地区差异主要体现在付费强度而不只是下载量。</p>
+      <p><strong>读数口径：</strong>每个国家先按自己的首个有效月份切首年、次年、第三年，再向大区和全球汇总。</p>
+    </div>
+    <div class="region-summary">
+      ${regionStats.map(item => `<span class="region-chip">${item.label} ${monthLabel(item.firstStart)}起 · ${metricText(item.total.downloads, "compact")} · ${metricText(item.total.revenue, "money")} · RPD ${metricText(item.total.rpd, "rpd")}</span>`).join("")}
+    </div>
+  `;
+}
+
+function render() {
+  renderProductChrome();
+  renderSummary();
+  renderMetrics();
+  renderTable();
+  renderEstimate();
+  renderDetail();
+  renderRegionMap();
+  renderMissing();
+  lucide.createIcons();
+}
+
+function renderProductChrome() {
+  document.title = PRODUCT.title;
+  document.querySelector(".brand-mark").textContent = PRODUCT.mark;
+  document.querySelector(".brand h1").textContent = PRODUCT.title;
+  document.querySelector(".intro-title").textContent = PRODUCT.heading;
+}
+
+function toggleNode(key, event) {
+  event.stopPropagation();
+  state.open[key] = !state.open[key];
+  render();
+}
+
+function selectNode(key) {
+  state.selected = key;
+  render();
+}
+
+function setStatus(type, message) {
+  const dot = document.getElementById("statusDot");
+  if (!dot) return;
+  dot.className = `dot ${type}`;
+  document.getElementById("statusText").textContent = message;
+}
+
+function toast(message) {
+  const el = document.getElementById("toast");
+  el.textContent = message;
+  el.classList.add("show");
+  window.clearTimeout(toast._timer);
+  toast._timer = window.setTimeout(() => el.classList.remove("show"), 2600);
+}
+
+function estimateRowsForStatic(scenario) {
+  return REGIONS.map(region => {
+    const countryRows = region.countries.map(([code, label]) => {
+      const params = state.estimate[scenario][code] || defaultEstimateParams(code, scenario);
+      const base = baselineForCountry(code);
+      const out = estimateCountry(code, scenario);
+      return `<tr>
+        <td>${label} ${code}</td>
+        <td>${metricText(base.y1Downloads, "compact")}</td>
+        <td>${Number(params.y1Coef || 0).toFixed(2)}</td>
+        <td>${metricText(Number(params.y1Rpd || 0), "rpd")}</td>
+        <td>${Number(params.y2Decay || 0).toFixed(2)}</td>
+        <td>${metricText(Number(params.y2Rpd || 0), "rpd")}</td>
+        <td>${Number(params.y3Decay || 0).toFixed(2)}</td>
+        <td>${metricText(Number(params.y3Rpd || 0), "rpd")}</td>
+        <td>${metricText(out.y1Downloads, "compact")}</td>
+        <td>${metricText(out.y1Revenue, "money")}</td>
+        <td>${metricText(out.totalDownloads, "compact")}</td>
+        <td>${metricText(out.totalRevenue, "money")}</td>
+      </tr>`;
+    }).join("");
+    return `<tr class="region"><td colspan="12">${region.label}</td></tr>${countryRows}`;
+  }).join("");
+}
+
+function staticScenarioBlock(scenario, title) {
+  const total = estimateTotals(scenario);
+  const labels = {
+    y1Downloads: "&#39318;&#24180;&#19979;&#36733;",
+    y1Revenue: "&#39318;&#24180;&#25910;&#20837;",
+    totalDownloads: "&#21069;&#19977;&#24180;&#19979;&#36733;",
+    totalRevenue: "&#21069;&#19977;&#24180;&#25910;&#20837;",
+    country: "&#22269;&#23478;",
+    base: "&#31532;&#20116;&#20154;&#26684;&#39318;&#24180;&#19979;&#36733;",
+    coef: "&#39318;&#24180;&#19979;&#36733;&#31995;&#25968;",
+    y1Rpd: "&#39318;&#24180; RPD",
+    y2Decay: "&#27425;&#24180;&#19979;&#36733;&#34928;&#20943;",
+    y2Rpd: "&#27425;&#24180; RPD",
+    y3Decay: "&#31532;&#19977;&#24180;&#19979;&#36733;&#34928;&#20943;",
+    y3Rpd: "&#31532;&#19977;&#24180; RPD"
+  };
+  return `<section>
+    <h2>${title}</h2>
+    <div class="stats">
+      <div><span>${labels.y1Downloads}</span><b>${metricText(total.y1Downloads, "compact")}</b></div>
+      <div><span>${labels.y1Revenue}</span><b>${metricText(total.y1Revenue, "money")}</b></div>
+      <div><span>${labels.totalDownloads}</span><b>${metricText(total.totalDownloads, "compact")}</b></div>
+      <div><span>${labels.totalRevenue}</span><b>${metricText(total.totalRevenue, "money")}</b></div>
+    </div>
+    <table>
+      <thead><tr><th>${labels.country}</th><th>${labels.base}</th><th>${labels.coef}</th><th>${labels.y1Rpd}</th><th>${labels.y2Decay}</th><th>${labels.y2Rpd}</th><th>${labels.y3Decay}</th><th>${labels.y3Rpd}</th><th>${labels.y1Downloads}</th><th>${labels.y1Revenue}</th><th>${labels.totalDownloads}</th><th>${labels.totalRevenue}</th></tr></thead>
+      <tbody>${estimateRowsForStatic(scenario)}</tbody>
+    </table>
+  </section>`;
+}
+
+function buildStaticEstimateHtml() {
+  const now = new Date();
+  return `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${PRODUCT.fallbackName} 产品预估</title>
+<style>
+body{margin:0;background:#f6f4ee;color:#202124;font-family:Inter,"Microsoft YaHei",system-ui,sans-serif;font-size:13px}
+main{max-width:1280px;margin:0 auto;padding:28px}
+h1{margin:0 0 6px;font-size:24px}p{color:#696b70;margin:0 0 18px}.meta{margin-bottom:18px}
+section{background:#fffdf8;border:1px solid #ddd8ca;border-radius:8px;margin:14px 0;padding:16px}
+h2{font-size:18px;margin:0 0 12px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.stats div{border:1px solid #ddd8ca;border-radius:8px;background:#fff;padding:10px}.stats span{display:block;color:#696b70;font-size:12px}.stats b{font-family:"JetBrains Mono",monospace;font-size:18px}
+.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:1180px}th,td{border-bottom:1px solid #ddd8ca;padding:8px;text-align:right;white-space:nowrap}th:first-child,td:first-child{text-align:left}th{background:#f3f0e7;color:#696b70}.region td{background:#faf8f1;font-weight:700;text-align:left}
+</style>
+</head>
+<body><main>
+<h1>${PRODUCT.fallbackName} 产品预估</h1>
+<p class="meta">基于第五人格各国家首年下载和前三年表现生成。保存时间：${now.toLocaleString("zh-CN")}</p>
+${staticScenarioBlock("conservative", "保守版")}
+${staticScenarioBlock("optimistic", "乐观版")}
+</main></body></html>`;
+}
+
+function buildCurrentPageHtml() {
+  const clone = document.documentElement.cloneNode(true);
+  const sourceInputs = [...document.querySelectorAll("input")];
+  clone.querySelectorAll("input").forEach((input, index) => {
+    const source = sourceInputs[index];
+    if (!source) return;
+    input.setAttribute("value", source.value);
+  });
+
+  const sourceCanvases = [...document.querySelectorAll("canvas")];
+  clone.querySelectorAll("canvas").forEach((canvas, index) => {
+    const source = sourceCanvases[index];
+    if (!source) return;
+    const image = document.createElement("img");
+    image.src = source.toDataURL("image/png");
+    image.alt = "前三年趋势图";
+    image.style.maxWidth = "100%";
+    image.style.height = "100%";
+    image.style.objectFit = "contain";
+    canvas.replaceWith(image);
+  });
+
+  clone.querySelectorAll("script").forEach(script => script.remove());
+  const toastNode = clone.querySelector("#toast");
+  if (toastNode) {
+    toastNode.classList.remove("show");
+    toastNode.textContent = "";
+  }
+  return `<!DOCTYPE html>\n${clone.outerHTML}`;
+}
+
+function downloadHtml(filename, html) {
+  const blob = new Blob([html], { type: "text/html;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  link.style.display = "none";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function saveEstimate() {
+  try {
+    const stamp = new Date().toISOString().slice(0, 19).replace(/[-:T]/g, "");
+    const filename = `${PRODUCT.query.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-estimate-${stamp}.html`;
+    downloadHtml(filename, buildCurrentPageHtml());
+    toast(`已下载 ${filename}`);
+  } catch (error) {
+    toast(error.message);
+  }
+}
+
+async function fetchProduct() {
+  const name = PRODUCT.query;
+  setStatus("warn", "正在拉取 Sensor Tower 数据...");
+  try {
+    const response = await fetch("/api/fetch-comp", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name })
+    });
+    const payload = await response.json();
+    if (!response.ok || !payload.ok) throw new Error(payload.error || "请求失败");
+    if (!payload.result?.found) throw new Error(payload.result?.error || "没有找到产品");
+    normalizeApiData(payload.result);
+    setStatus("ok", `已拉取 ${payload.result.name}，按指定地区聚合`);
+    toast("数据已更新");
+    render();
+  } catch (error) {
+    setStatus("err", error.message);
+    toast("拉取失败，仍保留当前数据");
+  }
+}
+
+function parseNumber(value) {
+  if (value == null) return null;
+  const cleaned = String(value).replace(/[$,%\s"]/g, "").replace(/,/g, "");
+  if (!cleaned || cleaned === "-") return null;
+  const n = Number(cleaned);
+  return Number.isFinite(n) ? n : null;
+}
+
+function normalizeCountryCode(value) {
+  const raw = String(value || "").trim();
+  if (!raw) return "";
+  return COUNTRY_ALIASES[raw] || COUNTRY_ALIASES[raw.toUpperCase()] || raw.toUpperCase();
+}
+
+function normalizeHeader(header) {
+  return String(header || "").toLowerCase().replace(/\s+/g, " ").trim();
+}
+
+function applyPaste() {
+  const raw = document.getElementById("pasteBox").value.trim();
+  if (!raw) return;
+  const lines = raw.split(/\r?\n/).filter(Boolean);
+  const separator = raw.includes("\t") ? "\t" : ",";
+  const header = lines.shift().split(separator).map(normalizeHeader);
+  const codeIndex = header.findIndex(item => ["region", "country", "code", "地区", "国家"].includes(item));
+  if (codeIndex < 0) {
+    toast("没有找到 Region/Country 列");
+    return;
+  }
+  const findIndex = patterns => header.findIndex(item => patterns.some(pattern => item.includes(pattern)));
+  const indices = [
+    {
+      download: findIndex(["1st year download", "year 1 download", "第 1 年下载", "首年下载"]),
+      revenue: findIndex(["1st year revenue", "year 1 revenue", "第 1 年收入", "首年收入"]),
+      rpd: findIndex(["1st year rpd", "year 1 rpd", "第 1 年rpd", "首年rpd"])
+    },
+    {
+      download: findIndex(["2nd year download", "year 2 download", "第 2 年下载"]),
+      revenue: findIndex(["2nd year revenue", "year 2 revenue", "第 2 年收入"]),
+      rpd: findIndex(["2nd year rpd", "year 2 rpd", "第 2 年rpd"])
+    },
+    {
+      download: findIndex(["3rd year download", "year 3 download", "第 3 年下载"]),
+      revenue: findIndex(["3rd year revenue", "year 3 revenue", "第 3 年收入"]),
+      rpd: findIndex(["3rd year rpd", "year 3 rpd", "第 3 年rpd"])
+    }
+  ];
+  resetData();
+  let imported = 0;
+  for (const line of lines) {
+    const cells = line.split(separator);
+    const code = normalizeCountryCode(cells[codeIndex]);
+    if (!state.countryData[code]) continue;
+    state.countryData[code] = indices.map(item => yearFromValues(
+      item.download >= 0 ? parseNumber(cells[item.download]) : null,
+      item.revenue >= 0 ? parseNumber(cells[item.revenue]) : null,
+      item.rpd >= 0 ? parseNumber(cells[item.rpd]) : null
+    ));
+    imported += 1;
+  }
+  state.source = "手动导入";
+  state.estimate = { conservative: {}, optimistic: {} };
+  state.estimateReady = false;
+  setStatus("ok", `已导入 ${imported} 个国家`);
+  render();
+  toast("导入完成");
+}
+
+document.getElementById("viewMode").addEventListener("click", event => {
+  const button = event.target.closest("button[data-mode]");
+  if (!button) return;
+  state.mode = button.dataset.mode;
+  for (const item of document.querySelectorAll("#viewMode button")) item.classList.toggle("active", item === button);
+  render();
+});
+
+document.getElementById("estimateWorkbench").addEventListener("change", event => {
+  const input = event.target.closest("input[data-scenario][data-code][data-field]");
+  if (!input) return;
+  const { scenario, code, field } = input.dataset;
+  if (!state.estimate[scenario]) state.estimate[scenario] = {};
+  if (!state.estimate[scenario][code]) state.estimate[scenario][code] = defaultEstimateParams(code, scenario);
+  state.estimate[scenario][code][field] = Math.max(0, Number(input.value) || 0);
+  renderEstimate();
+  lucide.createIcons();
+});
+
+document.getElementById("saveEstimate").addEventListener("click", saveEstimate);
+
+resetData();
+render();
+fetchProduct();
 </script>
 </body>
 </html>
