@@ -90,8 +90,14 @@ button,input,textarea{font:inherit}
 .estimate-table input{width:76px;border:1px solid var(--line);border-radius:6px;padding:5px 6px;background:#fff;font-family:var(--mono);font-size:12px;text-align:right}
 .estimate-table .country-base{color:var(--muted);font-family:var(--mono)}
 .estimate-table .output{font-family:var(--mono);font-weight:600}
+.estimate-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.selection-summary{color:var(--muted);font-size:12px}
+.selection-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .primary-btn{border:1px solid var(--ink);background:var(--ink);color:#fff;border-radius:6px;padding:7px 10px;font-weight:700;font-size:12px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
 .primary-btn svg{width:15px;height:15px}
+.primary-btn[disabled]{opacity:.45;cursor:not-allowed}
+.ghost-btn{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:6px;padding:7px 10px;font-weight:700;font-size:12px;cursor:pointer}
+.ghost-btn.active{border-color:#b6dcda;background:var(--teal-soft);color:var(--teal)}
 table{width:100%;border-collapse:separate;border-spacing:0}
 th,td{padding:10px 11px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
 th{position:sticky;top:0;background:#f3f0e7;color:var(--muted);font-size:12px;font-weight:700;z-index:1}
@@ -103,13 +109,16 @@ tbody tr{background:var(--panel)}
 tbody tr:hover{background:#f9f6ed}
 tbody tr.selected{background:#eaf5f4}
 tbody tr.region{background:#fbfaf4}
+tbody tr.dimmed{opacity:.58}
 tbody tr.country td:first-child{color:var(--muted)}
 td.num{font-family:var(--mono);font-weight:500}
 td.rpd{color:var(--teal);font-family:var(--mono);font-weight:600}
 .name-cell{display:flex;align-items:center;gap:8px;min-width:210px}
+.name-cell.gap-sm{gap:6px}
 .toggle{width:24px;height:24px;border:1px solid var(--line);border-radius:6px;background:#fff;display:inline-grid;place-items:center;cursor:pointer;flex:0 0 auto}
 .toggle svg{width:14px;height:14px}
 .toggle.empty{visibility:hidden}
+.node-check{width:16px;height:16px;margin:0;accent-color:var(--teal);flex:0 0 auto}
 .level-1{padding-left:18px}.level-2{padding-left:36px}
 .region-pill{font-size:11px;border-radius:999px;padding:2px 7px;background:var(--panel-2);color:var(--muted);border:1px solid var(--line)}
 .empty{color:#b5afa1}
@@ -200,6 +209,7 @@ body th,body td{padding-top:9px;padding-bottom:9px}
           <button class="primary-btn" type="button" id="saveEstimate"><i data-lucide="save"></i>保存预估</button>
         </div>
         <div class="chart-box">
+          <div class="estimate-toolbar" id="selectionToolbar"></div>
           <div class="estimate-wrap" id="estimateWorkbench"></div>
         </div>
       </section>
@@ -305,7 +315,10 @@ const state = {
   selected: "WW",
   mode: "all",
   open: { WW: true, sea: false, jktw: false, west: false, mena: false, latam: false },
+  estimateOpen: Object.fromEntries(REGIONS.map(region => [region.id, true])),
   countryData: {},
+  includedCountries: new Set(allCountryCodes()),
+  showSelectedOnly: false,
   estimate: { conservative: {}, optimistic: {} },
   estimateReady: false,
   chart: null
@@ -379,6 +392,66 @@ function allCountryCodes() {
   return REGIONS.flatMap(region => region.countries.map(([code]) => code));
 }
 
+function emptyRows() {
+  return [blankYear(), blankYear(), blankYear()];
+}
+
+function isRegionKey(key) {
+  return REGIONS.some(region => region.id === key);
+}
+
+function selectedCountryCodes() {
+  return allCountryCodes().filter(code => state.includedCountries.has(code));
+}
+
+function filteredCodesForKey(key) {
+  return codesForKey(key).filter(code => state.includedCountries.has(code));
+}
+
+function selectionStateForKey(key) {
+  const codes = codesForKey(key);
+  const selected = codes.filter(code => state.includedCountries.has(code)).length;
+  return {
+    total: codes.length,
+    selected,
+    checked: selected > 0 && selected === codes.length,
+    indeterminate: selected > 0 && selected < codes.length
+  };
+}
+
+function syncSelectedNode() {
+  if (state.selected === "WW") return;
+  if (!filteredCodesForKey(state.selected).length) state.selected = "WW";
+}
+
+function applyNodeSelection(key, checked) {
+  for (const code of codesForKey(key)) {
+    if (checked) state.includedCountries.add(code);
+    else state.includedCountries.delete(code);
+  }
+  syncSelectedNode();
+  render();
+}
+
+function selectedRegionSummaries() {
+  return REGIONS.map(region => {
+    const selected = region.countries.filter(([code]) => state.includedCountries.has(code));
+    return {
+      id: region.id,
+      label: region.label,
+      selectedCount: selected.length,
+      totalCount: region.countries.length,
+      countries: selected
+    };
+  }).filter(region => region.selectedCount > 0);
+}
+
+function selectedScopeText() {
+  const summaries = selectedRegionSummaries();
+  if (!summaries.length) return "未选择国家";
+  return summaries.map(region => `${region.label} ${region.selectedCount}/${region.totalCount}`).join("、");
+}
+
 function codesForKey(key) {
   if (key === "WW") return allCountryCodes();
   const region = REGIONS.find(item => item.id === key);
@@ -387,8 +460,8 @@ function codesForKey(key) {
 }
 
 function dataForKey(key) {
-  if (key === "WW" || REGIONS.some(region => region.id === key)) return aggregate(codesForKey(key));
-  return state.countryData[key] || [blankYear(), blankYear(), blankYear()];
+  if (key === "WW" || isRegionKey(key)) return aggregate(filteredCodesForKey(key));
+  return state.includedCountries.has(key) ? (state.countryData[key] || emptyRows()) : emptyRows();
 }
 
 function labelForKey(key) {
@@ -532,7 +605,7 @@ function estimateCountry(code, scenario) {
 }
 
 function estimateTotals(scenario) {
-  return allCountryCodes().reduce((sum, code) => {
+  return selectedCountryCodes().reduce((sum, code) => {
     const row = estimateCountry(code, scenario);
     sum.y1Downloads += row.y1Downloads;
     sum.y1Revenue += row.y1Revenue;
@@ -568,14 +641,16 @@ function renderTable() {
   const body = buildRows().map(node => {
     const rows = dataForKey(node.key);
     const total = totals(rows);
+    const selection = selectionStateForKey(node.key);
     const cells = rows.map(row => metricHeaders.map(metric => metricCell(metric, row)).join("")).join("");
     const totalCells = metricHeaders.map(metric => metricCell(metric, total)).join("");
     const toggle = node.children
-      ? `<button class="toggle" type="button" onclick="toggleNode('${node.key}', event)"><i data-lucide="${state.open[node.key] ? "chevron-down" : "chevron-right"}"></i></button>`
+      ? `<button class="toggle" type="button" data-toggle-key="${node.key}"><i data-lucide="${state.open[node.key] ? "chevron-down" : "chevron-right"}"></i></button>`
       : `<span class="toggle empty"></span>`;
+    const checkbox = `<input class="node-check" type="checkbox" data-select-key="${node.key}" ${selection.checked ? "checked" : ""} ${selection.indeterminate ? 'data-indeterminate="true"' : ""} onclick="event.stopPropagation()">`;
     const code = node.code ? `<span class="region-pill">${node.code}</span>` : "";
-    return `<tr class="${node.kind} ${state.selected === node.key ? "selected" : ""}" onclick="selectNode('${node.key}')">
-      <td><div class="name-cell level-${node.level}">${toggle}<strong>${node.label}</strong>${code}</div></td>
+    return `<tr class="${node.kind} ${state.selected === node.key ? "selected" : ""} ${selection.selected ? "" : "dimmed"}" data-node-key="${node.key}">
+      <td><div class="name-cell level-${node.level}">${toggle}${checkbox}<strong>${node.label}</strong>${code}</div></td>
       ${cells}${totalCells}
     </tr>`;
   }).join("");
@@ -589,16 +664,34 @@ function inputCell(scenario, code, field, value, step = "0.01") {
   return `<input type="number" min="0" step="${step}" value="${Number(value || 0).toFixed(2)}" data-scenario="${scenario}" data-code="${code}" data-field="${field}">`;
 }
 
+function renderSelectionToolbar() {
+  const selected = selectedCountryCodes().length;
+  const total = allCountryCodes().length;
+  document.getElementById("selectionToolbar").innerHTML = `
+    <div class="selection-summary">Selected ${selected}/${total} countries · Export scope: ${selectedScopeText()}</div>
+    <div class="selection-actions">
+      <button class="ghost-btn" type="button" data-select-action="all">Select All</button>
+      <button class="ghost-btn" type="button" data-select-action="clear">Clear</button>
+      <button class="ghost-btn ${state.showSelectedOnly ? "active" : ""}" type="button" data-select-action="toggle-visible">${state.showSelectedOnly ? "Show All" : "Only Selected"}</button>
+    </div>
+  `;
+  document.getElementById("saveEstimate").disabled = selected === 0;
+}
+
 function renderEstimatePanel(scenario, title, note) {
   const total = estimateTotals(scenario);
   const rows = REGIONS.map(region => {
-    const regionHeader = `<tr class="region"><td colspan="12"><strong>${region.label}</strong></td></tr>`;
-    const countryRows = region.countries.map(([code, label]) => {
+    const visibleCountries = region.countries.filter(([code]) => !state.showSelectedOnly || state.includedCountries.has(code));
+    const selection = selectionStateForKey(region.id);
+    if (!visibleCountries.length && state.showSelectedOnly) return "";
+    const regionHeader = `<tr class="region ${selection.selected ? "" : "dimmed"}"><td colspan="12"><div class="name-cell gap-sm"><button class="toggle" type="button" data-estimate-toggle="${region.id}"><i data-lucide="${state.estimateOpen[region.id] ? "chevron-down" : "chevron-right"}"></i></button><input class="node-check" type="checkbox" data-select-key="${region.id}" ${selection.checked ? "checked" : ""} ${selection.indeterminate ? 'data-indeterminate="true"' : ""}><strong>${region.label}</strong><span class="region-pill">${selection.selected}/${selection.total}</span></div></td></tr>`;
+    const countryRows = !state.estimateOpen[region.id] ? "" : visibleCountries.map(([code, label]) => {
       const params = state.estimate[scenario][code] || defaultEstimateParams(code, scenario);
       const base = baselineForCountry(code);
       const out = estimateCountry(code, scenario);
-      return `<tr>
-        <td><strong>${label}</strong> <span class="region-pill">${code}</span></td>
+      const included = state.includedCountries.has(code);
+      return `<tr class="${included ? "" : "dimmed"}">
+        <td><div class="name-cell gap-sm level-1"><span class="toggle empty"></span><input class="node-check" type="checkbox" data-select-key="${code}" ${included ? "checked" : ""}><strong>${label}</strong> <span class="region-pill">${code}</span></div></td>
         <td class="country-base">${metricText(base.y1Downloads, "compact")}</td>
         <td>${inputCell(scenario, code, "y1Coef", params.y1Coef)}</td>
         <td>${inputCell(scenario, code, "y1Rpd", params.y1Rpd)}</td>
@@ -642,6 +735,7 @@ function renderEstimatePanel(scenario, title, note) {
 
 function renderEstimate() {
   initEstimateState();
+  renderSelectionToolbar();
   document.getElementById("estimateWorkbench").innerHTML =
     renderEstimatePanel("conservative", "保守版", "按国家表现分层，三年收入约束在首年 2.35x 内") +
     renderEstimatePanel("optimistic", "乐观版", "按国家表现分层，三年收入约束在首年 2.75x 内");
@@ -804,26 +898,29 @@ function formatAxis(value) {
 }
 
 function renderRegionMap() {
-  document.getElementById("regionMap").innerHTML = REGIONS.map(region => `
+  const summaries = selectedRegionSummaries();
+  document.getElementById("regionMap").innerHTML = summaries.length ? summaries.map(region => `
     <div class="map-row">
       <div class="map-name">${region.label}</div>
       <div class="country-tags">${region.countries.map(([code, label]) => `<span class="country-tag">${label} ${code}</span>`).join("")}</div>
     </div>
-  `).join("");
+  `).join("") : `<div class="empty">当前没有已选地区</div>`;
 }
 
 function renderMissing() {
   const missing = [];
   for (const region of REGIONS) {
     for (const [code, label] of region.countries) {
+      if (!state.includedCountries.has(code)) continue;
       const rows = state.countryData[code] || [];
       const hasAny = rows.some(row => row.downloads != null || row.revenue != null || row.rpd != null);
       if (!hasAny) missing.push(`${label} ${code}`);
     }
   }
-  const text = missing.length
+  let text = missing.length
     ? `还有 ${missing.length} 个国家没有数据，折叠汇总会自动跳过空值。`
     : "指定国家都有可用数据。";
+  if (!missing.length && !selectedCountryCodes().length) text = "请先选择国家或地区。";
   document.getElementById("missingBox").innerHTML = `${text}<div class="missing-list">${missing.map(item => `<span class="country-tag">${item}</span>`).join("")}</div>`;
 }
 
@@ -842,6 +939,7 @@ function monthLabel(value) {
 
 function launchRows() {
   return REGIONS.flatMap(region => region.countries.map(([code, label]) => {
+    if (!state.includedCountries.has(code)) return null;
     const firstYear = state.countryData[code]?.[0] || {};
     return {
       code,
@@ -852,7 +950,7 @@ function launchRows() {
       downloads: firstYear.downloads,
       revenue: firstYear.revenue
     };
-  })).filter(item => item.startDate);
+  })).filter(item => item?.startDate);
 }
 
 function topBy(items, getter) {
@@ -866,6 +964,10 @@ function topBy(items, getter) {
 
 function renderSummary() {
   const el = document.getElementById("marketSummary");
+  if (!selectedCountryCodes().length) {
+    el.innerHTML = `<p class="intro-copy">Please select at least one country or region to refresh the summary.</p>`;
+    return;
+  }
   const launches = launchRows();
   const rows = dataForKey("WW");
   const total = totals(rows);
@@ -891,6 +993,7 @@ function renderSummary() {
     const regionRows = dataForKey(region.id);
     const regionTotal = totals(regionRows);
     const starts = region.countries
+      .filter(([code]) => state.includedCountries.has(code))
       .map(([code]) => state.countryData[code]?.[0]?.startDate)
       .filter(Boolean)
       .sort();
@@ -939,6 +1042,7 @@ function render() {
   renderRegionMap();
   renderMissing();
   lucide.createIcons();
+  syncCheckboxStates();
 }
 
 function renderProductChrome() {
@@ -948,10 +1052,23 @@ function renderProductChrome() {
   document.querySelector(".intro-title").textContent = PRODUCT.heading;
 }
 
+function syncCheckboxStates() {
+  document.querySelectorAll('input[data-indeterminate="true"]').forEach(input => {
+    input.indeterminate = true;
+  });
+}
+
 function toggleNode(key, event) {
-  event.stopPropagation();
+  if (event) event.stopPropagation();
   state.open[key] = !state.open[key];
   render();
+}
+
+function toggleEstimateRegion(key) {
+  state.estimateOpen[key] = !state.estimateOpen[key];
+  renderEstimate();
+  lucide.createIcons();
+  syncCheckboxStates();
 }
 
 function selectNode(key) {
@@ -976,7 +1093,7 @@ function toast(message) {
 
 function estimateRowsForStatic(scenario) {
   return REGIONS.map(region => {
-    const countryRows = region.countries.map(([code, label]) => {
+    const countryRows = region.countries.filter(([code]) => state.includedCountries.has(code)).map(([code, label]) => {
       const params = state.estimate[scenario][code] || defaultEstimateParams(code, scenario);
       const base = baselineForCountry(code);
       const out = estimateCountry(code, scenario);
@@ -995,7 +1112,7 @@ function estimateRowsForStatic(scenario) {
         <td>${metricText(out.totalRevenue, "money")}</td>
       </tr>`;
     }).join("");
-    return `<tr class="region"><td colspan="12">${region.label}</td></tr>${countryRows}`;
+    return countryRows ? `<tr class="region"><td colspan="12">${region.label}</td></tr>${countryRows}` : "";
   }).join("");
 }
 
@@ -1103,8 +1220,8 @@ function downloadHtml(filename, html) {
 function saveEstimate() {
   try {
     const stamp = new Date().toISOString().slice(0, 19).replace(/[-:T]/g, "");
-    const filename = `${PRODUCT.query.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-estimate-${stamp}.html`;
-    downloadHtml(filename, buildCurrentPageHtml());
+    const filename = `${PRODUCT.query.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-estimate-selected-${selectedCountryCodes().length}c-${stamp}.html`;
+    downloadHtml(filename, buildStaticEstimateHtml());
     toast(`已下载 ${filename}`);
   } catch (error) {
     toast(error.message);
@@ -1209,7 +1326,49 @@ document.getElementById("viewMode").addEventListener("click", event => {
   render();
 });
 
+document.getElementById("dataTable").addEventListener("click", event => {
+  const toggle = event.target.closest("button[data-toggle-key]");
+  if (toggle) {
+    toggleNode(toggle.dataset.toggleKey, event);
+    return;
+  }
+  const row = event.target.closest("tr[data-node-key]");
+  if (!row || event.target.closest("input,button")) return;
+  selectNode(row.dataset.nodeKey);
+});
+
+document.getElementById("dataTable").addEventListener("change", event => {
+  const checkbox = event.target.closest("input[data-select-key]");
+  if (!checkbox) return;
+  applyNodeSelection(checkbox.dataset.selectKey, checkbox.checked);
+});
+
+document.getElementById("selectionToolbar").addEventListener("click", event => {
+  const button = event.target.closest("button[data-select-action]");
+  if (!button) return;
+  if (button.dataset.selectAction === "all") {
+    state.includedCountries = new Set(allCountryCodes());
+  } else if (button.dataset.selectAction === "clear") {
+    state.includedCountries = new Set();
+  } else if (button.dataset.selectAction === "toggle-visible") {
+    state.showSelectedOnly = !state.showSelectedOnly;
+  }
+  syncSelectedNode();
+  render();
+});
+
+document.getElementById("estimateWorkbench").addEventListener("click", event => {
+  const toggle = event.target.closest("button[data-estimate-toggle]");
+  if (!toggle) return;
+  toggleEstimateRegion(toggle.dataset.estimateToggle);
+});
+
 document.getElementById("estimateWorkbench").addEventListener("change", event => {
+  const checkbox = event.target.closest("input[data-select-key]");
+  if (checkbox) {
+    applyNodeSelection(checkbox.dataset.selectKey, checkbox.checked);
+    return;
+  }
   const input = event.target.closest("input[data-scenario][data-code][data-field]");
   if (!input) return;
   const { scenario, code, field } = input.dataset;
