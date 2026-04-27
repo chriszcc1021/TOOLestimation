@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projection Desk</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <p class="eyebrow">Projection Desk</p>
+      <div class="hero-grid">
+        <div>
+          <h1>产品预估台</h1>
+          <p class="hero-copy">
+            输入一句产品背景，页面会先拆成题材、玩法、IP、商业化和目标市场，
+            再自动挑出下载参考池与变现参考池，计算首年收入和前三年收入。
+          </p>
+        </div>
+        <div class="hero-meta">
+          <div class="meta-card">
+            <span>估算逻辑</span>
+            <strong>下载捕获率 × RPD</strong>
+          </div>
+          <div class="meta-card">
+            <span>场景输出</span>
+            <strong>保守版 / 乐观版</strong>
+          </div>
+          <div class="meta-card">
+            <span>快照</span>
+            <strong>导出 HTML</strong>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="workspace">
+      <aside class="stack">
+        <article class="panel">
+          <div class="panel-head">
+            <h2>输入</h2>
+            <p>先写清产品的题材、玩法、IP 和商业化。</p>
+          </div>
+
+          <label class="field">
+            <span>产品名</span>
+            <input id="productName" type="text" placeholder="例如：Project Volley Girls" />
+          </label>
+
+          <label class="field">
+            <span>产品背景</span>
+            <textarea id="backgroundInput" rows="8" placeholder="例如：一款面向美国和东南亚市场的二次元排球 IP 手游，核心是角色养成 + 卡牌策略战斗，商业化以抽卡、月卡和通行证为主。"></textarea>
+          </label>
+
+          <details class="advanced">
+            <summary>高级覆盖项</summary>
+            <div class="advanced-grid">
+              <label class="field">
+                <span>市场</span>
+                <select id="marketOverride">
+                  <option value="auto">自动识别</option>
+                  <option value="US">US</option>
+                  <option value="SEA">SEA</option>
+                  <option value="LATAM">LATAM</option>
+                  <option value="WW">WW</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>商业化</span>
+                <select id="monetizationOverride">
+                  <option value="auto">自动识别</option>
+                  <option value="gacha_iap">抽卡 IAP</option>
+                  <option value="cosmetic_iap">皮肤/赛季 IAP</option>
+                  <option value="hybrid_iap_ads">混合变现</option>
+                  <option value="premium">买断</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>生命周期</span>
+                <select id="lifecycleOverride">
+                  <option value="auto">自动识别</option>
+                  <option value="gacha_ip">IP 抽卡</option>
+                  <option value="shooter_liveops">长线射击</option>
+                  <option value="casual_hybrid">轻中度混变</option>
+                  <option value="roguelite_midcore">中核肉鸽</option>
+                  <option value="premium_indie">买断独游</option>
+                </select>
+              </label>
+            </div>
+          </details>
+
+          <div class="actions">
+            <button id="analyzeButton" class="primary">开始预估</button>
+            <button id="resetButton" class="ghost" type="button">恢复推荐系数</button>
+            <button id="exportButton" class="ghost" type="button">导出 HTML 快照</button>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h2>拆解简述</h2>
+            <p>页面会先把背景转成结构化标签。</p>
+          </div>
+          <div id="analysisSummary" class="analysis-summary"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h2>公式</h2>
+            <p>保守版和乐观版的主要差异，来自下载捕获率。</p>
+          </div>
+          <div class="formula-block">
+            <p><strong>首年下载</strong> = Σ(参考产品年化下载 × 捕获率) × (1 - 重叠扣减)</p>
+            <p><strong>首年 RPD</strong> = Σ(参考产品 RPD × 权重) / Σ权重</p>
+            <p><strong>首年收入</strong> = 首年下载 × 首年 RPD</p>
+            <p><strong>前三年收入</strong> = Y1 + Y2 + Y3，其中 Y2 / Y3 由生命周期曲线外推。</p>
+          </div>
+        </article>
+      </aside>
+
+      <main class="stack">
+        <section class="panel spotlight">
+          <div class="panel-head">
+            <h2>结果</h2>
+            <p>先看两套场景，再看参考产品和参数。</p>
+          </div>
+          <div id="resultCards" class="result-cards"></div>
+          <div id="explanation" class="explanation"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2>生命周期参数</h2>
+            <p>默认值来自目标产品的赛道轮廓，你也可以手动改。</p>
+          </div>
+          <div id="lifecycleEditor" class="lifecycle-grid"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2>下载参考池</h2>
+            <p>这里决定首年下载。保守版和乐观版只共享同一批参考产品，但捕获率不同。</p>
+          </div>
+          <div id="downloadTableWrap"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2>变现参考池</h2>
+            <p>这里决定 RPD。默认共用一套权重，不单独拆保守/乐观。</p>
+          </div>
+          <div id="monetizationTableWrap"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2>参考数据总表</h2>
+            <p>当前页面内置的是从已安装 Sensor Tower workflow 样本报告整理出的本地样本库。</p>
+          </div>
+          <div id="catalogTableWrap"></div>
+          <p class="source-note">
+            这版没有接 live Sensor Tower token，所以不会实时拉新；但每条参考样本都保留了来源文件和观测口径。
+          </p>
+        </section>
+      </main>
+    </section>
+  </div>
+
+  <script src="./catalog.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

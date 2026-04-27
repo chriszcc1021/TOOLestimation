@@ -1,0 +1,1804 @@
+{
+  "generated_at": "2026-04-27T09:15:47.991Z",
+  "source": "Sensor Tower /v1/unified/sales_report_estimates",
+  "unit_notes": "downloads are units; revenue is USD gross consumer spend from unified_revenue cents / 100; rpd = revenue / downloads",
+  "regions": {
+    "SEA": [
+      "ID",
+      "VN",
+      "TH",
+      "MY",
+      "PH"
+    ],
+    "MENA": [
+      "IQ",
+      "SA",
+      "DZ",
+      "EG",
+      "MA"
+    ],
+    "LATAM": [
+      "BR",
+      "MX",
+      "PE",
+      "CO",
+      "CL",
+      "AR"
+    ]
+  },
+  "apps": {
+    "identity": {
+      "name": "Identity V / 第五人格",
+      "id": "5b2ba8cd8211f574a56c18fa",
+      "first": "2018-07-01",
+      "country_scope": "ID,VN,TH,MY,PH,IQ,SA,DZ,EG,MA,BR,MX,PE,CO,CL,AR",
+      "yearly": [
+        {
+          "year": 1,
+          "start": "2018-07",
+          "end": "2019-06",
+          "downloads": 9089511,
+          "revenue": 3563154,
+          "rpd": 0.392,
+          "months_present": 168
+        },
+        {
+          "year": 2,
+          "start": "2019-07",
+          "end": "2020-06",
+          "downloads": 3643968,
+          "revenue": 3529437,
+          "rpd": 0.9686,
+          "months_present": 167
+        },
+        {
+          "year": 3,
+          "start": "2020-07",
+          "end": "2021-06",
+          "downloads": 1747138,
+          "revenue": 3589145,
+          "rpd": 2.0543,
+          "months_present": 158
+        }
+      ],
+      "byRegion": {
+        "SEA": [
+          {
+            "year": 1,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 7474664,
+            "revenue": 3405436,
+            "rpd": 0.4556,
+            "months_present": 60
+          },
+          {
+            "year": 2,
+            "start": "2019-07",
+            "end": "2020-06",
+            "downloads": 2937402,
+            "revenue": 3077383,
+            "rpd": 1.0477,
+            "months_present": 59
+          },
+          {
+            "year": 3,
+            "start": "2020-07",
+            "end": "2021-06",
+            "downloads": 1304444,
+            "revenue": 2563921,
+            "rpd": 1.9655,
+            "months_present": 50
+          }
+        ],
+        "MENA": [
+          {
+            "year": 1,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 126251,
+            "revenue": 6626,
+            "rpd": 0.0525,
+            "months_present": 36
+          },
+          {
+            "year": 2,
+            "start": "2019-07",
+            "end": "2020-06",
+            "downloads": 122572,
+            "revenue": 107601,
+            "rpd": 0.8779,
+            "months_present": 36
+          },
+          {
+            "year": 3,
+            "start": "2020-07",
+            "end": "2021-06",
+            "downloads": 95124,
+            "revenue": 297705,
+            "rpd": 3.1297,
+            "months_present": 36
+          }
+        ],
+        "LATAM": [
+          {
+            "year": 1,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 1488596,
+            "revenue": 151092,
+            "rpd": 0.1015,
+            "months_present": 72
+          },
+          {
+            "year": 2,
+            "start": "2019-07",
+            "end": "2020-06",
+            "downloads": 583994,
+            "revenue": 344453,
+            "rpd": 0.5898,
+            "months_present": 72
+          },
+          {
+            "year": 3,
+            "start": "2020-07",
+            "end": "2021-06",
+            "downloads": 347570,
+            "revenue": 727519,
+            "rpd": 2.0932,
+            "months_present": 72
+          }
+        ]
+      },
+      "byCountry": {
+        "ID": [
+          {
+            "year": 1,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 749563,
+            "revenue": 86461,
+            "rpd": 0.1153,
+            "months_present": 12
+          },
+          {
+            "year": 2,
+            "start": "2019-07",
+            "end": "2020-06",
+            "downloads": 271216,
+            "revenue": 188921,
+            "rpd": 0.6966,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2020-07",
+            "end": "2021-06",
+            "downloads": 86653,
+            "revenue": 141945,
+            "rpd": 1.6381,
+            "months_present": 12
+          }
+        ],
+        "VN": [
+          {
+            "year": 1,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 937777,
+            "revenue": 83675,
+            "rpd": 0.0892,
+            "months_present": 12
+          },
+          {
+            "year": 2,
+            "start": "2019-07",
+            "end": "2020-06",
+            "downloads": 327116,
+            "revenue": 170073,
+            "rpd": 0.5199,
+            "months_present": 11
+          },
+          {
+            "year": 3,
+            "start": "2020-07",
+            "end": "2021-06",
+            "downloads": 109336,
+            "revenue": 15138,
+            "rpd": 0.1385,
+            "months_present": 2
+          }
+        ],
+        "TH": [
+          {
+            "year": 1,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 4958111,
+            "revenue": 2943146,
+            "rpd": 0.5936,
+            "months_present": 12
+          },
+          {
+            "year": 2,
+            "start": "2019-07",
+            "end": "2020-06",
+            "downloads": 1898176,
+            "revenue": 2214939,
+            "rpd": 1.1669,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2020-07",
+            "end": "2021-06",
+            "downloads": 826132,
+            "revenue": 1849287,
+            "rpd": 2.2385,
+            "months_present": 12
+          }
+        ],
+        "MY": [
+          {
+            "year": 1,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 458005,
+            "revenue": 239148,
+            "rpd": 0.5222,
+            "months_present": 12
+          },
+          {
+            "year": 2,
+            "start": "2019-07",
+            "end": "2020-06",
+            "downloads": 251680,
+            "revenue": 393170,
+            "rpd": 1.5622,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2020-07",
+            "end": "2021-06",
+            "downloads": 114121,
+            "revenue": 400198,
+            "rpd": 3.5068,
+            "months_present": 12
+          }
+        ],
+        "PH": [
+          {
+            "year": 1,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 371208,
+            "revenue": 53006,
+            "rpd": 0.1428,
+            "months_present": 12
+          },
+          {
+            "year": 2,
+            "start": "2019-07",
+            "end": "2020-06",
+            "downloads": 189214,
+            "revenue": 110280,
+            "rpd": 0.5828,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2020-07",
+            "end": "2021-06",
+            "downloads": 168202,
+            "revenue": 157353,
+            "rpd": 0.9355,
+            "months_present": 12
+          }
+        ],
+        "IQ": [
+          {
+            "year": 1,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 0,
+            "revenue": 0,
+            "rpd": 0,
+            "months_present": 0
+          },
+          {
+            "year": 2,
+            "start": "2019-07",
+            "end": "2020-06",
+            "downloads": 0,
+            "revenue": 0,
+            "rpd": 0,
+            "months_present": 0
+          },
+          {
+            "year": 3,
+            "start": "2020-07",
+            "end": "2021-06",
+            "downloads": 0,
+            "revenue": 0,
+            "rpd": 0,
+            "months_present": 0
+          }
+        ],
+        "SA": [
+          {
+            "year": 1,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 99776,
+            "revenue": 5938,
+            "rpd": 0.0595,
+            "months_present": 12
+          },
+          {
+            "year": 2,
+            "start": "2019-07",
+            "end": "2020-06",
+            "downloads": 111239,
+            "revenue": 105392,
+            "rpd": 0.9474,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2020-07",
+            "end": "2021-06",
+            "downloads": 90301,
+            "revenue": 293862,
+            "rpd": 3.2542,
+            "months_present": 12
+          }
+        ],
+        "DZ": [
+          {
+            "year": 1,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 6814,
+            "revenue": 12,
+            "rpd": 0.0018,
+            "months_present": 12
+          },
+          {
+            "year": 2,
+            "start": "2019-07",
+            "end": "2020-06",
+            "downloads": 2365,
+            "revenue": 20,
+            "rpd": 0.0085,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2020-07",
+            "end": "2021-06",
+            "downloads": 886,
+            "revenue": 63,
+            "rpd": 0.0711,
+            "months_present": 12
+          }
+        ],
+        "EG": [
+          {
+            "year": 1,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 19661,
+            "revenue": 675,
+            "rpd": 0.0343,
+            "months_present": 12
+          },
+          {
+            "year": 2,
+            "start": "2019-07",
+            "end": "2020-06",
+            "downloads": 8968,
+            "revenue": 2190,
+            "rpd": 0.2442,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2020-07",
+            "end": "2021-06",
+            "downloads": 3937,
+            "revenue": 3780,
+            "rpd": 0.9601,
+            "months_present": 12
+          }
+        ],
+        "MA": [
+          {
+            "year": 1,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 0,
+            "revenue": 0,
+            "rpd": 0,
+            "months_present": 0
+          },
+          {
+            "year": 2,
+            "start": "2019-07",
+            "end": "2020-06",
+            "downloads": 0,
+            "revenue": 0,
+            "rpd": 0,
+            "months_present": 0
+          },
+          {
+            "year": 3,
+            "start": "2020-07",
+            "end": "2021-06",
+            "downloads": 0,
+            "revenue": 0,
+            "rpd": 0,
+            "months_present": 0
+          }
+        ],
+        "BR": [
+          {
+            "year": 1,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 896343,
+            "revenue": 63305,
+            "rpd": 0.0706,
+            "months_present": 12
+          },
+          {
+            "year": 2,
+            "start": "2019-07",
+            "end": "2020-06",
+            "downloads": 328371,
+            "revenue": 143638,
+            "rpd": 0.4374,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2020-07",
+            "end": "2021-06",
+            "downloads": 196264,
+            "revenue": 235386,
+            "rpd": 1.1993,
+            "months_present": 12
+          }
+        ],
+        "MX": [
+          {
+            "year": 1,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 296262,
+            "revenue": 62555,
+            "rpd": 0.2111,
+            "months_present": 12
+          },
+          {
+            "year": 2,
+            "start": "2019-07",
+            "end": "2020-06",
+            "downloads": 131803,
+            "revenue": 139832,
+            "rpd": 1.0609,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2020-07",
+            "end": "2021-06",
+            "downloads": 83524,
+            "revenue": 285129,
+            "rpd": 3.4137,
+            "months_present": 12
+          }
+        ],
+        "PE": [
+          {
+            "year": 1,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 26246,
+            "revenue": 5558,
+            "rpd": 0.2118,
+            "months_present": 12
+          },
+          {
+            "year": 2,
+            "start": "2019-07",
+            "end": "2020-06",
+            "downloads": 14116,
+            "revenue": 10456,
+            "rpd": 0.7407,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2020-07",
+            "end": "2021-06",
+            "downloads": 7977,
+            "revenue": 20562,
+            "rpd": 2.5777,
+            "months_present": 12
+          }
+        ],
+        "CO": [
+          {
+            "year": 1,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 73611,
+            "revenue": 4295,
+            "rpd": 0.0583,
+            "months_present": 12
+          },
+          {
+            "year": 2,
+            "start": "2019-07",
+            "end": "2020-06",
+            "downloads": 31154,
+            "revenue": 6350,
+            "rpd": 0.2038,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2020-07",
+            "end": "2021-06",
+            "downloads": 12601,
+            "revenue": 19862,
+            "rpd": 1.5762,
+            "months_present": 12
+          }
+        ],
+        "CL": [
+          {
+            "year": 1,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 84565,
+            "revenue": 11903,
+            "rpd": 0.1408,
+            "months_present": 12
+          },
+          {
+            "year": 2,
+            "start": "2019-07",
+            "end": "2020-06",
+            "downloads": 49681,
+            "revenue": 36019,
+            "rpd": 0.725,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2020-07",
+            "end": "2021-06",
+            "downloads": 36912,
+            "revenue": 148190,
+            "rpd": 4.0147,
+            "months_present": 12
+          }
+        ],
+        "AR": [
+          {
+            "year": 1,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 111569,
+            "revenue": 3476,
+            "rpd": 0.0312,
+            "months_present": 12
+          },
+          {
+            "year": 2,
+            "start": "2019-07",
+            "end": "2020-06",
+            "downloads": 28869,
+            "revenue": 8158,
+            "rpd": 0.2826,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2020-07",
+            "end": "2021-06",
+            "downloads": 10292,
+            "revenue": 18390,
+            "rpd": 1.7868,
+            "months_present": 12
+          }
+        ]
+      },
+      "row_count": 493
+    },
+    "mlbb": {
+      "name": "Mobile Legends: Bang Bang",
+      "id": "57955d280211a6718a000002",
+      "first": "2016-07-01",
+      "country_scope": "ID,VN,TH,MY,PH,IQ,SA,DZ,EG,MA,BR,MX,PE,CO,CL,AR",
+      "yearly": [
+        {
+          "year": 1,
+          "start": "2016-07",
+          "end": "2017-06",
+          "downloads": 34407698,
+          "revenue": 17193449,
+          "rpd": 0.4997,
+          "months_present": 134
+        },
+        {
+          "year": 2,
+          "start": "2017-07",
+          "end": "2018-06",
+          "downloads": 72648815,
+          "revenue": 59001147,
+          "rpd": 0.8121,
+          "months_present": 168
+        },
+        {
+          "year": 3,
+          "start": "2018-07",
+          "end": "2019-06",
+          "downloads": 72672880,
+          "revenue": 54218575,
+          "rpd": 0.7461,
+          "months_present": 168
+        }
+      ],
+      "byRegion": {
+        "SEA": [
+          {
+            "year": 1,
+            "start": "2016-07",
+            "end": "2017-06",
+            "downloads": 29240436,
+            "revenue": 15996533,
+            "rpd": 0.5471,
+            "months_present": 50
+          },
+          {
+            "year": 2,
+            "start": "2017-07",
+            "end": "2018-06",
+            "downloads": 68035143,
+            "revenue": 55585671,
+            "rpd": 0.817,
+            "months_present": 60
+          },
+          {
+            "year": 3,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 66632922,
+            "revenue": 48530103,
+            "rpd": 0.7283,
+            "months_present": 60
+          }
+        ],
+        "MENA": [
+          {
+            "year": 1,
+            "start": "2016-07",
+            "end": "2017-06",
+            "downloads": 531942,
+            "revenue": 241456,
+            "rpd": 0.4539,
+            "months_present": 27
+          },
+          {
+            "year": 2,
+            "start": "2017-07",
+            "end": "2018-06",
+            "downloads": 759856,
+            "revenue": 800951,
+            "rpd": 1.0541,
+            "months_present": 36
+          },
+          {
+            "year": 3,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 1093036,
+            "revenue": 1656984,
+            "rpd": 1.5159,
+            "months_present": 36
+          }
+        ],
+        "LATAM": [
+          {
+            "year": 1,
+            "start": "2016-07",
+            "end": "2017-06",
+            "downloads": 4635320,
+            "revenue": 955461,
+            "rpd": 0.2061,
+            "months_present": 57
+          },
+          {
+            "year": 2,
+            "start": "2017-07",
+            "end": "2018-06",
+            "downloads": 3853816,
+            "revenue": 2614526,
+            "rpd": 0.6784,
+            "months_present": 72
+          },
+          {
+            "year": 3,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 4946922,
+            "revenue": 4031489,
+            "rpd": 0.8149,
+            "months_present": 72
+          }
+        ]
+      },
+      "byCountry": {
+        "ID": [
+          {
+            "year": 1,
+            "start": "2016-07",
+            "end": "2017-06",
+            "downloads": 8042333,
+            "revenue": 5069197,
+            "rpd": 0.6303,
+            "months_present": 10
+          },
+          {
+            "year": 2,
+            "start": "2017-07",
+            "end": "2018-06",
+            "downloads": 45734058,
+            "revenue": 22484253,
+            "rpd": 0.4916,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 30874604,
+            "revenue": 10817284,
+            "rpd": 0.3504,
+            "months_present": 12
+          }
+        ],
+        "VN": [
+          {
+            "year": 1,
+            "start": "2016-07",
+            "end": "2017-06",
+            "downloads": 4200086,
+            "revenue": 91177,
+            "rpd": 0.0217,
+            "months_present": 10
+          },
+          {
+            "year": 2,
+            "start": "2017-07",
+            "end": "2018-06",
+            "downloads": 4990391,
+            "revenue": 386395,
+            "rpd": 0.0774,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 9377751,
+            "revenue": 344325,
+            "rpd": 0.0367,
+            "months_present": 12
+          }
+        ],
+        "TH": [
+          {
+            "year": 1,
+            "start": "2016-07",
+            "end": "2017-06",
+            "downloads": 5210398,
+            "revenue": 1142846,
+            "rpd": 0.2193,
+            "months_present": 10
+          },
+          {
+            "year": 2,
+            "start": "2017-07",
+            "end": "2018-06",
+            "downloads": 4706310,
+            "revenue": 1388293,
+            "rpd": 0.295,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 4060077,
+            "revenue": 1177212,
+            "rpd": 0.2899,
+            "months_present": 12
+          }
+        ],
+        "MY": [
+          {
+            "year": 1,
+            "start": "2016-07",
+            "end": "2017-06",
+            "downloads": 2939369,
+            "revenue": 6469117,
+            "rpd": 2.2009,
+            "months_present": 10
+          },
+          {
+            "year": 2,
+            "start": "2017-07",
+            "end": "2018-06",
+            "downloads": 5311193,
+            "revenue": 21992980,
+            "rpd": 4.1409,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 4478314,
+            "revenue": 21545470,
+            "rpd": 4.8111,
+            "months_present": 12
+          }
+        ],
+        "PH": [
+          {
+            "year": 1,
+            "start": "2016-07",
+            "end": "2017-06",
+            "downloads": 8848250,
+            "revenue": 3224196,
+            "rpd": 0.3644,
+            "months_present": 10
+          },
+          {
+            "year": 2,
+            "start": "2017-07",
+            "end": "2018-06",
+            "downloads": 7293191,
+            "revenue": 9333750,
+            "rpd": 1.2798,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 17842176,
+            "revenue": 14645811,
+            "rpd": 0.8209,
+            "months_present": 12
+          }
+        ],
+        "IQ": [
+          {
+            "year": 1,
+            "start": "2016-07",
+            "end": "2017-06",
+            "downloads": 0,
+            "revenue": 0,
+            "rpd": 0,
+            "months_present": 0
+          },
+          {
+            "year": 2,
+            "start": "2017-07",
+            "end": "2018-06",
+            "downloads": 0,
+            "revenue": 0,
+            "rpd": 0,
+            "months_present": 0
+          },
+          {
+            "year": 3,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 0,
+            "revenue": 0,
+            "rpd": 0,
+            "months_present": 0
+          }
+        ],
+        "SA": [
+          {
+            "year": 1,
+            "start": "2016-07",
+            "end": "2017-06",
+            "downloads": 194299,
+            "revenue": 234423,
+            "rpd": 1.2065,
+            "months_present": 9
+          },
+          {
+            "year": 2,
+            "start": "2017-07",
+            "end": "2018-06",
+            "downloads": 540118,
+            "revenue": 743307,
+            "rpd": 1.3762,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 665304,
+            "revenue": 1543615,
+            "rpd": 2.3202,
+            "months_present": 12
+          }
+        ],
+        "DZ": [
+          {
+            "year": 1,
+            "start": "2016-07",
+            "end": "2017-06",
+            "downloads": 87158,
+            "revenue": 922,
+            "rpd": 0.0106,
+            "months_present": 9
+          },
+          {
+            "year": 2,
+            "start": "2017-07",
+            "end": "2018-06",
+            "downloads": 43249,
+            "revenue": 3743,
+            "rpd": 0.0865,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 100536,
+            "revenue": 5950,
+            "rpd": 0.0592,
+            "months_present": 12
+          }
+        ],
+        "EG": [
+          {
+            "year": 1,
+            "start": "2016-07",
+            "end": "2017-06",
+            "downloads": 250485,
+            "revenue": 6111,
+            "rpd": 0.0244,
+            "months_present": 9
+          },
+          {
+            "year": 2,
+            "start": "2017-07",
+            "end": "2018-06",
+            "downloads": 176489,
+            "revenue": 53901,
+            "rpd": 0.3054,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 327196,
+            "revenue": 107418,
+            "rpd": 0.3283,
+            "months_present": 12
+          }
+        ],
+        "MA": [
+          {
+            "year": 1,
+            "start": "2016-07",
+            "end": "2017-06",
+            "downloads": 0,
+            "revenue": 0,
+            "rpd": 0,
+            "months_present": 0
+          },
+          {
+            "year": 2,
+            "start": "2017-07",
+            "end": "2018-06",
+            "downloads": 0,
+            "revenue": 0,
+            "rpd": 0,
+            "months_present": 0
+          },
+          {
+            "year": 3,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 0,
+            "revenue": 0,
+            "rpd": 0,
+            "months_present": 0
+          }
+        ],
+        "BR": [
+          {
+            "year": 1,
+            "start": "2016-07",
+            "end": "2017-06",
+            "downloads": 2920327,
+            "revenue": 575164,
+            "rpd": 0.197,
+            "months_present": 12
+          },
+          {
+            "year": 2,
+            "start": "2017-07",
+            "end": "2018-06",
+            "downloads": 1848957,
+            "revenue": 1366454,
+            "rpd": 0.739,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 2397568,
+            "revenue": 2138505,
+            "rpd": 0.8919,
+            "months_present": 12
+          }
+        ],
+        "MX": [
+          {
+            "year": 1,
+            "start": "2016-07",
+            "end": "2017-06",
+            "downloads": 582689,
+            "revenue": 157755,
+            "rpd": 0.2707,
+            "months_present": 9
+          },
+          {
+            "year": 2,
+            "start": "2017-07",
+            "end": "2018-06",
+            "downloads": 846014,
+            "revenue": 592007,
+            "rpd": 0.6998,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 1043307,
+            "revenue": 1040331,
+            "rpd": 0.9971,
+            "months_present": 12
+          }
+        ],
+        "PE": [
+          {
+            "year": 1,
+            "start": "2016-07",
+            "end": "2017-06",
+            "downloads": 60641,
+            "revenue": 12711,
+            "rpd": 0.2096,
+            "months_present": 9
+          },
+          {
+            "year": 2,
+            "start": "2017-07",
+            "end": "2018-06",
+            "downloads": 120010,
+            "revenue": 65470,
+            "rpd": 0.5455,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 228392,
+            "revenue": 139703,
+            "rpd": 0.6117,
+            "months_present": 12
+          }
+        ],
+        "CO": [
+          {
+            "year": 1,
+            "start": "2016-07",
+            "end": "2017-06",
+            "downloads": 283037,
+            "revenue": 16163,
+            "rpd": 0.0571,
+            "months_present": 9
+          },
+          {
+            "year": 2,
+            "start": "2017-07",
+            "end": "2018-06",
+            "downloads": 174393,
+            "revenue": 69475,
+            "rpd": 0.3984,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 294619,
+            "revenue": 90356,
+            "rpd": 0.3067,
+            "months_present": 12
+          }
+        ],
+        "CL": [
+          {
+            "year": 1,
+            "start": "2016-07",
+            "end": "2017-06",
+            "downloads": 130557,
+            "revenue": 42038,
+            "rpd": 0.322,
+            "months_present": 9
+          },
+          {
+            "year": 2,
+            "start": "2017-07",
+            "end": "2018-06",
+            "downloads": 166543,
+            "revenue": 131161,
+            "rpd": 0.7876,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 203934,
+            "revenue": 214215,
+            "rpd": 1.0504,
+            "months_present": 12
+          }
+        ],
+        "AR": [
+          {
+            "year": 1,
+            "start": "2016-07",
+            "end": "2017-06",
+            "downloads": 658069,
+            "revenue": 151629,
+            "rpd": 0.2304,
+            "months_present": 9
+          },
+          {
+            "year": 2,
+            "start": "2017-07",
+            "end": "2018-06",
+            "downloads": 697899,
+            "revenue": 389958,
+            "rpd": 0.5588,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2018-07",
+            "end": "2019-06",
+            "downloads": 779102,
+            "revenue": 408378,
+            "rpd": 0.5242,
+            "months_present": 12
+          }
+        ]
+      },
+      "row_count": 470
+    },
+    "brawl": {
+      "name": "Brawl Stars",
+      "id": "594278840211a6e5560000b2",
+      "first": "2018-12-01",
+      "country_scope": "ID,VN,TH,MY,PH,IQ,SA,DZ,EG,MA,BR,MX,PE,CO,CL,AR",
+      "yearly": [
+        {
+          "year": 1,
+          "start": "2018-12",
+          "end": "2019-11",
+          "downloads": 38548426,
+          "revenue": 19750859,
+          "rpd": 0.5124,
+          "months_present": 164
+        },
+        {
+          "year": 2,
+          "start": "2019-12",
+          "end": "2020-11",
+          "downloads": 22175101,
+          "revenue": 17328491,
+          "rpd": 0.7814,
+          "months_present": 156
+        },
+        {
+          "year": 3,
+          "start": "2020-12",
+          "end": "2021-11",
+          "downloads": 18549064,
+          "revenue": 21095183,
+          "rpd": 1.1373,
+          "months_present": 156
+        }
+      ],
+      "byRegion": {
+        "SEA": [
+          {
+            "year": 1,
+            "start": "2018-12",
+            "end": "2019-11",
+            "downloads": 9214409,
+            "revenue": 2288397,
+            "rpd": 0.2483,
+            "months_present": 56
+          },
+          {
+            "year": 2,
+            "start": "2019-12",
+            "end": "2020-11",
+            "downloads": 2873255,
+            "revenue": 1290064,
+            "rpd": 0.449,
+            "months_present": 48
+          },
+          {
+            "year": 3,
+            "start": "2020-12",
+            "end": "2021-11",
+            "downloads": 2228635,
+            "revenue": 1452716,
+            "rpd": 0.6518,
+            "months_present": 48
+          }
+        ],
+        "MENA": [
+          {
+            "year": 1,
+            "start": "2018-12",
+            "end": "2019-11",
+            "downloads": 1622269,
+            "revenue": 825606,
+            "rpd": 0.5089,
+            "months_present": 36
+          },
+          {
+            "year": 2,
+            "start": "2019-12",
+            "end": "2020-11",
+            "downloads": 1663840,
+            "revenue": 990040,
+            "rpd": 0.595,
+            "months_present": 36
+          },
+          {
+            "year": 3,
+            "start": "2020-12",
+            "end": "2021-11",
+            "downloads": 2161995,
+            "revenue": 2425371,
+            "rpd": 1.1218,
+            "months_present": 36
+          }
+        ],
+        "LATAM": [
+          {
+            "year": 1,
+            "start": "2018-12",
+            "end": "2019-11",
+            "downloads": 27711748,
+            "revenue": 16636856,
+            "rpd": 0.6004,
+            "months_present": 72
+          },
+          {
+            "year": 2,
+            "start": "2019-12",
+            "end": "2020-11",
+            "downloads": 17638006,
+            "revenue": 15048386,
+            "rpd": 0.8532,
+            "months_present": 72
+          },
+          {
+            "year": 3,
+            "start": "2020-12",
+            "end": "2021-11",
+            "downloads": 14158434,
+            "revenue": 17217095,
+            "rpd": 1.216,
+            "months_present": 72
+          }
+        ]
+      },
+      "byCountry": {
+        "ID": [
+          {
+            "year": 1,
+            "start": "2018-12",
+            "end": "2019-11",
+            "downloads": 3916891,
+            "revenue": 776268,
+            "rpd": 0.1982,
+            "months_present": 12
+          },
+          {
+            "year": 2,
+            "start": "2019-12",
+            "end": "2020-11",
+            "downloads": 1312934,
+            "revenue": 399093,
+            "rpd": 0.304,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2020-12",
+            "end": "2021-11",
+            "downloads": 951884,
+            "revenue": 399741,
+            "rpd": 0.4199,
+            "months_present": 12
+          }
+        ],
+        "VN": [
+          {
+            "year": 1,
+            "start": "2018-12",
+            "end": "2019-11",
+            "downloads": 1290139,
+            "revenue": 187080,
+            "rpd": 0.145,
+            "months_present": 8
+          },
+          {
+            "year": 2,
+            "start": "2019-12",
+            "end": "2020-11",
+            "downloads": 0,
+            "revenue": 0,
+            "rpd": 0,
+            "months_present": 0
+          },
+          {
+            "year": 3,
+            "start": "2020-12",
+            "end": "2021-11",
+            "downloads": 0,
+            "revenue": 0,
+            "rpd": 0,
+            "months_present": 0
+          }
+        ],
+        "TH": [
+          {
+            "year": 1,
+            "start": "2018-12",
+            "end": "2019-11",
+            "downloads": 2153194,
+            "revenue": 536989,
+            "rpd": 0.2494,
+            "months_present": 12
+          },
+          {
+            "year": 2,
+            "start": "2019-12",
+            "end": "2020-11",
+            "downloads": 553276,
+            "revenue": 284617,
+            "rpd": 0.5144,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2020-12",
+            "end": "2021-11",
+            "downloads": 378690,
+            "revenue": 276613,
+            "rpd": 0.7304,
+            "months_present": 12
+          }
+        ],
+        "MY": [
+          {
+            "year": 1,
+            "start": "2018-12",
+            "end": "2019-11",
+            "downloads": 571037,
+            "revenue": 487051,
+            "rpd": 0.8529,
+            "months_present": 12
+          },
+          {
+            "year": 2,
+            "start": "2019-12",
+            "end": "2020-11",
+            "downloads": 461287,
+            "revenue": 454330,
+            "rpd": 0.9849,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2020-12",
+            "end": "2021-11",
+            "downloads": 353829,
+            "revenue": 589219,
+            "rpd": 1.6653,
+            "months_present": 12
+          }
+        ],
+        "PH": [
+          {
+            "year": 1,
+            "start": "2018-12",
+            "end": "2019-11",
+            "downloads": 1283148,
+            "revenue": 301008,
+            "rpd": 0.2346,
+            "months_present": 12
+          },
+          {
+            "year": 2,
+            "start": "2019-12",
+            "end": "2020-11",
+            "downloads": 545758,
+            "revenue": 152025,
+            "rpd": 0.2786,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2020-12",
+            "end": "2021-11",
+            "downloads": 544232,
+            "revenue": 187144,
+            "rpd": 0.3439,
+            "months_present": 12
+          }
+        ],
+        "IQ": [
+          {
+            "year": 1,
+            "start": "2018-12",
+            "end": "2019-11",
+            "downloads": 0,
+            "revenue": 0,
+            "rpd": 0,
+            "months_present": 0
+          },
+          {
+            "year": 2,
+            "start": "2019-12",
+            "end": "2020-11",
+            "downloads": 0,
+            "revenue": 0,
+            "rpd": 0,
+            "months_present": 0
+          },
+          {
+            "year": 3,
+            "start": "2020-12",
+            "end": "2021-11",
+            "downloads": 0,
+            "revenue": 0,
+            "rpd": 0,
+            "months_present": 0
+          }
+        ],
+        "SA": [
+          {
+            "year": 1,
+            "start": "2018-12",
+            "end": "2019-11",
+            "downloads": 857678,
+            "revenue": 758667,
+            "rpd": 0.8846,
+            "months_present": 12
+          },
+          {
+            "year": 2,
+            "start": "2019-12",
+            "end": "2020-11",
+            "downloads": 1044406,
+            "revenue": 894817,
+            "rpd": 0.8568,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2020-12",
+            "end": "2021-11",
+            "downloads": 1538145,
+            "revenue": 2296473,
+            "rpd": 1.493,
+            "months_present": 12
+          }
+        ],
+        "DZ": [
+          {
+            "year": 1,
+            "start": "2018-12",
+            "end": "2019-11",
+            "downloads": 229991,
+            "revenue": 5668,
+            "rpd": 0.0246,
+            "months_present": 12
+          },
+          {
+            "year": 2,
+            "start": "2019-12",
+            "end": "2020-11",
+            "downloads": 189879,
+            "revenue": 7931,
+            "rpd": 0.0418,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2020-12",
+            "end": "2021-11",
+            "downloads": 230294,
+            "revenue": 7705,
+            "rpd": 0.0335,
+            "months_present": 12
+          }
+        ],
+        "EG": [
+          {
+            "year": 1,
+            "start": "2018-12",
+            "end": "2019-11",
+            "downloads": 534600,
+            "revenue": 61270,
+            "rpd": 0.1146,
+            "months_present": 12
+          },
+          {
+            "year": 2,
+            "start": "2019-12",
+            "end": "2020-11",
+            "downloads": 429555,
+            "revenue": 87293,
+            "rpd": 0.2032,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2020-12",
+            "end": "2021-11",
+            "downloads": 393556,
+            "revenue": 121194,
+            "rpd": 0.3079,
+            "months_present": 12
+          }
+        ],
+        "MA": [
+          {
+            "year": 1,
+            "start": "2018-12",
+            "end": "2019-11",
+            "downloads": 0,
+            "revenue": 0,
+            "rpd": 0,
+            "months_present": 0
+          },
+          {
+            "year": 2,
+            "start": "2019-12",
+            "end": "2020-11",
+            "downloads": 0,
+            "revenue": 0,
+            "rpd": 0,
+            "months_present": 0
+          },
+          {
+            "year": 3,
+            "start": "2020-12",
+            "end": "2021-11",
+            "downloads": 0,
+            "revenue": 0,
+            "rpd": 0,
+            "months_present": 0
+          }
+        ],
+        "BR": [
+          {
+            "year": 1,
+            "start": "2018-12",
+            "end": "2019-11",
+            "downloads": 14152569,
+            "revenue": 10327200,
+            "rpd": 0.7297,
+            "months_present": 12
+          },
+          {
+            "year": 2,
+            "start": "2019-12",
+            "end": "2020-11",
+            "downloads": 8804342,
+            "revenue": 7643807,
+            "rpd": 0.8682,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2020-12",
+            "end": "2021-11",
+            "downloads": 6878288,
+            "revenue": 6484618,
+            "rpd": 0.9428,
+            "months_present": 12
+          }
+        ],
+        "MX": [
+          {
+            "year": 1,
+            "start": "2018-12",
+            "end": "2019-11",
+            "downloads": 5242500,
+            "revenue": 3198784,
+            "rpd": 0.6102,
+            "months_present": 12
+          },
+          {
+            "year": 2,
+            "start": "2019-12",
+            "end": "2020-11",
+            "downloads": 3493862,
+            "revenue": 3446305,
+            "rpd": 0.9864,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2020-12",
+            "end": "2021-11",
+            "downloads": 2933832,
+            "revenue": 4741669,
+            "rpd": 1.6162,
+            "months_present": 12
+          }
+        ],
+        "PE": [
+          {
+            "year": 1,
+            "start": "2018-12",
+            "end": "2019-11",
+            "downloads": 1449331,
+            "revenue": 574870,
+            "rpd": 0.3966,
+            "months_present": 12
+          },
+          {
+            "year": 2,
+            "start": "2019-12",
+            "end": "2020-11",
+            "downloads": 1135804,
+            "revenue": 845575,
+            "rpd": 0.7445,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2020-12",
+            "end": "2021-11",
+            "downloads": 1122983,
+            "revenue": 1048166,
+            "rpd": 0.9334,
+            "months_present": 12
+          }
+        ],
+        "CO": [
+          {
+            "year": 1,
+            "start": "2018-12",
+            "end": "2019-11",
+            "downloads": 1286869,
+            "revenue": 190778,
+            "rpd": 0.1482,
+            "months_present": 12
+          },
+          {
+            "year": 2,
+            "start": "2019-12",
+            "end": "2020-11",
+            "downloads": 1083781,
+            "revenue": 321879,
+            "rpd": 0.297,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2020-12",
+            "end": "2021-11",
+            "downloads": 877158,
+            "revenue": 468956,
+            "rpd": 0.5346,
+            "months_present": 12
+          }
+        ],
+        "CL": [
+          {
+            "year": 1,
+            "start": "2018-12",
+            "end": "2019-11",
+            "downloads": 2567314,
+            "revenue": 1714828,
+            "rpd": 0.6679,
+            "months_present": 12
+          },
+          {
+            "year": 2,
+            "start": "2019-12",
+            "end": "2020-11",
+            "downloads": 1200734,
+            "revenue": 2171115,
+            "rpd": 1.8082,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2020-12",
+            "end": "2021-11",
+            "downloads": 866965,
+            "revenue": 3852266,
+            "rpd": 4.4434,
+            "months_present": 12
+          }
+        ],
+        "AR": [
+          {
+            "year": 1,
+            "start": "2018-12",
+            "end": "2019-11",
+            "downloads": 3013165,
+            "revenue": 630395,
+            "rpd": 0.2092,
+            "months_present": 12
+          },
+          {
+            "year": 2,
+            "start": "2019-12",
+            "end": "2020-11",
+            "downloads": 1919483,
+            "revenue": 619704,
+            "rpd": 0.3228,
+            "months_present": 12
+          },
+          {
+            "year": 3,
+            "start": "2020-12",
+            "end": "2021-11",
+            "downloads": 1479208,
+            "revenue": 621420,
+            "rpd": 0.4201,
+            "months_present": 12
+          }
+        ]
+      },
+      "row_count": 476
+    }
+  }
+}
