@@ -1,0 +1,418 @@
+{
+  "generated_at": "2026-04-27T09:33:39.043Z",
+  "source": "Sensor Tower /v1/unified/sales_report_estimates",
+  "app": {
+    "name": "Identity V / 第五人格",
+    "id": "5b2ba8cd8211f574a56c18fa"
+  },
+  "period": {
+    "start": "2023-01-01",
+    "end": "2025-12-31",
+    "years": [
+      2023,
+      2024,
+      2025
+    ]
+  },
+  "unit_notes": "downloads are unified_units; revenue is USD gross consumer spend from unified_revenue cents / 100; rpd = revenue / downloads",
+  "regions": {
+    "SEA": [
+      "ID",
+      "VN",
+      "TH",
+      "MY",
+      "PH"
+    ],
+    "MENA": [
+      "IQ",
+      "SA",
+      "DZ",
+      "EG",
+      "MA"
+    ],
+    "LATAM": [
+      "BR",
+      "MX",
+      "PE",
+      "CO",
+      "CL",
+      "AR"
+    ]
+  },
+  "summary": {
+    "2023": {
+      "SEA": {
+        "downloads": 826196,
+        "revenue": 1219944,
+        "rpd": 1.4766,
+        "months_present": 48
+      },
+      "MENA": {
+        "downloads": 117703,
+        "revenue": 156052,
+        "rpd": 1.3258,
+        "months_present": 60
+      },
+      "LATAM": {
+        "downloads": 337182,
+        "revenue": 647061,
+        "rpd": 1.919,
+        "months_present": 72
+      },
+      "TOTAL": {
+        "downloads": 1281081,
+        "revenue": 2023056,
+        "rpd": 1.5792,
+        "months_present": 180
+      }
+    },
+    "2024": {
+      "SEA": {
+        "downloads": 873300,
+        "revenue": 1310905,
+        "rpd": 1.5011,
+        "months_present": 50
+      },
+      "MENA": {
+        "downloads": 91204,
+        "revenue": 151803,
+        "rpd": 1.6644,
+        "months_present": 60
+      },
+      "LATAM": {
+        "downloads": 304465,
+        "revenue": 753399,
+        "rpd": 2.4745,
+        "months_present": 72
+      },
+      "TOTAL": {
+        "downloads": 1268969,
+        "revenue": 2216108,
+        "rpd": 1.7464,
+        "months_present": 182
+      }
+    },
+    "2025": {
+      "SEA": {
+        "downloads": 631142,
+        "revenue": 1185373,
+        "rpd": 1.8781,
+        "months_present": 48
+      },
+      "MENA": {
+        "downloads": 73367,
+        "revenue": 152307,
+        "rpd": 2.076,
+        "months_present": 60
+      },
+      "LATAM": {
+        "downloads": 211412,
+        "revenue": 624036,
+        "rpd": 2.9518,
+        "months_present": 72
+      },
+      "TOTAL": {
+        "downloads": 915921,
+        "revenue": 1961716,
+        "rpd": 2.1418,
+        "months_present": 180
+      }
+    }
+  },
+  "country": {
+    "2023": {
+      "ID": {
+        "downloads": 78348,
+        "revenue": 62987,
+        "rpd": 0.8039,
+        "months_present": 12
+      },
+      "VN": {
+        "downloads": 0,
+        "revenue": 0,
+        "rpd": 0,
+        "months_present": 0
+      },
+      "TH": {
+        "downloads": 597909,
+        "revenue": 652673,
+        "rpd": 1.0916,
+        "months_present": 12
+      },
+      "MY": {
+        "downloads": 70590,
+        "revenue": 415006,
+        "rpd": 5.8791,
+        "months_present": 12
+      },
+      "PH": {
+        "downloads": 79349,
+        "revenue": 89278,
+        "rpd": 1.1251,
+        "months_present": 12
+      },
+      "IQ": {
+        "downloads": 21385,
+        "revenue": 4088,
+        "rpd": 0.1912,
+        "months_present": 12
+      },
+      "SA": {
+        "downloads": 61054,
+        "revenue": 141898,
+        "rpd": 2.3241,
+        "months_present": 12
+      },
+      "DZ": {
+        "downloads": 12044,
+        "revenue": 171,
+        "rpd": 0.0142,
+        "months_present": 12
+      },
+      "EG": {
+        "downloads": 19087,
+        "revenue": 8422,
+        "rpd": 0.4412,
+        "months_present": 12
+      },
+      "MA": {
+        "downloads": 4133,
+        "revenue": 1473,
+        "rpd": 0.3564,
+        "months_present": 12
+      },
+      "BR": {
+        "downloads": 174617,
+        "revenue": 217249,
+        "rpd": 1.2441,
+        "months_present": 12
+      },
+      "MX": {
+        "downloads": 86636,
+        "revenue": 290805,
+        "rpd": 3.3566,
+        "months_present": 12
+      },
+      "PE": {
+        "downloads": 10238,
+        "revenue": 23047,
+        "rpd": 2.2511,
+        "months_present": 12
+      },
+      "CO": {
+        "downloads": 22889,
+        "revenue": 16753,
+        "rpd": 0.7319,
+        "months_present": 12
+      },
+      "CL": {
+        "downloads": 20548,
+        "revenue": 75541,
+        "rpd": 3.6763,
+        "months_present": 12
+      },
+      "AR": {
+        "downloads": 22254,
+        "revenue": 23665,
+        "rpd": 1.0634,
+        "months_present": 12
+      }
+    },
+    "2024": {
+      "ID": {
+        "downloads": 74989,
+        "revenue": 55693,
+        "rpd": 0.7427,
+        "months_present": 12
+      },
+      "VN": {
+        "downloads": 0,
+        "revenue": 231,
+        "rpd": 0,
+        "months_present": 2
+      },
+      "TH": {
+        "downloads": 605098,
+        "revenue": 600296,
+        "rpd": 0.9921,
+        "months_present": 12
+      },
+      "MY": {
+        "downloads": 103236,
+        "revenue": 556582,
+        "rpd": 5.3914,
+        "months_present": 12
+      },
+      "PH": {
+        "downloads": 89977,
+        "revenue": 98104,
+        "rpd": 1.0903,
+        "months_present": 12
+      },
+      "IQ": {
+        "downloads": 14768,
+        "revenue": 9256,
+        "rpd": 0.6268,
+        "months_present": 12
+      },
+      "SA": {
+        "downloads": 50430,
+        "revenue": 136332,
+        "rpd": 2.7034,
+        "months_present": 12
+      },
+      "DZ": {
+        "downloads": 10503,
+        "revenue": 292,
+        "rpd": 0.0278,
+        "months_present": 12
+      },
+      "EG": {
+        "downloads": 12848,
+        "revenue": 2206,
+        "rpd": 0.1717,
+        "months_present": 12
+      },
+      "MA": {
+        "downloads": 2655,
+        "revenue": 3718,
+        "rpd": 1.4004,
+        "months_present": 12
+      },
+      "BR": {
+        "downloads": 148689,
+        "revenue": 230424,
+        "rpd": 1.5497,
+        "months_present": 12
+      },
+      "MX": {
+        "downloads": 83281,
+        "revenue": 361528,
+        "rpd": 4.3411,
+        "months_present": 12
+      },
+      "PE": {
+        "downloads": 10522,
+        "revenue": 23389,
+        "rpd": 2.2229,
+        "months_present": 12
+      },
+      "CO": {
+        "downloads": 23901,
+        "revenue": 26750,
+        "rpd": 1.1192,
+        "months_present": 12
+      },
+      "CL": {
+        "downloads": 18566,
+        "revenue": 80933,
+        "rpd": 4.3592,
+        "months_present": 12
+      },
+      "AR": {
+        "downloads": 19506,
+        "revenue": 30375,
+        "rpd": 1.5572,
+        "months_present": 12
+      }
+    },
+    "2025": {
+      "ID": {
+        "downloads": 54468,
+        "revenue": 43385,
+        "rpd": 0.7965,
+        "months_present": 12
+      },
+      "VN": {
+        "downloads": 0,
+        "revenue": 0,
+        "rpd": 0,
+        "months_present": 0
+      },
+      "TH": {
+        "downloads": 455765,
+        "revenue": 601231,
+        "rpd": 1.3192,
+        "months_present": 12
+      },
+      "MY": {
+        "downloads": 61090,
+        "revenue": 471827,
+        "rpd": 7.7235,
+        "months_present": 12
+      },
+      "PH": {
+        "downloads": 59819,
+        "revenue": 68930,
+        "rpd": 1.1523,
+        "months_present": 12
+      },
+      "IQ": {
+        "downloads": 19105,
+        "revenue": 13828,
+        "rpd": 0.7238,
+        "months_present": 12
+      },
+      "SA": {
+        "downloads": 40985,
+        "revenue": 129908,
+        "rpd": 3.1696,
+        "months_present": 12
+      },
+      "DZ": {
+        "downloads": 5453,
+        "revenue": 709,
+        "rpd": 0.13,
+        "months_present": 12
+      },
+      "EG": {
+        "downloads": 3836,
+        "revenue": 2478,
+        "rpd": 0.646,
+        "months_present": 12
+      },
+      "MA": {
+        "downloads": 3988,
+        "revenue": 5383,
+        "rpd": 1.3498,
+        "months_present": 12
+      },
+      "BR": {
+        "downloads": 104987,
+        "revenue": 162875,
+        "rpd": 1.5514,
+        "months_present": 12
+      },
+      "MX": {
+        "downloads": 58460,
+        "revenue": 319678,
+        "rpd": 5.4683,
+        "months_present": 12
+      },
+      "PE": {
+        "downloads": 7425,
+        "revenue": 21090,
+        "rpd": 2.8404,
+        "months_present": 12
+      },
+      "CO": {
+        "downloads": 15025,
+        "revenue": 23656,
+        "rpd": 1.5744,
+        "months_present": 12
+      },
+      "CL": {
+        "downloads": 12117,
+        "revenue": 56139,
+        "rpd": 4.6331,
+        "months_present": 12
+      },
+      "AR": {
+        "downloads": 13398,
+        "revenue": 40597,
+        "rpd": 3.0301,
+        "months_present": 12
+      }
+    }
+  }
+}

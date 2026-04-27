@@ -1,0 +1,2398 @@
+{
+  "generated_at": "2026-04-27T09:41:25.834Z",
+  "source": "Sensor Tower /v1/unified/sales_report_estimates",
+  "date_range": {
+    "start": "2023-01-01",
+    "end": "2025-12-31",
+    "granularity": "monthly"
+  },
+  "countries": [
+    "ID",
+    "VN",
+    "TH",
+    "MY",
+    "PH",
+    "IQ",
+    "SA",
+    "DZ",
+    "EG",
+    "MA",
+    "BR",
+    "MX",
+    "PE",
+    "CO",
+    "CL",
+    "AR"
+  ],
+  "regions": {
+    "东南亚": [
+      "ID",
+      "VN",
+      "TH",
+      "MY",
+      "PH"
+    ],
+    "中东": [
+      "IQ",
+      "SA",
+      "DZ",
+      "EG",
+      "MA"
+    ],
+    "拉美": [
+      "BR",
+      "MX",
+      "PE",
+      "CO",
+      "CL",
+      "AR"
+    ]
+  },
+  "unit_notes": "downloads are units; revenue is USD gross consumer spend from unified_revenue cents / 100; rpd = revenue / downloads",
+  "apps": {
+    "free_fire": {
+      "name": "Garena Free Fire",
+      "app_id": "59d296dd60104c08ce201a27",
+      "yearly": {
+        "2023": {
+          "东南亚": {
+            "downloads": 56764852,
+            "revenue": 49527206,
+            "rpd": 0.87,
+            "downloads_M": 56.765,
+            "revenue_M": 49.527,
+            "countries": [
+              {
+                "region": "东南亚",
+                "country": "ID",
+                "country_name": "印尼",
+                "year": "2023",
+                "downloads": 27976457,
+                "revenue": 18754930,
+                "rpd": 0.67,
+                "downloads_M": 27.976,
+                "revenue_M": 18.755
+              },
+              {
+                "region": "东南亚",
+                "country": "VN",
+                "country_name": "越南",
+                "year": "2023",
+                "downloads": 16533830,
+                "revenue": 5926702,
+                "rpd": 0.36,
+                "downloads_M": 16.534,
+                "revenue_M": 5.927
+              },
+              {
+                "region": "东南亚",
+                "country": "TH",
+                "country_name": "泰国",
+                "year": "2023",
+                "downloads": 8595634,
+                "revenue": 19094737,
+                "rpd": 2.22,
+                "downloads_M": 8.596,
+                "revenue_M": 19.095
+              },
+              {
+                "region": "东南亚",
+                "country": "MY",
+                "country_name": "马来西亚",
+                "year": "2023",
+                "downloads": 1873610,
+                "revenue": 5400151,
+                "rpd": 2.88,
+                "downloads_M": 1.874,
+                "revenue_M": 5.4
+              },
+              {
+                "region": "东南亚",
+                "country": "PH",
+                "country_name": "菲律宾",
+                "year": "2023",
+                "downloads": 1785321,
+                "revenue": 350685,
+                "rpd": 0.2,
+                "downloads_M": 1.785,
+                "revenue_M": 0.351
+              }
+            ]
+          },
+          "中东": {
+            "downloads": 15681322,
+            "revenue": 5312255,
+            "rpd": 0.34,
+            "downloads_M": 15.681,
+            "revenue_M": 5.312,
+            "countries": [
+              {
+                "region": "中东",
+                "country": "IQ",
+                "country_name": "伊拉克",
+                "year": "2023",
+                "downloads": 3066468,
+                "revenue": 398919,
+                "rpd": 0.13,
+                "downloads_M": 3.066,
+                "revenue_M": 0.399
+              },
+              {
+                "region": "中东",
+                "country": "SA",
+                "country_name": "沙特阿拉伯",
+                "year": "2023",
+                "downloads": 2128107,
+                "revenue": 3485741,
+                "rpd": 1.64,
+                "downloads_M": 2.128,
+                "revenue_M": 3.486
+              },
+              {
+                "region": "中东",
+                "country": "DZ",
+                "country_name": "阿尔及利亚",
+                "year": "2023",
+                "downloads": 4332876,
+                "revenue": 61589,
+                "rpd": 0.01,
+                "downloads_M": 4.333,
+                "revenue_M": 0.062
+              },
+              {
+                "region": "中东",
+                "country": "EG",
+                "country_name": "埃及",
+                "year": "2023",
+                "downloads": 2837977,
+                "revenue": 958107,
+                "rpd": 0.34,
+                "downloads_M": 2.838,
+                "revenue_M": 0.958
+              },
+              {
+                "region": "中东",
+                "country": "MA",
+                "country_name": "摩洛哥",
+                "year": "2023",
+                "downloads": 3315894,
+                "revenue": 407900,
+                "rpd": 0.12,
+                "downloads_M": 3.316,
+                "revenue_M": 0.408
+              }
+            ]
+          },
+          "拉美": {
+            "downloads": 49309783,
+            "revenue": 120842142,
+            "rpd": 2.45,
+            "downloads_M": 49.31,
+            "revenue_M": 120.842,
+            "countries": [
+              {
+                "region": "拉美",
+                "country": "BR",
+                "country_name": "巴西",
+                "year": "2023",
+                "downloads": 20008282,
+                "revenue": 10659544,
+                "rpd": 0.53,
+                "downloads_M": 20.008,
+                "revenue_M": 10.66
+              },
+              {
+                "region": "拉美",
+                "country": "MX",
+                "country_name": "墨西哥",
+                "year": "2023",
+                "downloads": 14966922,
+                "revenue": 85393741,
+                "rpd": 5.71,
+                "downloads_M": 14.967,
+                "revenue_M": 85.394
+              },
+              {
+                "region": "拉美",
+                "country": "PE",
+                "country_name": "秘鲁",
+                "year": "2023",
+                "downloads": 3171745,
+                "revenue": 5815074,
+                "rpd": 1.83,
+                "downloads_M": 3.172,
+                "revenue_M": 5.815
+              },
+              {
+                "region": "拉美",
+                "country": "CO",
+                "country_name": "哥伦比亚",
+                "year": "2023",
+                "downloads": 5677408,
+                "revenue": 5573853,
+                "rpd": 0.98,
+                "downloads_M": 5.677,
+                "revenue_M": 5.574
+              },
+              {
+                "region": "拉美",
+                "country": "CL",
+                "country_name": "智利",
+                "year": "2023",
+                "downloads": 1443632,
+                "revenue": 11773665,
+                "rpd": 8.16,
+                "downloads_M": 1.444,
+                "revenue_M": 11.774
+              },
+              {
+                "region": "拉美",
+                "country": "AR",
+                "country_name": "阿根廷",
+                "year": "2023",
+                "downloads": 4041794,
+                "revenue": 1626265,
+                "rpd": 0.4,
+                "downloads_M": 4.042,
+                "revenue_M": 1.626
+              }
+            ]
+          },
+          "合计": {
+            "downloads": 121755957,
+            "revenue": 175681603,
+            "rpd": 1.44,
+            "downloads_M": 121.756,
+            "revenue_M": 175.682
+          }
+        },
+        "2024": {
+          "东南亚": {
+            "downloads": 81292279,
+            "revenue": 49687087,
+            "rpd": 0.61,
+            "downloads_M": 81.292,
+            "revenue_M": 49.687,
+            "countries": [
+              {
+                "region": "东南亚",
+                "country": "ID",
+                "country_name": "印尼",
+                "year": "2024",
+                "downloads": 45493322,
+                "revenue": 19871525,
+                "rpd": 0.44,
+                "downloads_M": 45.493,
+                "revenue_M": 19.872
+              },
+              {
+                "region": "东南亚",
+                "country": "VN",
+                "country_name": "越南",
+                "year": "2024",
+                "downloads": 20338012,
+                "revenue": 6785685,
+                "rpd": 0.33,
+                "downloads_M": 20.338,
+                "revenue_M": 6.786
+              },
+              {
+                "region": "东南亚",
+                "country": "TH",
+                "country_name": "泰国",
+                "year": "2024",
+                "downloads": 10748730,
+                "revenue": 17724280,
+                "rpd": 1.65,
+                "downloads_M": 10.749,
+                "revenue_M": 17.724
+              },
+              {
+                "region": "东南亚",
+                "country": "MY",
+                "country_name": "马来西亚",
+                "year": "2024",
+                "downloads": 2806850,
+                "revenue": 5036405,
+                "rpd": 1.79,
+                "downloads_M": 2.807,
+                "revenue_M": 5.036
+              },
+              {
+                "region": "东南亚",
+                "country": "PH",
+                "country_name": "菲律宾",
+                "year": "2024",
+                "downloads": 1905365,
+                "revenue": 269193,
+                "rpd": 0.14,
+                "downloads_M": 1.905,
+                "revenue_M": 0.269
+              }
+            ]
+          },
+          "中东": {
+            "downloads": 22911712,
+            "revenue": 5468898,
+            "rpd": 0.24,
+            "downloads_M": 22.912,
+            "revenue_M": 5.469,
+            "countries": [
+              {
+                "region": "中东",
+                "country": "IQ",
+                "country_name": "伊拉克",
+                "year": "2024",
+                "downloads": 3499016,
+                "revenue": 696663,
+                "rpd": 0.2,
+                "downloads_M": 3.499,
+                "revenue_M": 0.697
+              },
+              {
+                "region": "中东",
+                "country": "SA",
+                "country_name": "沙特阿拉伯",
+                "year": "2024",
+                "downloads": 2678929,
+                "revenue": 3473682,
+                "rpd": 1.3,
+                "downloads_M": 2.679,
+                "revenue_M": 3.474
+              },
+              {
+                "region": "中东",
+                "country": "DZ",
+                "country_name": "阿尔及利亚",
+                "year": "2024",
+                "downloads": 7840767,
+                "revenue": 108703,
+                "rpd": 0.01,
+                "downloads_M": 7.841,
+                "revenue_M": 0.109
+              },
+              {
+                "region": "中东",
+                "country": "EG",
+                "country_name": "埃及",
+                "year": "2024",
+                "downloads": 3983326,
+                "revenue": 372155,
+                "rpd": 0.09,
+                "downloads_M": 3.983,
+                "revenue_M": 0.372
+              },
+              {
+                "region": "中东",
+                "country": "MA",
+                "country_name": "摩洛哥",
+                "year": "2024",
+                "downloads": 4909674,
+                "revenue": 817695,
+                "rpd": 0.17,
+                "downloads_M": 4.91,
+                "revenue_M": 0.818
+              }
+            ]
+          },
+          "拉美": {
+            "downloads": 50405727,
+            "revenue": 136882179,
+            "rpd": 2.72,
+            "downloads_M": 50.406,
+            "revenue_M": 136.882,
+            "countries": [
+              {
+                "region": "拉美",
+                "country": "BR",
+                "country_name": "巴西",
+                "year": "2024",
+                "downloads": 22091419,
+                "revenue": 13544573,
+                "rpd": 0.61,
+                "downloads_M": 22.091,
+                "revenue_M": 13.545
+              },
+              {
+                "region": "拉美",
+                "country": "MX",
+                "country_name": "墨西哥",
+                "year": "2024",
+                "downloads": 14583844,
+                "revenue": 103638242,
+                "rpd": 7.11,
+                "downloads_M": 14.584,
+                "revenue_M": 103.638
+              },
+              {
+                "region": "拉美",
+                "country": "PE",
+                "country_name": "秘鲁",
+                "year": "2024",
+                "downloads": 3183941,
+                "revenue": 6532681,
+                "rpd": 2.05,
+                "downloads_M": 3.184,
+                "revenue_M": 6.533
+              },
+              {
+                "region": "拉美",
+                "country": "CO",
+                "country_name": "哥伦比亚",
+                "year": "2024",
+                "downloads": 5369044,
+                "revenue": 4453337,
+                "rpd": 0.83,
+                "downloads_M": 5.369,
+                "revenue_M": 4.453
+              },
+              {
+                "region": "拉美",
+                "country": "CL",
+                "country_name": "智利",
+                "year": "2024",
+                "downloads": 1367617,
+                "revenue": 7205467,
+                "rpd": 5.27,
+                "downloads_M": 1.368,
+                "revenue_M": 7.205
+              },
+              {
+                "region": "拉美",
+                "country": "AR",
+                "country_name": "阿根廷",
+                "year": "2024",
+                "downloads": 3809862,
+                "revenue": 1507878,
+                "rpd": 0.4,
+                "downloads_M": 3.81,
+                "revenue_M": 1.508
+              }
+            ]
+          },
+          "合计": {
+            "downloads": 154609718,
+            "revenue": 192038164,
+            "rpd": 1.24,
+            "downloads_M": 154.61,
+            "revenue_M": 192.038
+          }
+        },
+        "2025": {
+          "东南亚": {
+            "downloads": 72895556,
+            "revenue": 53110200,
+            "rpd": 0.73,
+            "downloads_M": 72.896,
+            "revenue_M": 53.11,
+            "countries": [
+              {
+                "region": "东南亚",
+                "country": "ID",
+                "country_name": "印尼",
+                "year": "2025",
+                "downloads": 38668223,
+                "revenue": 12910982,
+                "rpd": 0.33,
+                "downloads_M": 38.668,
+                "revenue_M": 12.911
+              },
+              {
+                "region": "东南亚",
+                "country": "VN",
+                "country_name": "越南",
+                "year": "2025",
+                "downloads": 18770288,
+                "revenue": 8569362,
+                "rpd": 0.46,
+                "downloads_M": 18.77,
+                "revenue_M": 8.569
+              },
+              {
+                "region": "东南亚",
+                "country": "TH",
+                "country_name": "泰国",
+                "year": "2025",
+                "downloads": 10385481,
+                "revenue": 25587056,
+                "rpd": 2.46,
+                "downloads_M": 10.385,
+                "revenue_M": 25.587
+              },
+              {
+                "region": "东南亚",
+                "country": "MY",
+                "country_name": "马来西亚",
+                "year": "2025",
+                "downloads": 3152013,
+                "revenue": 5747113,
+                "rpd": 1.82,
+                "downloads_M": 3.152,
+                "revenue_M": 5.747
+              },
+              {
+                "region": "东南亚",
+                "country": "PH",
+                "country_name": "菲律宾",
+                "year": "2025",
+                "downloads": 1919551,
+                "revenue": 295687,
+                "rpd": 0.15,
+                "downloads_M": 1.92,
+                "revenue_M": 0.296
+              }
+            ]
+          },
+          "中东": {
+            "downloads": 22961001,
+            "revenue": 5750766,
+            "rpd": 0.25,
+            "downloads_M": 22.961,
+            "revenue_M": 5.751,
+            "countries": [
+              {
+                "region": "中东",
+                "country": "IQ",
+                "country_name": "伊拉克",
+                "year": "2025",
+                "downloads": 3363399,
+                "revenue": 652080,
+                "rpd": 0.19,
+                "downloads_M": 3.363,
+                "revenue_M": 0.652
+              },
+              {
+                "region": "中东",
+                "country": "SA",
+                "country_name": "沙特阿拉伯",
+                "year": "2025",
+                "downloads": 2744720,
+                "revenue": 3769590,
+                "rpd": 1.37,
+                "downloads_M": 2.745,
+                "revenue_M": 3.77
+              },
+              {
+                "region": "中东",
+                "country": "DZ",
+                "country_name": "阿尔及利亚",
+                "year": "2025",
+                "downloads": 7391814,
+                "revenue": 122943,
+                "rpd": 0.02,
+                "downloads_M": 7.392,
+                "revenue_M": 0.123
+              },
+              {
+                "region": "中东",
+                "country": "EG",
+                "country_name": "埃及",
+                "year": "2025",
+                "downloads": 4040271,
+                "revenue": 264875,
+                "rpd": 0.07,
+                "downloads_M": 4.04,
+                "revenue_M": 0.265
+              },
+              {
+                "region": "中东",
+                "country": "MA",
+                "country_name": "摩洛哥",
+                "year": "2025",
+                "downloads": 5420797,
+                "revenue": 941278,
+                "rpd": 0.17,
+                "downloads_M": 5.421,
+                "revenue_M": 0.941
+              }
+            ]
+          },
+          "拉美": {
+            "downloads": 46511610,
+            "revenue": 153211358,
+            "rpd": 3.29,
+            "downloads_M": 46.512,
+            "revenue_M": 153.211,
+            "countries": [
+              {
+                "region": "拉美",
+                "country": "BR",
+                "country_name": "巴西",
+                "year": "2025",
+                "downloads": 19491574,
+                "revenue": 16303294,
+                "rpd": 0.84,
+                "downloads_M": 19.492,
+                "revenue_M": 16.303
+              },
+              {
+                "region": "拉美",
+                "country": "MX",
+                "country_name": "墨西哥",
+                "year": "2025",
+                "downloads": 11971581,
+                "revenue": 114076924,
+                "rpd": 9.53,
+                "downloads_M": 11.972,
+                "revenue_M": 114.077
+              },
+              {
+                "region": "拉美",
+                "country": "PE",
+                "country_name": "秘鲁",
+                "year": "2025",
+                "downloads": 3629697,
+                "revenue": 6024072,
+                "rpd": 1.66,
+                "downloads_M": 3.63,
+                "revenue_M": 6.024
+              },
+              {
+                "region": "拉美",
+                "country": "CO",
+                "country_name": "哥伦比亚",
+                "year": "2025",
+                "downloads": 6025538,
+                "revenue": 3879923,
+                "rpd": 0.64,
+                "downloads_M": 6.026,
+                "revenue_M": 3.88
+              },
+              {
+                "region": "拉美",
+                "country": "CL",
+                "country_name": "智利",
+                "year": "2025",
+                "downloads": 1302473,
+                "revenue": 10582438,
+                "rpd": 8.12,
+                "downloads_M": 1.302,
+                "revenue_M": 10.582
+              },
+              {
+                "region": "拉美",
+                "country": "AR",
+                "country_name": "阿根廷",
+                "year": "2025",
+                "downloads": 4090747,
+                "revenue": 2344707,
+                "rpd": 0.57,
+                "downloads_M": 4.091,
+                "revenue_M": 2.345
+              }
+            ]
+          },
+          "合计": {
+            "downloads": 142368167,
+            "revenue": 212072324,
+            "rpd": 1.49,
+            "downloads_M": 142.368,
+            "revenue_M": 212.072
+          }
+        }
+      },
+      "country_yearly": [
+        {
+          "region": "东南亚",
+          "country": "ID",
+          "country_name": "印尼",
+          "year": "2023",
+          "downloads": 27976457,
+          "revenue": 18754930,
+          "rpd": 0.67,
+          "downloads_M": 27.976,
+          "revenue_M": 18.755
+        },
+        {
+          "region": "东南亚",
+          "country": "VN",
+          "country_name": "越南",
+          "year": "2023",
+          "downloads": 16533830,
+          "revenue": 5926702,
+          "rpd": 0.36,
+          "downloads_M": 16.534,
+          "revenue_M": 5.927
+        },
+        {
+          "region": "东南亚",
+          "country": "TH",
+          "country_name": "泰国",
+          "year": "2023",
+          "downloads": 8595634,
+          "revenue": 19094737,
+          "rpd": 2.22,
+          "downloads_M": 8.596,
+          "revenue_M": 19.095
+        },
+        {
+          "region": "东南亚",
+          "country": "MY",
+          "country_name": "马来西亚",
+          "year": "2023",
+          "downloads": 1873610,
+          "revenue": 5400151,
+          "rpd": 2.88,
+          "downloads_M": 1.874,
+          "revenue_M": 5.4
+        },
+        {
+          "region": "东南亚",
+          "country": "PH",
+          "country_name": "菲律宾",
+          "year": "2023",
+          "downloads": 1785321,
+          "revenue": 350685,
+          "rpd": 0.2,
+          "downloads_M": 1.785,
+          "revenue_M": 0.351
+        },
+        {
+          "region": "中东",
+          "country": "IQ",
+          "country_name": "伊拉克",
+          "year": "2023",
+          "downloads": 3066468,
+          "revenue": 398919,
+          "rpd": 0.13,
+          "downloads_M": 3.066,
+          "revenue_M": 0.399
+        },
+        {
+          "region": "中东",
+          "country": "SA",
+          "country_name": "沙特阿拉伯",
+          "year": "2023",
+          "downloads": 2128107,
+          "revenue": 3485741,
+          "rpd": 1.64,
+          "downloads_M": 2.128,
+          "revenue_M": 3.486
+        },
+        {
+          "region": "中东",
+          "country": "DZ",
+          "country_name": "阿尔及利亚",
+          "year": "2023",
+          "downloads": 4332876,
+          "revenue": 61589,
+          "rpd": 0.01,
+          "downloads_M": 4.333,
+          "revenue_M": 0.062
+        },
+        {
+          "region": "中东",
+          "country": "EG",
+          "country_name": "埃及",
+          "year": "2023",
+          "downloads": 2837977,
+          "revenue": 958107,
+          "rpd": 0.34,
+          "downloads_M": 2.838,
+          "revenue_M": 0.958
+        },
+        {
+          "region": "中东",
+          "country": "MA",
+          "country_name": "摩洛哥",
+          "year": "2023",
+          "downloads": 3315894,
+          "revenue": 407900,
+          "rpd": 0.12,
+          "downloads_M": 3.316,
+          "revenue_M": 0.408
+        },
+        {
+          "region": "拉美",
+          "country": "BR",
+          "country_name": "巴西",
+          "year": "2023",
+          "downloads": 20008282,
+          "revenue": 10659544,
+          "rpd": 0.53,
+          "downloads_M": 20.008,
+          "revenue_M": 10.66
+        },
+        {
+          "region": "拉美",
+          "country": "MX",
+          "country_name": "墨西哥",
+          "year": "2023",
+          "downloads": 14966922,
+          "revenue": 85393741,
+          "rpd": 5.71,
+          "downloads_M": 14.967,
+          "revenue_M": 85.394
+        },
+        {
+          "region": "拉美",
+          "country": "PE",
+          "country_name": "秘鲁",
+          "year": "2023",
+          "downloads": 3171745,
+          "revenue": 5815074,
+          "rpd": 1.83,
+          "downloads_M": 3.172,
+          "revenue_M": 5.815
+        },
+        {
+          "region": "拉美",
+          "country": "CO",
+          "country_name": "哥伦比亚",
+          "year": "2023",
+          "downloads": 5677408,
+          "revenue": 5573853,
+          "rpd": 0.98,
+          "downloads_M": 5.677,
+          "revenue_M": 5.574
+        },
+        {
+          "region": "拉美",
+          "country": "CL",
+          "country_name": "智利",
+          "year": "2023",
+          "downloads": 1443632,
+          "revenue": 11773665,
+          "rpd": 8.16,
+          "downloads_M": 1.444,
+          "revenue_M": 11.774
+        },
+        {
+          "region": "拉美",
+          "country": "AR",
+          "country_name": "阿根廷",
+          "year": "2023",
+          "downloads": 4041794,
+          "revenue": 1626265,
+          "rpd": 0.4,
+          "downloads_M": 4.042,
+          "revenue_M": 1.626
+        },
+        {
+          "region": "东南亚",
+          "country": "ID",
+          "country_name": "印尼",
+          "year": "2024",
+          "downloads": 45493322,
+          "revenue": 19871525,
+          "rpd": 0.44,
+          "downloads_M": 45.493,
+          "revenue_M": 19.872
+        },
+        {
+          "region": "东南亚",
+          "country": "VN",
+          "country_name": "越南",
+          "year": "2024",
+          "downloads": 20338012,
+          "revenue": 6785685,
+          "rpd": 0.33,
+          "downloads_M": 20.338,
+          "revenue_M": 6.786
+        },
+        {
+          "region": "东南亚",
+          "country": "TH",
+          "country_name": "泰国",
+          "year": "2024",
+          "downloads": 10748730,
+          "revenue": 17724280,
+          "rpd": 1.65,
+          "downloads_M": 10.749,
+          "revenue_M": 17.724
+        },
+        {
+          "region": "东南亚",
+          "country": "MY",
+          "country_name": "马来西亚",
+          "year": "2024",
+          "downloads": 2806850,
+          "revenue": 5036405,
+          "rpd": 1.79,
+          "downloads_M": 2.807,
+          "revenue_M": 5.036
+        },
+        {
+          "region": "东南亚",
+          "country": "PH",
+          "country_name": "菲律宾",
+          "year": "2024",
+          "downloads": 1905365,
+          "revenue": 269193,
+          "rpd": 0.14,
+          "downloads_M": 1.905,
+          "revenue_M": 0.269
+        },
+        {
+          "region": "中东",
+          "country": "IQ",
+          "country_name": "伊拉克",
+          "year": "2024",
+          "downloads": 3499016,
+          "revenue": 696663,
+          "rpd": 0.2,
+          "downloads_M": 3.499,
+          "revenue_M": 0.697
+        },
+        {
+          "region": "中东",
+          "country": "SA",
+          "country_name": "沙特阿拉伯",
+          "year": "2024",
+          "downloads": 2678929,
+          "revenue": 3473682,
+          "rpd": 1.3,
+          "downloads_M": 2.679,
+          "revenue_M": 3.474
+        },
+        {
+          "region": "中东",
+          "country": "DZ",
+          "country_name": "阿尔及利亚",
+          "year": "2024",
+          "downloads": 7840767,
+          "revenue": 108703,
+          "rpd": 0.01,
+          "downloads_M": 7.841,
+          "revenue_M": 0.109
+        },
+        {
+          "region": "中东",
+          "country": "EG",
+          "country_name": "埃及",
+          "year": "2024",
+          "downloads": 3983326,
+          "revenue": 372155,
+          "rpd": 0.09,
+          "downloads_M": 3.983,
+          "revenue_M": 0.372
+        },
+        {
+          "region": "中东",
+          "country": "MA",
+          "country_name": "摩洛哥",
+          "year": "2024",
+          "downloads": 4909674,
+          "revenue": 817695,
+          "rpd": 0.17,
+          "downloads_M": 4.91,
+          "revenue_M": 0.818
+        },
+        {
+          "region": "拉美",
+          "country": "BR",
+          "country_name": "巴西",
+          "year": "2024",
+          "downloads": 22091419,
+          "revenue": 13544573,
+          "rpd": 0.61,
+          "downloads_M": 22.091,
+          "revenue_M": 13.545
+        },
+        {
+          "region": "拉美",
+          "country": "MX",
+          "country_name": "墨西哥",
+          "year": "2024",
+          "downloads": 14583844,
+          "revenue": 103638242,
+          "rpd": 7.11,
+          "downloads_M": 14.584,
+          "revenue_M": 103.638
+        },
+        {
+          "region": "拉美",
+          "country": "PE",
+          "country_name": "秘鲁",
+          "year": "2024",
+          "downloads": 3183941,
+          "revenue": 6532681,
+          "rpd": 2.05,
+          "downloads_M": 3.184,
+          "revenue_M": 6.533
+        },
+        {
+          "region": "拉美",
+          "country": "CO",
+          "country_name": "哥伦比亚",
+          "year": "2024",
+          "downloads": 5369044,
+          "revenue": 4453337,
+          "rpd": 0.83,
+          "downloads_M": 5.369,
+          "revenue_M": 4.453
+        },
+        {
+          "region": "拉美",
+          "country": "CL",
+          "country_name": "智利",
+          "year": "2024",
+          "downloads": 1367617,
+          "revenue": 7205467,
+          "rpd": 5.27,
+          "downloads_M": 1.368,
+          "revenue_M": 7.205
+        },
+        {
+          "region": "拉美",
+          "country": "AR",
+          "country_name": "阿根廷",
+          "year": "2024",
+          "downloads": 3809862,
+          "revenue": 1507878,
+          "rpd": 0.4,
+          "downloads_M": 3.81,
+          "revenue_M": 1.508
+        },
+        {
+          "region": "东南亚",
+          "country": "ID",
+          "country_name": "印尼",
+          "year": "2025",
+          "downloads": 38668223,
+          "revenue": 12910982,
+          "rpd": 0.33,
+          "downloads_M": 38.668,
+          "revenue_M": 12.911
+        },
+        {
+          "region": "东南亚",
+          "country": "VN",
+          "country_name": "越南",
+          "year": "2025",
+          "downloads": 18770288,
+          "revenue": 8569362,
+          "rpd": 0.46,
+          "downloads_M": 18.77,
+          "revenue_M": 8.569
+        },
+        {
+          "region": "东南亚",
+          "country": "TH",
+          "country_name": "泰国",
+          "year": "2025",
+          "downloads": 10385481,
+          "revenue": 25587056,
+          "rpd": 2.46,
+          "downloads_M": 10.385,
+          "revenue_M": 25.587
+        },
+        {
+          "region": "东南亚",
+          "country": "MY",
+          "country_name": "马来西亚",
+          "year": "2025",
+          "downloads": 3152013,
+          "revenue": 5747113,
+          "rpd": 1.82,
+          "downloads_M": 3.152,
+          "revenue_M": 5.747
+        },
+        {
+          "region": "东南亚",
+          "country": "PH",
+          "country_name": "菲律宾",
+          "year": "2025",
+          "downloads": 1919551,
+          "revenue": 295687,
+          "rpd": 0.15,
+          "downloads_M": 1.92,
+          "revenue_M": 0.296
+        },
+        {
+          "region": "中东",
+          "country": "IQ",
+          "country_name": "伊拉克",
+          "year": "2025",
+          "downloads": 3363399,
+          "revenue": 652080,
+          "rpd": 0.19,
+          "downloads_M": 3.363,
+          "revenue_M": 0.652
+        },
+        {
+          "region": "中东",
+          "country": "SA",
+          "country_name": "沙特阿拉伯",
+          "year": "2025",
+          "downloads": 2744720,
+          "revenue": 3769590,
+          "rpd": 1.37,
+          "downloads_M": 2.745,
+          "revenue_M": 3.77
+        },
+        {
+          "region": "中东",
+          "country": "DZ",
+          "country_name": "阿尔及利亚",
+          "year": "2025",
+          "downloads": 7391814,
+          "revenue": 122943,
+          "rpd": 0.02,
+          "downloads_M": 7.392,
+          "revenue_M": 0.123
+        },
+        {
+          "region": "中东",
+          "country": "EG",
+          "country_name": "埃及",
+          "year": "2025",
+          "downloads": 4040271,
+          "revenue": 264875,
+          "rpd": 0.07,
+          "downloads_M": 4.04,
+          "revenue_M": 0.265
+        },
+        {
+          "region": "中东",
+          "country": "MA",
+          "country_name": "摩洛哥",
+          "year": "2025",
+          "downloads": 5420797,
+          "revenue": 941278,
+          "rpd": 0.17,
+          "downloads_M": 5.421,
+          "revenue_M": 0.941
+        },
+        {
+          "region": "拉美",
+          "country": "BR",
+          "country_name": "巴西",
+          "year": "2025",
+          "downloads": 19491574,
+          "revenue": 16303294,
+          "rpd": 0.84,
+          "downloads_M": 19.492,
+          "revenue_M": 16.303
+        },
+        {
+          "region": "拉美",
+          "country": "MX",
+          "country_name": "墨西哥",
+          "year": "2025",
+          "downloads": 11971581,
+          "revenue": 114076924,
+          "rpd": 9.53,
+          "downloads_M": 11.972,
+          "revenue_M": 114.077
+        },
+        {
+          "region": "拉美",
+          "country": "PE",
+          "country_name": "秘鲁",
+          "year": "2025",
+          "downloads": 3629697,
+          "revenue": 6024072,
+          "rpd": 1.66,
+          "downloads_M": 3.63,
+          "revenue_M": 6.024
+        },
+        {
+          "region": "拉美",
+          "country": "CO",
+          "country_name": "哥伦比亚",
+          "year": "2025",
+          "downloads": 6025538,
+          "revenue": 3879923,
+          "rpd": 0.64,
+          "downloads_M": 6.026,
+          "revenue_M": 3.88
+        },
+        {
+          "region": "拉美",
+          "country": "CL",
+          "country_name": "智利",
+          "year": "2025",
+          "downloads": 1302473,
+          "revenue": 10582438,
+          "rpd": 8.12,
+          "downloads_M": 1.302,
+          "revenue_M": 10.582
+        },
+        {
+          "region": "拉美",
+          "country": "AR",
+          "country_name": "阿根廷",
+          "year": "2025",
+          "downloads": 4090747,
+          "revenue": 2344707,
+          "rpd": 0.57,
+          "downloads_M": 4.091,
+          "revenue_M": 2.345
+        }
+      ]
+    },
+    "aov": {
+      "name": "Arena of Valor",
+      "app_id": "61a54e681800977bed4c561d",
+      "yearly": {
+        "2023": {
+          "东南亚": {
+            "downloads": 23462810,
+            "revenue": 47017617,
+            "rpd": 2,
+            "downloads_M": 23.463,
+            "revenue_M": 47.018,
+            "countries": [
+              {
+                "region": "东南亚",
+                "country": "ID",
+                "country_name": "印尼",
+                "year": "2023",
+                "downloads": 1885053,
+                "revenue": 122089,
+                "rpd": 0.06,
+                "downloads_M": 1.885,
+                "revenue_M": 0.122
+              },
+              {
+                "region": "东南亚",
+                "country": "VN",
+                "country_name": "越南",
+                "year": "2023",
+                "downloads": 13822776,
+                "revenue": 6304908,
+                "rpd": 0.46,
+                "downloads_M": 13.823,
+                "revenue_M": 6.305
+              },
+              {
+                "region": "东南亚",
+                "country": "TH",
+                "country_name": "泰国",
+                "year": "2023",
+                "downloads": 6686383,
+                "revenue": 39356861,
+                "rpd": 5.89,
+                "downloads_M": 6.686,
+                "revenue_M": 39.357
+              },
+              {
+                "region": "东南亚",
+                "country": "MY",
+                "country_name": "马来西亚",
+                "year": "2023",
+                "downloads": 306808,
+                "revenue": 1180372,
+                "rpd": 3.85,
+                "downloads_M": 0.307,
+                "revenue_M": 1.18
+              },
+              {
+                "region": "东南亚",
+                "country": "PH",
+                "country_name": "菲律宾",
+                "year": "2023",
+                "downloads": 761790,
+                "revenue": 53387,
+                "rpd": 0.07,
+                "downloads_M": 0.762,
+                "revenue_M": 0.053
+              }
+            ]
+          },
+          "中东": {
+            "downloads": 86079,
+            "revenue": 29927,
+            "rpd": 0.35,
+            "downloads_M": 0.086,
+            "revenue_M": 0.03,
+            "countries": [
+              {
+                "region": "中东",
+                "country": "IQ",
+                "country_name": "伊拉克",
+                "year": "2023",
+                "downloads": 474,
+                "revenue": 1991,
+                "rpd": 4.2,
+                "downloads_M": 0,
+                "revenue_M": 0.002
+              },
+              {
+                "region": "中东",
+                "country": "SA",
+                "country_name": "沙特阿拉伯",
+                "year": "2023",
+                "downloads": 26335,
+                "revenue": 12956,
+                "rpd": 0.49,
+                "downloads_M": 0.026,
+                "revenue_M": 0.013
+              },
+              {
+                "region": "中东",
+                "country": "DZ",
+                "country_name": "阿尔及利亚",
+                "year": "2023",
+                "downloads": 16988,
+                "revenue": 12,
+                "rpd": 0,
+                "downloads_M": 0.017,
+                "revenue_M": 0
+              },
+              {
+                "region": "中东",
+                "country": "EG",
+                "country_name": "埃及",
+                "year": "2023",
+                "downloads": 41798,
+                "revenue": 13826,
+                "rpd": 0.33,
+                "downloads_M": 0.042,
+                "revenue_M": 0.014
+              },
+              {
+                "region": "中东",
+                "country": "MA",
+                "country_name": "摩洛哥",
+                "year": "2023",
+                "downloads": 484,
+                "revenue": 1142,
+                "rpd": 2.36,
+                "downloads_M": 0,
+                "revenue_M": 0.001
+              }
+            ]
+          },
+          "拉美": {
+            "downloads": 522918,
+            "revenue": 326502,
+            "rpd": 0.62,
+            "downloads_M": 0.523,
+            "revenue_M": 0.327,
+            "countries": [
+              {
+                "region": "拉美",
+                "country": "BR",
+                "country_name": "巴西",
+                "year": "2023",
+                "downloads": 293015,
+                "revenue": 111874,
+                "rpd": 0.38,
+                "downloads_M": 0.293,
+                "revenue_M": 0.112
+              },
+              {
+                "region": "拉美",
+                "country": "MX",
+                "country_name": "墨西哥",
+                "year": "2023",
+                "downloads": 55259,
+                "revenue": 73087,
+                "rpd": 1.32,
+                "downloads_M": 0.055,
+                "revenue_M": 0.073
+              },
+              {
+                "region": "拉美",
+                "country": "PE",
+                "country_name": "秘鲁",
+                "year": "2023",
+                "downloads": 47532,
+                "revenue": 47130,
+                "rpd": 0.99,
+                "downloads_M": 0.048,
+                "revenue_M": 0.047
+              },
+              {
+                "region": "拉美",
+                "country": "CO",
+                "country_name": "哥伦比亚",
+                "year": "2023",
+                "downloads": 55232,
+                "revenue": 18243,
+                "rpd": 0.33,
+                "downloads_M": 0.055,
+                "revenue_M": 0.018
+              },
+              {
+                "region": "拉美",
+                "country": "CL",
+                "country_name": "智利",
+                "year": "2023",
+                "downloads": 21527,
+                "revenue": 48711,
+                "rpd": 2.26,
+                "downloads_M": 0.022,
+                "revenue_M": 0.049
+              },
+              {
+                "region": "拉美",
+                "country": "AR",
+                "country_name": "阿根廷",
+                "year": "2023",
+                "downloads": 50353,
+                "revenue": 27457,
+                "rpd": 0.55,
+                "downloads_M": 0.05,
+                "revenue_M": 0.027
+              }
+            ]
+          },
+          "合计": {
+            "downloads": 24071807,
+            "revenue": 47374046,
+            "rpd": 1.97,
+            "downloads_M": 24.072,
+            "revenue_M": 47.374
+          }
+        },
+        "2024": {
+          "东南亚": {
+            "downloads": 19435571,
+            "revenue": 27899695,
+            "rpd": 1.44,
+            "downloads_M": 19.436,
+            "revenue_M": 27.9,
+            "countries": [
+              {
+                "region": "东南亚",
+                "country": "ID",
+                "country_name": "印尼",
+                "year": "2024",
+                "downloads": 1695704,
+                "revenue": 58929,
+                "rpd": 0.03,
+                "downloads_M": 1.696,
+                "revenue_M": 0.059
+              },
+              {
+                "region": "东南亚",
+                "country": "VN",
+                "country_name": "越南",
+                "year": "2024",
+                "downloads": 11360899,
+                "revenue": 5409072,
+                "rpd": 0.48,
+                "downloads_M": 11.361,
+                "revenue_M": 5.409
+              },
+              {
+                "region": "东南亚",
+                "country": "TH",
+                "country_name": "泰国",
+                "year": "2024",
+                "downloads": 5698956,
+                "revenue": 21915257,
+                "rpd": 3.85,
+                "downloads_M": 5.699,
+                "revenue_M": 21.915
+              },
+              {
+                "region": "东南亚",
+                "country": "MY",
+                "country_name": "马来西亚",
+                "year": "2024",
+                "downloads": 195857,
+                "revenue": 490953,
+                "rpd": 2.51,
+                "downloads_M": 0.196,
+                "revenue_M": 0.491
+              },
+              {
+                "region": "东南亚",
+                "country": "PH",
+                "country_name": "菲律宾",
+                "year": "2024",
+                "downloads": 484155,
+                "revenue": 25484,
+                "rpd": 0.05,
+                "downloads_M": 0.484,
+                "revenue_M": 0.025
+              }
+            ]
+          },
+          "中东": {
+            "downloads": 51506,
+            "revenue": 7572,
+            "rpd": 0.15,
+            "downloads_M": 0.052,
+            "revenue_M": 0.008,
+            "countries": [
+              {
+                "region": "中东",
+                "country": "IQ",
+                "country_name": "伊拉克",
+                "year": "2024",
+                "downloads": 3096,
+                "revenue": 1895,
+                "rpd": 0.61,
+                "downloads_M": 0.003,
+                "revenue_M": 0.002
+              },
+              {
+                "region": "中东",
+                "country": "SA",
+                "country_name": "沙特阿拉伯",
+                "year": "2024",
+                "downloads": 9520,
+                "revenue": 4842,
+                "rpd": 0.51,
+                "downloads_M": 0.01,
+                "revenue_M": 0.005
+              },
+              {
+                "region": "中东",
+                "country": "DZ",
+                "country_name": "阿尔及利亚",
+                "year": "2024",
+                "downloads": 7071,
+                "revenue": 219,
+                "rpd": 0.03,
+                "downloads_M": 0.007,
+                "revenue_M": 0
+              },
+              {
+                "region": "中东",
+                "country": "EG",
+                "country_name": "埃及",
+                "year": "2024",
+                "downloads": 31413,
+                "revenue": 497,
+                "rpd": 0.02,
+                "downloads_M": 0.031,
+                "revenue_M": 0
+              },
+              {
+                "region": "中东",
+                "country": "MA",
+                "country_name": "摩洛哥",
+                "year": "2024",
+                "downloads": 406,
+                "revenue": 119,
+                "rpd": 0.29,
+                "downloads_M": 0,
+                "revenue_M": 0
+              }
+            ]
+          },
+          "拉美": {
+            "downloads": 205109,
+            "revenue": 108887,
+            "rpd": 0.53,
+            "downloads_M": 0.205,
+            "revenue_M": 0.109,
+            "countries": [
+              {
+                "region": "拉美",
+                "country": "BR",
+                "country_name": "巴西",
+                "year": "2024",
+                "downloads": 136901,
+                "revenue": 45067,
+                "rpd": 0.33,
+                "downloads_M": 0.137,
+                "revenue_M": 0.045
+              },
+              {
+                "region": "拉美",
+                "country": "MX",
+                "country_name": "墨西哥",
+                "year": "2024",
+                "downloads": 3430,
+                "revenue": 24845,
+                "rpd": 7.24,
+                "downloads_M": 0.003,
+                "revenue_M": 0.025
+              },
+              {
+                "region": "拉美",
+                "country": "PE",
+                "country_name": "秘鲁",
+                "year": "2024",
+                "downloads": 25819,
+                "revenue": 12922,
+                "rpd": 0.5,
+                "downloads_M": 0.026,
+                "revenue_M": 0.013
+              },
+              {
+                "region": "拉美",
+                "country": "CO",
+                "country_name": "哥伦比亚",
+                "year": "2024",
+                "downloads": 18709,
+                "revenue": 6663,
+                "rpd": 0.36,
+                "downloads_M": 0.019,
+                "revenue_M": 0.007
+              },
+              {
+                "region": "拉美",
+                "country": "CL",
+                "country_name": "智利",
+                "year": "2024",
+                "downloads": 4847,
+                "revenue": 13189,
+                "rpd": 2.72,
+                "downloads_M": 0.005,
+                "revenue_M": 0.013
+              },
+              {
+                "region": "拉美",
+                "country": "AR",
+                "country_name": "阿根廷",
+                "year": "2024",
+                "downloads": 15403,
+                "revenue": 6202,
+                "rpd": 0.4,
+                "downloads_M": 0.015,
+                "revenue_M": 0.006
+              }
+            ]
+          },
+          "合计": {
+            "downloads": 19692186,
+            "revenue": 28016154,
+            "rpd": 1.42,
+            "downloads_M": 19.692,
+            "revenue_M": 28.016
+          }
+        },
+        "2025": {
+          "东南亚": {
+            "downloads": 17492935,
+            "revenue": 20599743,
+            "rpd": 1.18,
+            "downloads_M": 17.493,
+            "revenue_M": 20.6,
+            "countries": [
+              {
+                "region": "东南亚",
+                "country": "ID",
+                "country_name": "印尼",
+                "year": "2025",
+                "downloads": 711087,
+                "revenue": 25326,
+                "rpd": 0.04,
+                "downloads_M": 0.711,
+                "revenue_M": 0.025
+              },
+              {
+                "region": "东南亚",
+                "country": "VN",
+                "country_name": "越南",
+                "year": "2025",
+                "downloads": 10957434,
+                "revenue": 4893941,
+                "rpd": 0.45,
+                "downloads_M": 10.957,
+                "revenue_M": 4.894
+              },
+              {
+                "region": "东南亚",
+                "country": "TH",
+                "country_name": "泰国",
+                "year": "2025",
+                "downloads": 5558872,
+                "revenue": 15619807,
+                "rpd": 2.81,
+                "downloads_M": 5.559,
+                "revenue_M": 15.62
+              },
+              {
+                "region": "东南亚",
+                "country": "MY",
+                "country_name": "马来西亚",
+                "year": "2025",
+                "downloads": 84650,
+                "revenue": 51122,
+                "rpd": 0.6,
+                "downloads_M": 0.085,
+                "revenue_M": 0.051
+              },
+              {
+                "region": "东南亚",
+                "country": "PH",
+                "country_name": "菲律宾",
+                "year": "2025",
+                "downloads": 180892,
+                "revenue": 9548,
+                "rpd": 0.05,
+                "downloads_M": 0.181,
+                "revenue_M": 0.01
+              }
+            ]
+          },
+          "中东": {
+            "downloads": 21590,
+            "revenue": 3831,
+            "rpd": 0.18,
+            "downloads_M": 0.022,
+            "revenue_M": 0.004,
+            "countries": [
+              {
+                "region": "中东",
+                "country": "IQ",
+                "country_name": "伊拉克",
+                "year": "2025",
+                "downloads": 10649,
+                "revenue": 858,
+                "rpd": 0.08,
+                "downloads_M": 0.011,
+                "revenue_M": 0.001
+              },
+              {
+                "region": "中东",
+                "country": "SA",
+                "country_name": "沙特阿拉伯",
+                "year": "2025",
+                "downloads": 2400,
+                "revenue": 2507,
+                "rpd": 1.04,
+                "downloads_M": 0.002,
+                "revenue_M": 0.003
+              },
+              {
+                "region": "中东",
+                "country": "DZ",
+                "country_name": "阿尔及利亚",
+                "year": "2025",
+                "downloads": 448,
+                "revenue": 2,
+                "rpd": 0.01,
+                "downloads_M": 0,
+                "revenue_M": 0
+              },
+              {
+                "region": "中东",
+                "country": "EG",
+                "country_name": "埃及",
+                "year": "2025",
+                "downloads": 7904,
+                "revenue": 193,
+                "rpd": 0.02,
+                "downloads_M": 0.008,
+                "revenue_M": 0
+              },
+              {
+                "region": "中东",
+                "country": "MA",
+                "country_name": "摩洛哥",
+                "year": "2025",
+                "downloads": 189,
+                "revenue": 272,
+                "rpd": 1.44,
+                "downloads_M": 0,
+                "revenue_M": 0
+              }
+            ]
+          },
+          "拉美": {
+            "downloads": 72796,
+            "revenue": 84156,
+            "rpd": 1.16,
+            "downloads_M": 0.073,
+            "revenue_M": 0.084,
+            "countries": [
+              {
+                "region": "拉美",
+                "country": "BR",
+                "country_name": "巴西",
+                "year": "2025",
+                "downloads": 46825,
+                "revenue": 38840,
+                "rpd": 0.83,
+                "downloads_M": 0.047,
+                "revenue_M": 0.039
+              },
+              {
+                "region": "拉美",
+                "country": "MX",
+                "country_name": "墨西哥",
+                "year": "2025",
+                "downloads": 1874,
+                "revenue": 17818,
+                "rpd": 9.51,
+                "downloads_M": 0.002,
+                "revenue_M": 0.018
+              },
+              {
+                "region": "拉美",
+                "country": "PE",
+                "country_name": "秘鲁",
+                "year": "2025",
+                "downloads": 16526,
+                "revenue": 8969,
+                "rpd": 0.54,
+                "downloads_M": 0.017,
+                "revenue_M": 0.009
+              },
+              {
+                "region": "拉美",
+                "country": "CO",
+                "country_name": "哥伦比亚",
+                "year": "2025",
+                "downloads": 1897,
+                "revenue": 5550,
+                "rpd": 2.93,
+                "downloads_M": 0.002,
+                "revenue_M": 0.006
+              },
+              {
+                "region": "拉美",
+                "country": "CL",
+                "country_name": "智利",
+                "year": "2025",
+                "downloads": 1926,
+                "revenue": 9284,
+                "rpd": 4.82,
+                "downloads_M": 0.002,
+                "revenue_M": 0.009
+              },
+              {
+                "region": "拉美",
+                "country": "AR",
+                "country_name": "阿根廷",
+                "year": "2025",
+                "downloads": 3748,
+                "revenue": 3695,
+                "rpd": 0.99,
+                "downloads_M": 0.004,
+                "revenue_M": 0.004
+              }
+            ]
+          },
+          "合计": {
+            "downloads": 17587321,
+            "revenue": 20687731,
+            "rpd": 1.18,
+            "downloads_M": 17.587,
+            "revenue_M": 20.688
+          }
+        }
+      },
+      "country_yearly": [
+        {
+          "region": "东南亚",
+          "country": "ID",
+          "country_name": "印尼",
+          "year": "2023",
+          "downloads": 1885053,
+          "revenue": 122089,
+          "rpd": 0.06,
+          "downloads_M": 1.885,
+          "revenue_M": 0.122
+        },
+        {
+          "region": "东南亚",
+          "country": "VN",
+          "country_name": "越南",
+          "year": "2023",
+          "downloads": 13822776,
+          "revenue": 6304908,
+          "rpd": 0.46,
+          "downloads_M": 13.823,
+          "revenue_M": 6.305
+        },
+        {
+          "region": "东南亚",
+          "country": "TH",
+          "country_name": "泰国",
+          "year": "2023",
+          "downloads": 6686383,
+          "revenue": 39356861,
+          "rpd": 5.89,
+          "downloads_M": 6.686,
+          "revenue_M": 39.357
+        },
+        {
+          "region": "东南亚",
+          "country": "MY",
+          "country_name": "马来西亚",
+          "year": "2023",
+          "downloads": 306808,
+          "revenue": 1180372,
+          "rpd": 3.85,
+          "downloads_M": 0.307,
+          "revenue_M": 1.18
+        },
+        {
+          "region": "东南亚",
+          "country": "PH",
+          "country_name": "菲律宾",
+          "year": "2023",
+          "downloads": 761790,
+          "revenue": 53387,
+          "rpd": 0.07,
+          "downloads_M": 0.762,
+          "revenue_M": 0.053
+        },
+        {
+          "region": "中东",
+          "country": "IQ",
+          "country_name": "伊拉克",
+          "year": "2023",
+          "downloads": 474,
+          "revenue": 1991,
+          "rpd": 4.2,
+          "downloads_M": 0,
+          "revenue_M": 0.002
+        },
+        {
+          "region": "中东",
+          "country": "SA",
+          "country_name": "沙特阿拉伯",
+          "year": "2023",
+          "downloads": 26335,
+          "revenue": 12956,
+          "rpd": 0.49,
+          "downloads_M": 0.026,
+          "revenue_M": 0.013
+        },
+        {
+          "region": "中东",
+          "country": "DZ",
+          "country_name": "阿尔及利亚",
+          "year": "2023",
+          "downloads": 16988,
+          "revenue": 12,
+          "rpd": 0,
+          "downloads_M": 0.017,
+          "revenue_M": 0
+        },
+        {
+          "region": "中东",
+          "country": "EG",
+          "country_name": "埃及",
+          "year": "2023",
+          "downloads": 41798,
+          "revenue": 13826,
+          "rpd": 0.33,
+          "downloads_M": 0.042,
+          "revenue_M": 0.014
+        },
+        {
+          "region": "中东",
+          "country": "MA",
+          "country_name": "摩洛哥",
+          "year": "2023",
+          "downloads": 484,
+          "revenue": 1142,
+          "rpd": 2.36,
+          "downloads_M": 0,
+          "revenue_M": 0.001
+        },
+        {
+          "region": "拉美",
+          "country": "BR",
+          "country_name": "巴西",
+          "year": "2023",
+          "downloads": 293015,
+          "revenue": 111874,
+          "rpd": 0.38,
+          "downloads_M": 0.293,
+          "revenue_M": 0.112
+        },
+        {
+          "region": "拉美",
+          "country": "MX",
+          "country_name": "墨西哥",
+          "year": "2023",
+          "downloads": 55259,
+          "revenue": 73087,
+          "rpd": 1.32,
+          "downloads_M": 0.055,
+          "revenue_M": 0.073
+        },
+        {
+          "region": "拉美",
+          "country": "PE",
+          "country_name": "秘鲁",
+          "year": "2023",
+          "downloads": 47532,
+          "revenue": 47130,
+          "rpd": 0.99,
+          "downloads_M": 0.048,
+          "revenue_M": 0.047
+        },
+        {
+          "region": "拉美",
+          "country": "CO",
+          "country_name": "哥伦比亚",
+          "year": "2023",
+          "downloads": 55232,
+          "revenue": 18243,
+          "rpd": 0.33,
+          "downloads_M": 0.055,
+          "revenue_M": 0.018
+        },
+        {
+          "region": "拉美",
+          "country": "CL",
+          "country_name": "智利",
+          "year": "2023",
+          "downloads": 21527,
+          "revenue": 48711,
+          "rpd": 2.26,
+          "downloads_M": 0.022,
+          "revenue_M": 0.049
+        },
+        {
+          "region": "拉美",
+          "country": "AR",
+          "country_name": "阿根廷",
+          "year": "2023",
+          "downloads": 50353,
+          "revenue": 27457,
+          "rpd": 0.55,
+          "downloads_M": 0.05,
+          "revenue_M": 0.027
+        },
+        {
+          "region": "东南亚",
+          "country": "ID",
+          "country_name": "印尼",
+          "year": "2024",
+          "downloads": 1695704,
+          "revenue": 58929,
+          "rpd": 0.03,
+          "downloads_M": 1.696,
+          "revenue_M": 0.059
+        },
+        {
+          "region": "东南亚",
+          "country": "VN",
+          "country_name": "越南",
+          "year": "2024",
+          "downloads": 11360899,
+          "revenue": 5409072,
+          "rpd": 0.48,
+          "downloads_M": 11.361,
+          "revenue_M": 5.409
+        },
+        {
+          "region": "东南亚",
+          "country": "TH",
+          "country_name": "泰国",
+          "year": "2024",
+          "downloads": 5698956,
+          "revenue": 21915257,
+          "rpd": 3.85,
+          "downloads_M": 5.699,
+          "revenue_M": 21.915
+        },
+        {
+          "region": "东南亚",
+          "country": "MY",
+          "country_name": "马来西亚",
+          "year": "2024",
+          "downloads": 195857,
+          "revenue": 490953,
+          "rpd": 2.51,
+          "downloads_M": 0.196,
+          "revenue_M": 0.491
+        },
+        {
+          "region": "东南亚",
+          "country": "PH",
+          "country_name": "菲律宾",
+          "year": "2024",
+          "downloads": 484155,
+          "revenue": 25484,
+          "rpd": 0.05,
+          "downloads_M": 0.484,
+          "revenue_M": 0.025
+        },
+        {
+          "region": "中东",
+          "country": "IQ",
+          "country_name": "伊拉克",
+          "year": "2024",
+          "downloads": 3096,
+          "revenue": 1895,
+          "rpd": 0.61,
+          "downloads_M": 0.003,
+          "revenue_M": 0.002
+        },
+        {
+          "region": "中东",
+          "country": "SA",
+          "country_name": "沙特阿拉伯",
+          "year": "2024",
+          "downloads": 9520,
+          "revenue": 4842,
+          "rpd": 0.51,
+          "downloads_M": 0.01,
+          "revenue_M": 0.005
+        },
+        {
+          "region": "中东",
+          "country": "DZ",
+          "country_name": "阿尔及利亚",
+          "year": "2024",
+          "downloads": 7071,
+          "revenue": 219,
+          "rpd": 0.03,
+          "downloads_M": 0.007,
+          "revenue_M": 0
+        },
+        {
+          "region": "中东",
+          "country": "EG",
+          "country_name": "埃及",
+          "year": "2024",
+          "downloads": 31413,
+          "revenue": 497,
+          "rpd": 0.02,
+          "downloads_M": 0.031,
+          "revenue_M": 0
+        },
+        {
+          "region": "中东",
+          "country": "MA",
+          "country_name": "摩洛哥",
+          "year": "2024",
+          "downloads": 406,
+          "revenue": 119,
+          "rpd": 0.29,
+          "downloads_M": 0,
+          "revenue_M": 0
+        },
+        {
+          "region": "拉美",
+          "country": "BR",
+          "country_name": "巴西",
+          "year": "2024",
+          "downloads": 136901,
+          "revenue": 45067,
+          "rpd": 0.33,
+          "downloads_M": 0.137,
+          "revenue_M": 0.045
+        },
+        {
+          "region": "拉美",
+          "country": "MX",
+          "country_name": "墨西哥",
+          "year": "2024",
+          "downloads": 3430,
+          "revenue": 24845,
+          "rpd": 7.24,
+          "downloads_M": 0.003,
+          "revenue_M": 0.025
+        },
+        {
+          "region": "拉美",
+          "country": "PE",
+          "country_name": "秘鲁",
+          "year": "2024",
+          "downloads": 25819,
+          "revenue": 12922,
+          "rpd": 0.5,
+          "downloads_M": 0.026,
+          "revenue_M": 0.013
+        },
+        {
+          "region": "拉美",
+          "country": "CO",
+          "country_name": "哥伦比亚",
+          "year": "2024",
+          "downloads": 18709,
+          "revenue": 6663,
+          "rpd": 0.36,
+          "downloads_M": 0.019,
+          "revenue_M": 0.007
+        },
+        {
+          "region": "拉美",
+          "country": "CL",
+          "country_name": "智利",
+          "year": "2024",
+          "downloads": 4847,
+          "revenue": 13189,
+          "rpd": 2.72,
+          "downloads_M": 0.005,
+          "revenue_M": 0.013
+        },
+        {
+          "region": "拉美",
+          "country": "AR",
+          "country_name": "阿根廷",
+          "year": "2024",
+          "downloads": 15403,
+          "revenue": 6202,
+          "rpd": 0.4,
+          "downloads_M": 0.015,
+          "revenue_M": 0.006
+        },
+        {
+          "region": "东南亚",
+          "country": "ID",
+          "country_name": "印尼",
+          "year": "2025",
+          "downloads": 711087,
+          "revenue": 25326,
+          "rpd": 0.04,
+          "downloads_M": 0.711,
+          "revenue_M": 0.025
+        },
+        {
+          "region": "东南亚",
+          "country": "VN",
+          "country_name": "越南",
+          "year": "2025",
+          "downloads": 10957434,
+          "revenue": 4893941,
+          "rpd": 0.45,
+          "downloads_M": 10.957,
+          "revenue_M": 4.894
+        },
+        {
+          "region": "东南亚",
+          "country": "TH",
+          "country_name": "泰国",
+          "year": "2025",
+          "downloads": 5558872,
+          "revenue": 15619807,
+          "rpd": 2.81,
+          "downloads_M": 5.559,
+          "revenue_M": 15.62
+        },
+        {
+          "region": "东南亚",
+          "country": "MY",
+          "country_name": "马来西亚",
+          "year": "2025",
+          "downloads": 84650,
+          "revenue": 51122,
+          "rpd": 0.6,
+          "downloads_M": 0.085,
+          "revenue_M": 0.051
+        },
+        {
+          "region": "东南亚",
+          "country": "PH",
+          "country_name": "菲律宾",
+          "year": "2025",
+          "downloads": 180892,
+          "revenue": 9548,
+          "rpd": 0.05,
+          "downloads_M": 0.181,
+          "revenue_M": 0.01
+        },
+        {
+          "region": "中东",
+          "country": "IQ",
+          "country_name": "伊拉克",
+          "year": "2025",
+          "downloads": 10649,
+          "revenue": 858,
+          "rpd": 0.08,
+          "downloads_M": 0.011,
+          "revenue_M": 0.001
+        },
+        {
+          "region": "中东",
+          "country": "SA",
+          "country_name": "沙特阿拉伯",
+          "year": "2025",
+          "downloads": 2400,
+          "revenue": 2507,
+          "rpd": 1.04,
+          "downloads_M": 0.002,
+          "revenue_M": 0.003
+        },
+        {
+          "region": "中东",
+          "country": "DZ",
+          "country_name": "阿尔及利亚",
+          "year": "2025",
+          "downloads": 448,
+          "revenue": 2,
+          "rpd": 0.01,
+          "downloads_M": 0,
+          "revenue_M": 0
+        },
+        {
+          "region": "中东",
+          "country": "EG",
+          "country_name": "埃及",
+          "year": "2025",
+          "downloads": 7904,
+          "revenue": 193,
+          "rpd": 0.02,
+          "downloads_M": 0.008,
+          "revenue_M": 0
+        },
+        {
+          "region": "中东",
+          "country": "MA",
+          "country_name": "摩洛哥",
+          "year": "2025",
+          "downloads": 189,
+          "revenue": 272,
+          "rpd": 1.44,
+          "downloads_M": 0,
+          "revenue_M": 0
+        },
+        {
+          "region": "拉美",
+          "country": "BR",
+          "country_name": "巴西",
+          "year": "2025",
+          "downloads": 46825,
+          "revenue": 38840,
+          "rpd": 0.83,
+          "downloads_M": 0.047,
+          "revenue_M": 0.039
+        },
+        {
+          "region": "拉美",
+          "country": "MX",
+          "country_name": "墨西哥",
+          "year": "2025",
+          "downloads": 1874,
+          "revenue": 17818,
+          "rpd": 9.51,
+          "downloads_M": 0.002,
+          "revenue_M": 0.018
+        },
+        {
+          "region": "拉美",
+          "country": "PE",
+          "country_name": "秘鲁",
+          "year": "2025",
+          "downloads": 16526,
+          "revenue": 8969,
+          "rpd": 0.54,
+          "downloads_M": 0.017,
+          "revenue_M": 0.009
+        },
+        {
+          "region": "拉美",
+          "country": "CO",
+          "country_name": "哥伦比亚",
+          "year": "2025",
+          "downloads": 1897,
+          "revenue": 5550,
+          "rpd": 2.93,
+          "downloads_M": 0.002,
+          "revenue_M": 0.006
+        },
+        {
+          "region": "拉美",
+          "country": "CL",
+          "country_name": "智利",
+          "year": "2025",
+          "downloads": 1926,
+          "revenue": 9284,
+          "rpd": 4.82,
+          "downloads_M": 0.002,
+          "revenue_M": 0.009
+        },
+        {
+          "region": "拉美",
+          "country": "AR",
+          "country_name": "阿根廷",
+          "year": "2025",
+          "downloads": 3748,
+          "revenue": 3695,
+          "rpd": 0.99,
+          "downloads_M": 0.004,
+          "revenue_M": 0.004
+        }
+      ]
+    }
+  }
+}

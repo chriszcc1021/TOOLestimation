@@ -641,8 +641,8 @@ body.le .shot b[data-lang-en]{display:block!important;}
 
 <!-- S6 SCALE -->
 <section class="slide"
-  data-notes="本页把海外发行拆成两个情景。保守版主要以第五人格为基准进行预估，按目标倒推让国家RPD在第五人格基础上×1.3，Y1收入目标为900万美元。乐观版主要以第五人格为基准进行预估，上限参考社交派对组队类产品；国家RPD在保守版基础上×1.35，Y1收入目标为5500万美元。下载量按首年收入目标倒推，并保持原区域/国家结构与后续年份衰减关系。IQ/MA因Y1/Y2无有效行采用邻近市场代理，主表RPD为下载加权均值。"
-  data-notes-en="This page separates the overseas launch into two scenarios. The conservative case is mainly benchmarked against Identity V and target-solved to a USD 9M Y1 revenue case by applying Identity V country RPD ×1.3. The optimistic case is also mainly benchmarked against Identity V, with the upper bound informed by social-party team-play titles; country RPD is 1.35x the conservative case, target-solved to USD 55M in Y1 revenue. Downloads are back-solved from the Y1 revenue targets while preserving the original regional/country mix and later-year decay. IQ/MA use neighboring-market proxies because Y1/Y2 had no effective rows; main-table RPD is download-weighted.">
+  data-notes="本页把海外发行拆成两个情景。保守版主要以第五人格为基准进行预估，按目标倒推到Y1收入900万美元；国家RPD以第五人格为底座，并对越南、泰国、菲律宾、巴西、墨西哥按人工口径校准。乐观版主要以第五人格为基准进行预估，上限参考社交派对组队类产品；国家RPD在保守版基础上×1.35，Y1收入目标为5500万美元。下载量按收入目标和国家RPD倒推，并保持原区域/国家结构与后续年份衰减关系。IQ/MA因Y1/Y2无有效行采用邻近市场代理，主表RPD为下载加权均值。"
+  data-notes-en="This page separates the overseas launch into two scenarios. The conservative case is mainly benchmarked against Identity V and target-solved to a USD 9M Y1 revenue case; country RPD uses Identity V as the base, with Vietnam, Thailand, Philippines, Brazil, and Mexico manually calibrated. The optimistic case is also mainly benchmarked against Identity V, with the upper bound informed by social-party team-play titles; country RPD is 1.35x the conservative case, target-solved to USD 55M in Y1 revenue. Downloads are back-solved from the revenue targets and country RPD while preserving the original regional/country mix and later-year decay. IQ/MA use neighboring-market proxies because Y1/Y2 had no effective rows; main-table RPD is download-weighted.">
 <div class="bh"></div>
 <div class="sc">
   <h2 class="rv" data-lang-cn>海外市场前三年规模预估 — 保守版与乐观版</h2>
@@ -819,6 +819,7 @@ body.le .shot b[data-lang-en]{display:block!important;}
     IQ:.3213,SA:.5034,DZ:.0050,EG:.1393,MA:.0722,
     BR:.2540,MX:.6360,PE:.4762,CO:.1310,CL:.4329,AR:.1569
   };
+  const conservativeRpdOverride={VN:.55,TH:1.50,PH:.47,BR:.80,MX:1.30};
   const data={
     cs:{rpdDiscount:1.4808106868968192,years:[
       {sea:[1.90385,1.55769,1.38462,.86538,1.21154],mena:[.34615,.69231,.34615,.34615,.34615],latam:[1.55769,1.21154,.51923,.69231,.34615,.51923]},
@@ -836,7 +837,21 @@ body.le .shot b[data-lang-en]{display:block!important;}
   const fmtMoney=v=>"$"+(v<.1?(v+1e-9).toFixed(2):(v+1e-9).toFixed(1))+"M";
   const fmtRpd=v=>"$"+(v+1e-9).toFixed(2);
   const sum=arr=>arr.reduce((a,b)=>a+b,0);
-  const countryRpd=(scenario,code)=>identityVCountryRpd[code]*data[scenario].rpdDiscount;
+  const countryRpd=(scenario,code)=>{
+    const override=conservativeRpdOverride[code];
+    if(override!=null)return scenario==="op"?override*1.35:override;
+    return identityVCountryRpd[code]*data[scenario].rpdDiscount;
+  };
+  Object.keys(conservativeRpdOverride).forEach(code=>{
+    const idxByRegion=regionOrder.map(k=>[k,countries[k].findIndex(c=>c[2]===code)]).find(([,i])=>i>=0);
+    if(!idxByRegion)return;
+    const [region,idx]=idxByRegion;
+    ["cs","op"].forEach(scenario=>{
+      const oldRpd=identityVCountryRpd[code]*data[scenario].rpdDiscount;
+      const newRpd=countryRpd(scenario,code);
+      data[scenario].years.forEach(y=>{y[region][idx]=y[region][idx]*oldRpd/newRpd;});
+    });
+  });
   function yearTotal(scenario,yearIndex){
     const y=data[scenario].years[yearIndex];
     let downloads=0,revenue=0;
@@ -864,8 +879,8 @@ body.le .shot b[data-lang-en]{display:block!important;}
       return `<tr><td><span data-lang-cn>${c[0]}</span><span data-lang-en>${c[1]}</span><b class="ccode">${c[2]}</b></td><td>${fmtD(v)}</td><td>${fmtMoney(v*rpd)}</td><td>${fmtRpd(rpd)}</td></tr>`;
     }).join("");
     const rpd=revenue/total;
-    const rpdCn=scenario==="cs"?`第五人格国家Y1/Y2平均RPD × 1.3，本区加权 ${fmtRpd(rpd)}`:`保守版国家RPD × 1.35，本区加权 ${fmtRpd(rpd)}`;
-    const rpdEn=scenario==="cs"?`Identity V country Y1/Y2 average RPD × 1.3; region weighted ${fmtRpd(rpd)}`:`Conservative country RPD × 1.35; region weighted ${fmtRpd(rpd)}`;
+    const rpdCn=scenario==="cs"?`第五人格国家RPD为底座，核心国家校准，本区加权 ${fmtRpd(rpd)}`:`保守版国家RPD × 1.35，本区加权 ${fmtRpd(rpd)}`;
+    const rpdEn=scenario==="cs"?`Identity V country RPD base with key-market calibration; region weighted ${fmtRpd(rpd)}`:`Conservative country RPD × 1.35; region weighted ${fmtRpd(rpd)}`;
     return `<article class="forecast-region">
       <div class="forecast-head">
         <div class="forecast-name"><span data-lang-cn>${m.cn}</span><span data-lang-en>${m.en}</span></div>
@@ -877,8 +892,8 @@ body.le .shot b[data-lang-en]{display:block!important;}
   }
   function scopeHtml(scenario,yearIndex){
     const y=data[scenario].years[yearIndex];
-    const noteCn=scenario==="cs"?"算法口径：下载以第五人格海外同年区域/国家结构为底座，并按Y1收入$9.0M目标倒推放大；国家RPD取第五人格对应国家Y1/Y2均值×1.3，固定三年；IQ/MA无有效行，使用中东邻近市场代理；主表RPD为下载加权均值。":"算法口径：下载以第五人格海外同年区域/国家结构为底座，并按Y1收入$55.0M目标倒推放大；国家RPD=保守版国家RPD×1.35，固定三年；IQ/MA无有效行，使用中东邻近市场代理；主表RPD为下载加权均值。";
-    const noteEn=scenario==="cs"?"Method: downloads start from Identity V's same-year overseas regional/country mix and are scaled to solve for a USD 9.0M Y1 revenue target; country RPD uses each country's Identity V Y1/Y2 average ×1.3, fixed for three years. IQ/MA use neighboring-market proxies; main-table RPD is download-weighted.":"Method: downloads start from Identity V's same-year overseas regional/country mix and are scaled to solve for a USD 55.0M Y1 revenue target; country RPD equals conservative country RPD × 1.35, fixed for three years. IQ/MA use neighboring-market proxies; main-table RPD is download-weighted.";
+    const noteCn=scenario==="cs"?"算法口径：下载以第五人格海外同年区域/国家结构为底座，并按Y1收入$9.0M目标倒推；国家RPD以第五人格为底座，越南$0.55、泰国$1.50、菲律宾$0.47、巴西$0.80、墨西哥$1.30按人工口径校准，固定三年；IQ/MA无有效行，使用中东邻近市场代理；主表RPD为下载加权均值。":"算法口径：下载以第五人格海外同年区域/国家结构为底座，并按Y1收入$55.0M目标倒推；国家RPD=保守版国家RPD×1.35，固定三年；IQ/MA无有效行，使用中东邻近市场代理；主表RPD为下载加权均值。";
+    const noteEn=scenario==="cs"?"Method: downloads start from Identity V's same-year overseas regional/country mix and are scaled to solve for a USD 9.0M Y1 revenue target; country RPD uses Identity V as the base, with Vietnam $0.55, Thailand $1.50, Philippines $0.47, Brazil $0.80, and Mexico $1.30 manually calibrated and fixed for three years. IQ/MA use neighboring-market proxies; main-table RPD is download-weighted.":"Method: downloads start from Identity V's same-year overseas regional/country mix and are scaled to solve for a USD 55.0M Y1 revenue target; country RPD equals conservative country RPD × 1.35, fixed for three years. IQ/MA use neighboring-market proxies; main-table RPD is download-weighted.";
     return `<div class="forecast-scope"><div class="forecast-grid">${regionOrder.map(k=>regionHtml(scenario,y,k)).join("")}</div><div class="forecast-note"><span data-lang-cn>${noteCn}</span><span data-lang-en>${noteEn}</span></div></div>`;
   }
   function applyScenarioSummary(scenario,selector){
