@@ -1,5 +1,23 @@
 # supernatural-overseas-opportunity-deck version log
 
+## v1.3.0 - 2026-05-06 21:48 CST
+
+Snapshot: `supernatural-overseas-opportunity-deck_v1.3.0.html`
+
+Changelist:
+- Reworked the `Market fit rationale` slide to show only the three requested core countries: Indonesia, Thailand, and Mexico.
+- Removed Vietnam, Brazil, Philippines, Malaysia/Singapore, and MENA references from that slide.
+- Added product image proof galleries under each country card:
+  - Indonesia: `Granny`, `Specimen Zero`, `The Ghost`, `Stumble Guys`.
+  - Thailand: `Identity V / 第五人格`, `Granny`, `Free Fire`.
+  - Mexico: `Granny`, `Specimen Zero`, `Among Us`, `2/3/4 Player`.
+- Updated the slide title and test division copy to match the three-country focus.
+- Verified the slide now has 3 country cards and 11 product images; verified HTML tag balance and confirmed no API token was written into the HTML.
+
+Rollback:
+- To restore this version, replace `E:\supernatural-overseas-opportunity-deck.html` with the snapshot above.
+- To roll back to the previous version, restore `supernatural-overseas-opportunity-deck_v1.2.0.html`.
+
 ## v1.2.0 - 2026-05-06 21:34 CST
 
 Snapshot: `supernatural-overseas-opportunity-deck_v1.2.0.html`
