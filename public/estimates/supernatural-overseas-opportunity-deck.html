@@ -571,6 +571,83 @@
     .evidence-table td:nth-child(4) { width: 16%; }
     .micro .evidence-table td { padding: 8px 9px; }
     .micro .evidence-table th { padding: 8px 9px; font-size: 12px; }
+    .download-logic-table {
+      table-layout: fixed;
+    }
+    .micro .download-logic-table {
+      font-size: 11px;
+      line-height: 1.12;
+    }
+    .download-logic-table th {
+      white-space: normal;
+    }
+    .download-logic-table th:nth-child(1),
+    .download-logic-table td:nth-child(1) { width: 8%; }
+    .download-logic-table th:nth-child(2),
+    .download-logic-table td:nth-child(2) { width: 25%; }
+    .download-logic-table th:nth-child(3),
+    .download-logic-table td:nth-child(3) { width: 32%; }
+    .download-logic-table th:nth-child(4),
+    .download-logic-table td:nth-child(4) { width: 9%; }
+    .download-logic-table th:nth-child(5),
+    .download-logic-table td:nth-child(5) { width: 18%; }
+    .download-logic-table th:nth-child(6),
+    .download-logic-table td:nth-child(6) { width: 8%; }
+    .revenue-table {
+      table-layout: fixed;
+    }
+    .micro .revenue-table {
+      font-size: 10px;
+      line-height: 1.08;
+    }
+    .micro .revenue-table th,
+    .micro .revenue-table td {
+      padding: 5px 6px;
+    }
+    .revenue-table th {
+      white-space: normal;
+    }
+    .revenue-table td.scenario-base {
+      background: rgba(32, 86, 126, .12);
+    }
+    .revenue-table th.scenario-base {
+      background: #20567e;
+      color: #fff;
+    }
+    .revenue-table td.scenario-upside {
+      background: rgba(148, 41, 36, .12);
+    }
+    .revenue-table th.scenario-upside {
+      background: #9a2d2a;
+      color: #fff;
+    }
+    .revenue-notes {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .revenue-notes div {
+      border-left: 5px solid var(--blood);
+      background: rgba(255,245,223,.66);
+      padding: 10px 12px;
+      font-size: 16px;
+      line-height: 1.25;
+      font-weight: 760;
+    }
+    .appendix-cover {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .appendix-cover h2 {
+      font-size: 118px;
+      letter-spacing: 0;
+    }
+    .appendix-cover .kicker {
+      margin-bottom: 18px;
+    }
     a.ref-link {
       color: var(--blue);
       font-weight: 900;
@@ -836,7 +913,7 @@
           <tr><th>付费模块</th><th>信号</th><th class="num">估算占比</th><th>判断</th></tr>
         </thead>
         <tbody>
-          <tr><td>角色/主题皮肤</td><td>联动时装、角色皮肤和主题外观持续出现在官方更新与社区内容中</td><td class="num">35%-45%</td><td><span class="tag red">主要收入</span></td></tr>
+          <tr><td>主题/外观皮肤</td><td>联动时装、主题外观、武器外观持续出现在官方更新与社区内容中</td><td class="num">35%-45%</td><td><span class="tag red">主要收入</span></td></tr>
           <tr><td>抽取/奖池</td><td>抽奖池、递增抽取成本、大奖分享、道具/武器皮肤</td><td class="num">25%-35%</td><td><span class="tag red">重要</span></td></tr>
           <tr><td>角色购买</td><td>角色可付费购买，员工档案和角色故事强化角色资产价值</td><td class="num">8%-12%</td><td><span class="tag gold">中高</span></td></tr>
           <tr><td>动作/语音/武器皮肤</td><td>专属动作、专属语音动画、100+语音彩蛋</td><td class="num">10%-15%</td><td><span class="tag gold">中高</span></td></tr>
@@ -875,59 +952,33 @@
   <section class="slide">
     <div class="content tight micro">
       <div class="kicker">Download layering</div>
-      <h2>Overlap只辅助判断用户习惯，不直接折成下载</h2>
+      <h2>预估下载量</h2>
       <div class="logic-strip">
-        <div><b>先定主要参考组</b><span>用本地轻恐/在线恐怖首年下载做起点；泰国把第五人格作为审美和下载上调参考。</span></div>
-        <div><b>再做去重</b><span>同一个玩家可能玩多个恐怖游戏，所以不能把每个参考游戏下载量直接相加。</span></div>
-        <div><b>最后加社交上调</b><span>Roblox / Among Us / Stumble 等只说明组队社交习惯，保守情景里只额外加一部分下载。</span></div>
+        <div><b>保守版逻辑</b><span>主要参考 Granny、Specimen Zero、The Ghost、第五人格等本地轻恐/在线恐怖/审美相近产品，按相似度加权后去重。</span></div>
+        <div><b>交叉参考</b><span>Roblox、Among Us、Stumble Guys、Minecraft、Play Together 只判断组队/派对/社交习惯，不直接折成下载。</span></div>
+        <div><b>乐观版逻辑</b><span>若产品调性更偏社交派对，好友邀请、短视频传播和组队留存会带来更多下载量。</span></div>
       </div>
-      <table>
+      <table class="download-logic-table">
         <thead>
-          <tr><th>国家</th><th>轻恐参考组</th><th class="num">去重后</th><th>Overlap说明</th><th class="num">社交上调</th><th class="num">保守下载</th></tr>
+          <tr><th>国家</th><th>保守版：主要参考和去重</th><th>交叉参考</th><th class="num">保守下载</th><th>乐观版：增量来源</th><th class="num">乐观下载</th></tr>
         </thead>
         <tbody>
-          <tr><td>印尼</td><td>Granny 2.90M + Specimen/Ghost加权1.47M = 4.37M</td><td class="num">3.55M</td><td>Roblox 51%、Stickman Party 19%、Stumble 8%，说明年轻组队/派对习惯强；FF/MLBB/AOV只作外围习惯信号。</td><td class="num">+0.45M</td><td class="num"><b>4.0M</b></td></tr>
-          <tr><td>泰国</td><td>Granny 3.52M + IDV 4.96M×45% + Ghost 1.50M×20% = 6.05M</td><td class="num">3.75M</td><td>IDV泰国首年4.96M证明轻恐审美强；Roblox/Minecraft高重叠说明组队内容可触达。</td><td class="num">+0.65M</td><td class="num"><b>4.4M</b></td></tr>
-          <tr><td>越南</td><td>Granny 3.32M + IDV/Ghost/Specimen加权0.71M = 4.03M</td><td class="num">3.55M</td><td>Granny续作、Minecraft和本地组队游戏信号强；按轻恐下载基础保守去重后给社交上调。</td><td class="num">+0.45M</td><td class="num"><b>4.0M</b></td></tr>
-          <tr><td>菲律宾</td><td>Granny 2.68M + Specimen/Mimicry加权1.10M = 3.78M</td><td class="num">2.95M</td><td>重叠更多来自轻恐续作/Minecraft，本地派对信号弱于印尼；英语内容传播给小幅上调。</td><td class="num">+0.25M</td><td class="num"><b>3.2M</b></td></tr>
-          <tr><td>巴西</td><td>Granny 8.22M + Specimen/Mimicry加权1.11M = 9.33M</td><td class="num">3.90M</td><td>轻恐参考下载大，但Roblox/Among Us/Stumble和恐怖游戏用户重叠也高，因此去重最多，只做小幅上调。</td><td class="num">+0.30M</td><td class="num"><b>4.2M</b></td></tr>
-          <tr><td>墨西哥</td><td>Granny 3.36M + Specimen/Ghost加权1.44M = 4.80M</td><td class="num">3.50M</td><td>Roblox、2/3/4 Player、Among Us信号更清晰，且西语内容可跨地区传播，上调高于巴西。</td><td class="num">+0.30M</td><td class="num"><b>3.8M</b></td></tr>
+          <tr><td>印尼</td><td>Granny 2.90M + Specimen/Ghost 加权后4.37M；去重后3.55M，再小幅社交上调。</td><td>Roblox 51%、Stickman Party 19%、Stumble 8%；FF/MLBB/AOV只作外围习惯信号。</td><td class="num"><b>4.0M</b></td><td>派对/组队习惯强，短视频传播成立时保守×1.8。</td><td class="num"><b>7.2M</b></td></tr>
+          <tr><td>泰国</td><td>Granny 3.52M + 第五人格 4.96M×45% + Ghost 1.50M×20%；去重后保守取4.4M。</td><td>第五人格泰国首年4.96M；Roblox/Minecraft高重叠；补充 Stumble 作为派对传播参考。</td><td class="num"><b>4.4M</b></td><td>社交派对调性叠加轻恐审美和角色付费，下载可接近8M。</td><td class="num"><b>8.0M</b></td></tr>
+          <tr><td>越南</td><td>Granny 3.32M + 第五人格/Ghost/Specimen 加权后4.03M；去重后3.55M，再加组队上调。</td><td>Minecraft、Play Together、Granny续作说明年轻组队和轻社交习惯；按轻恐下载基础保守去重。</td><td class="num"><b>4.0M</b></td><td>在线组队习惯较好，社交传播成立时保守×1.63。</td><td class="num"><b>6.5M</b></td></tr>
+          <tr><td>菲律宾</td><td>Granny 2.68M + Specimen/Mimicry 加权后3.78M；去重后2.95M，再小幅上调。</td><td>重叠更多来自轻恐续作/Minecraft；英语内容更利于跨地区传播。</td><td class="num"><b>3.2M</b></td><td>英语社交传播较好，但本地派对强度弱于印尼。</td><td class="num"><b>5.0M</b></td></tr>
+          <tr><td>巴西</td><td>Granny 8.22M + Specimen/Mimicry 加权后9.33M；因人群重叠高，去重后3.90M。</td><td>The Ghost、Specimen、Among Us、Stumble均有重叠；轻恐下载大但去重最多。</td><td class="num"><b>4.2M</b></td><td>若产品更像社交派对，朋友组队和短视频能带来额外下载。</td><td class="num"><b>7.2M</b></td></tr>
+          <tr><td>墨西哥</td><td>Granny 3.36M + Specimen/Ghost 加权后4.80M；去重后3.50M，再按西语内容上调。</td><td>Roblox、Among Us信号清晰；西语内容可跨拉美传播。</td><td class="num"><b>3.8M</b></td><td>西语内容传播和朋友局成立时，下载可上调到6.8M。</td><td class="num"><b>6.8M</b></td></tr>
         </tbody>
       </table>
-      <div class="foot">Overlap说明：Sensor Tower app_overlap，2026Q1，category=6014 Games。公式：保守下载 = 参考组 × 去重后保留比例 + 社交上调；overlap只判断用户习惯是否接近和上调强弱，不等于可转化用户。</div>
-    </div>
-  </section>
-
-  <section class="slide">
-    <div class="content tight micro">
-      <div class="kicker">Download formula summary</div>
-      <h2>保守下载按相似游戏、去重和社交传播三步计算</h2>
-      <div class="logic-strip">
-        <div><b>相似游戏</b><span>先取轻恐首年下载，再按相似度加入在线恐怖/审美相近产品。</span></div>
-        <div><b>去重</b><span>如果一批玩家同时玩多个参考游戏，只算一次；相似度越高，去重越多。</span></div>
-        <div><b>Overlap上调</b><span>Overlap不是下载量，只说明这些用户也常玩组队/派对游戏，因此可少量上调保守值。</span></div>
-      </div>
-      <table>
-        <thead>
-          <tr><th>国家</th><th>相似用户计算</th><th>为什么可到这个量级</th><th>Overlap上调</th><th class="num">保守结果</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>印尼</td><td>Granny 2.90M + Specimen 2.90M×30% + Ghost 2.43M×25% = 4.37M；去重后取81% = 3.55M</td><td>Granny、Specimen、Ghost首年都在2.4M-2.9M，印尼同时具备单机轻恐和在线恐怖下载基础；用户重叠和设备门槛仍需去重。</td><td>Stickman Party 18.51%、Stumble 8.20%、Eyes 5.58%、Roblox 51.25%；外围竞技说明在线组队习惯，上调 +0.45M。</td><td class="num"><b>4.0M</b></td></tr>
-          <tr><td>泰国</td><td>Granny 3.52M + IDV 4.96M×45% + Ghost 1.50M×20% = 6.05M；去重后取62% = 3.75M</td><td>IDV泰国首年4.96M明显高于其他SEA国家，说明轻恐审美和角色接受度强；超自然虽不是1v4竞技，但泰国下载不应低于普通轻恐参考太多。</td><td>Roblox 66.86%、Minecraft 22.68%、Eyes 9.01%、Granny3 4.81%，上调 +0.65M。</td><td class="num"><b>4.4M</b></td></tr>
-          <tr><td>越南</td><td>Granny 3.32M + IDV 0.94M×45% + Ghost/Specimen 1.43M×20% = 4.03M；去重后取88% = 3.55M</td><td>越南Granny首年强，IDV提供轻恐审美验证；Ghost/Specimen较弱，因此只给小权重。在线竞技/组队强，让4M作为保守值有支撑。</td><td>Granny Chapter Two 17.44%、Eyes 10.25%、Minecraft 11.96%；外围竞技/组队作为年轻在线触达信号，上调 +0.45M。</td><td class="num"><b>4.0M</b></td></tr>
-          <tr><td>菲律宾</td><td>Granny 2.68M + Specimen 2.15M×30% + Mimicry 1.80M×25% = 3.78M；去重后取78% = 2.95M</td><td>PH首年多人恐怖参考不弱，且英语市场更利于内容传播；但PH overlap更偏轻恐续作/Minecraft，本地派对强度不如印尼，所以低于4M。</td><td>Granny3 7.48%、Grandma Horror 4.05%、Eyes 3.93%、Manok Na Pula 7.65%、Minecraft最高4.98%，上调 +0.25M。</td><td class="num"><b>3.2M</b></td></tr>
-          <tr><td>巴西</td><td>Granny 8.22M + Specimen 5.66M×15% + Mimicry 2.61M×10% = 9.33M；去重后取42% = 3.90M</td><td>巴西下载参考量大，但轻恐/派对人群重叠高，且RPD低于墨西哥；保守情景采用更高去重，避免收入过度集中。</td><td>The Ghost 14.96%、Specimen 15.11%、Among Us 8.15%-11.89%、Stumble 9.37%-11.36%，上调 +0.30M。</td><td class="num"><b>4.2M</b></td></tr>
-          <tr><td>墨西哥</td><td>Granny 3.36M + Specimen 2.90M×35% + Ghost 1.68M×25% = 4.80M；去重后取73% = 3.50M</td><td>墨西哥付费篮子和西语内容跨地区传播更强，下载模型给到3.8M以匹配收入质量。</td><td>2/3/4 Player 16.21%、Among Us 11.47%、Granny 10.51%、Specimen 4.57%，上调 +0.30M。</td><td class="num"><b>3.8M</b></td></tr>
-        </tbody>
-      </table>
-      <div class="foot">统一计算方式：保守下载 = 相似游戏下载加权后去重，再用Games overlap做少量上调。差异来自本地参考游戏下载、玩法/审美相似度、overlap强弱和国家传播环境；FF/MLBB/AOV不直接折成下载。</div>
+      <div class="foot">Overlap说明：Sensor Tower app_overlap，2026Q1，category=6014 Games。公式：保守下载 = 参考产品加权后去重 + 少量社交上调；乐观下载 = 保守下载 × 社交派对传播系数。</div>
     </div>
   </section>
 
   <section class="slide">
     <div class="content tight micro">
       <div class="kicker">Year 1 downloads</div>
-      <h2>首年保守下载约29.2M，主量来自SEA和LATAM</h2>
+      <h2>首年保守下载29.2M，乐观下载50.3M</h2>
       <table>
         <thead>
           <tr>
@@ -952,9 +1003,9 @@
   </section>
 
   <section class="slide">
-    <div class="content tight micro">
+      <div class="content tight micro">
       <div class="kicker">Market fit rationale</div>
-      <h2>首轮重点看印尼、泰国、越南、墨西哥</h2>
+      <h2>重点区域类似产品参考</h2>
       <div class="fit-wall four">
         <div class="fit-card">
           <div class="fit-head"><div class="fit-country">印尼</div><div class="fit-role">下载验证重点</div></div>
@@ -972,20 +1023,21 @@
         <div class="fit-card value">
           <div class="fit-head"><div class="fit-country">泰国</div><div class="fit-role">审美 + RPD重点</div></div>
           <div class="proof-title">已验证相似游戏</div>
-          <div class="proof-chips"><span class="proof-chip">第五人格</span><span class="proof-chip">Granny</span><span class="proof-chip">Free Fire</span></div>
-          <p>第五人格在泰国发行表现好，说明用户接受轻恐、角色化、偏哥特/诡异画风；同时泰国付费质量相对好，适合看皮肤内容转化。</p>
+          <div class="proof-chips"><span class="proof-chip">第五人格</span><span class="proof-chip">Granny</span><span class="proof-chip">Free Fire</span><span class="proof-chip">Stumble Guys</span></div>
+          <p>第五人格在泰国发行表现好，说明用户接受轻恐和角色化画风；Stumble Guys用于补充低门槛派对传播参考，同时泰国付费质量相对好，适合看皮肤内容转化。</p>
           <div class="fit-test">重点验证：角色审美、皮肤转化、通行证RPD。</div>
           <div class="proof-gallery">
             <figure class="proof-shot"><img src="https://play-lh.googleusercontent.com/8-SniYIRaeki791FyNlRggRuIjlxBpYM9k6F7q1UL75FW7IEUSWridDbrXmX5DkTokRq" alt="Identity V" referrerpolicy="no-referrer" /><figcaption>第五人格</figcaption></figure>
             <figure class="proof-shot"><img src="https://play-lh.googleusercontent.com/yT_LBq_tyKeIDohKDsqN_Qt18jGIPUYIxY2C-1-E2YA9Qd60uZW08pua17qBmIiDPA" alt="Granny" referrerpolicy="no-referrer" /><figcaption>Granny</figcaption></figure>
             <figure class="proof-shot"><img src="https://play-lh.googleusercontent.com/Tzh1vMigK1Cn7_KIaMvKBVQRQapIMWMMqqyA6UqJTAYRpino4vvX6ZvYcVjZ_D8g19-DfHKCVeO2QPWl8vHGzw" alt="Free Fire" referrerpolicy="no-referrer" /><figcaption>Free Fire</figcaption></figure>
+            <figure class="proof-shot"><img src="https://play-lh.googleusercontent.com/Qr95gFdl_scidWsdHVP1f7FXe9fSgfrHhCyK0T6UnN4Ru-6PrTgaVN7CSfkrG5JzsQFpBWNiXLyBDzcIx7U-" alt="Stumble Guys" referrerpolicy="no-referrer" /><figcaption>Stumble Guys</figcaption></figure>
           </div>
         </div>
         <div class="fit-card">
           <div class="fit-head"><div class="fit-country">越南</div><div class="fit-role">下载 + 组队</div></div>
           <div class="proof-title">已验证相似游戏</div>
-          <div class="proof-chips"><span class="proof-chip">Granny</span><span class="proof-chip">第五人格</span><span class="proof-chip">The Ghost</span><span class="proof-chip">Minecraft</span></div>
-          <p>Granny首年下载强，第五人格提供轻恐审美参考；Minecraft和本地组队游戏信号说明年轻用户有组队习惯。</p>
+          <div class="proof-chips"><span class="proof-chip">Granny</span><span class="proof-chip">第五人格</span><span class="proof-chip">The Ghost</span><span class="proof-chip">Minecraft</span><span class="proof-chip">Play Together</span></div>
+          <p>Granny首年下载强，第五人格提供轻恐审美参考；Minecraft和Play Together补充年轻用户组队、轻社交和虚拟身份习惯。</p>
           <div class="fit-test">重点验证：首周下载、好友邀请、组队留存。</div>
           <div class="proof-gallery">
             <figure class="proof-shot"><img src="https://play-lh.googleusercontent.com/yT_LBq_tyKeIDohKDsqN_Qt18jGIPUYIxY2C-1-E2YA9Qd60uZW08pua17qBmIiDPA" alt="Granny" referrerpolicy="no-referrer" /><figcaption>Granny</figcaption></figure>
@@ -996,14 +1048,13 @@
         <div class="fit-card latam value">
           <div class="fit-head"><div class="fit-country">墨西哥</div><div class="fit-role">恐怖 + 派对社交</div></div>
           <div class="proof-title">已验证相似游戏</div>
-          <div class="proof-chips"><span class="proof-chip">Granny</span><span class="proof-chip">Specimen Zero</span><span class="proof-chip">Among Us</span><span class="proof-chip">2/3/4 Player</span></div>
+          <div class="proof-chips"><span class="proof-chip">Granny</span><span class="proof-chip">Specimen Zero</span><span class="proof-chip">Among Us</span></div>
           <p>恐怖、超自然、民俗元素更容易有文化共鸣；社交派对类游戏接受度高，西语内容还能传播到更多拉美国家。</p>
           <div class="fit-test">重点验证：西语内容、朋友局传播、皮肤RPD。</div>
           <div class="proof-gallery">
             <figure class="proof-shot"><img src="https://play-lh.googleusercontent.com/yT_LBq_tyKeIDohKDsqN_Qt18jGIPUYIxY2C-1-E2YA9Qd60uZW08pua17qBmIiDPA" alt="Granny" referrerpolicy="no-referrer" /><figcaption>Granny</figcaption></figure>
             <figure class="proof-shot"><img src="https://play-lh.googleusercontent.com/cTKWki9yFaFEttpTQDvToJ7juzfAX6uelqe3uFvwz15XQy6o11feaBvfXcKkwfhEcxf5" alt="Specimen Zero" referrerpolicy="no-referrer" /><figcaption>Specimen Zero</figcaption></figure>
             <figure class="proof-shot"><img src="https://play-lh.googleusercontent.com/8ddL1kuoNUB5vUvgDVjYY3_6HwQcrg1K2fd_R8soD-e2QYj8fT9cfhfh3G0hnSruLKec" alt="Among Us" referrerpolicy="no-referrer" /><figcaption>Among Us</figcaption></figure>
-            <figure class="proof-shot"><img src="https://play-lh.googleusercontent.com/vHuenuu1GqX1BwDaYX86dsbQlmA7vCO0PEdgdXlCEZP5x2_R3pZo0xcI9Mkdn4UW7NA" alt="2 3 4 Player Games" referrerpolicy="no-referrer" /><figcaption>2/3/4 Player</figcaption></figure>
           </div>
         </div>
       </div>
@@ -1015,96 +1066,32 @@
   <section class="slide">
     <div class="content tight micro">
       <div class="kicker">Country revenue view</div>
-      <h2>国家收入显示泰国和墨西哥是质量重点</h2>
-      <table>
+      <h2>首年收入预估：保守版$22.6M，乐观版$55.3M</h2>
+      <table class="revenue-table">
         <thead>
           <tr>
-            <th>区域</th><th>国家</th><th class="num">保守下载</th><th class="num">保守RPD</th><th class="num">保守收入</th><th class="num">乐观下载</th><th class="num">乐观RPD</th><th class="num">乐观收入</th><th>判断</th>
+            <th>区域</th><th>国家</th><th class="num">第五人格首年RPD</th><th class="num">MLBB首年RPD</th><th class="num">FF首年/参考RPD</th><th class="num scenario-base">保守下载</th><th class="num scenario-base">保守RPD</th><th class="num scenario-base">保守收入</th><th class="num scenario-upside">乐观下载</th><th class="num scenario-upside">乐观RPD</th><th class="num scenario-upside">乐观收入</th><th>判断</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>SEA</td><td>印尼</td><td class="num">4.0M</td><td class="num">$0.55</td><td class="num">$2.2M</td><td class="num">7.2M</td><td class="num">$0.75</td><td class="num">$5.4M</td><td>下载贡献大，RPD中低档。</td></tr>
-          <tr><td>SEA</td><td>泰国</td><td class="num">4.4M</td><td class="num">$1.20</td><td class="num">$5.3M</td><td class="num">8.0M</td><td class="num">$1.70</td><td class="num">$13.6M</td><td>SEA主要收入来源，明显高于其他SEA国家。</td></tr>
-          <tr><td>SEA</td><td>菲律宾</td><td class="num">3.2M</td><td class="num">$0.45</td><td class="num">$1.4M</td><td class="num">5.0M</td><td class="num">$0.60</td><td class="num">$3.0M</td><td>社交传播可验证，RPD低半档。</td></tr>
-          <tr><td>SEA</td><td>越南</td><td class="num">4.0M</td><td class="num">$0.55</td><td class="num">$2.2M</td><td class="num">6.5M</td><td class="num">$0.75</td><td class="num">$4.9M</td><td>在线组队强，RPD按印尼同档。</td></tr>
-          <tr><td>SEA</td><td>马来/新加坡</td><td class="num">1.0M</td><td class="num">$1.38</td><td class="num">$1.4M</td><td class="num">1.6M</td><td class="num">$1.87</td><td class="num">$3.0M</td><td>小市场高价值，收入效率高。</td></tr>
-          <tr><td>LATAM</td><td>巴西</td><td class="num">4.2M</td><td class="num">$0.85</td><td class="num">$3.6M</td><td class="num">7.2M</td><td class="num">$1.20</td><td class="num">$8.6M</td><td>下载仍大，收入按较低RPD处理。</td></tr>
-          <tr><td>LATAM</td><td>墨西哥</td><td class="num">3.8M</td><td class="num">$1.05</td><td class="num">$4.0M</td><td class="num">6.8M</td><td class="num">$1.45</td><td class="num">$9.9M</td><td>中高RPD，收入质量高于巴西。</td></tr>
-          <tr><td>LATAM</td><td>其他拉美</td><td class="num">2.8M</td><td class="num">$0.34</td><td class="num">$1.0M</td><td class="num">5.0M</td><td class="num">$0.55</td><td class="num">$2.8M</td><td>补量区域，收入按低档。</td></tr>
-          <tr><td>MENA+</td><td>沙特/Gulf</td><td class="num">0.6M</td><td class="num">$1.60</td><td class="num">$1.0M</td><td class="num">1.1M</td><td class="num">$2.40</td><td class="num">$2.6M</td><td>付费能力强，定位为小流量验证。</td></tr>
-          <tr><td>MENA+</td><td>伊拉克/埃及/土耳其</td><td class="num">1.2M</td><td class="num">$0.52</td><td class="num">$0.6M</td><td class="num">1.9M</td><td class="num">$0.80</td><td class="num">$1.5M</td><td>低优先级自然下载，不主推。</td></tr>
-          <tr><td><b>Total</b></td><td><b>全区域</b></td><td class="num"><b>29.2M</b></td><td class="num"><b>$0.77</b></td><td class="num"><b>$22.6M</b></td><td class="num"><b>50.3M</b></td><td class="num"><b>$1.10</b></td><td class="num"><b>$55.3M</b></td><td>泰国为SEA主要收入国家；墨西哥收入质量高于巴西。</td></tr>
+          <tr><td>SEA</td><td>印尼</td><td class="num">$0.12</td><td class="num">$0.63</td><td class="num">$0.67</td><td class="num scenario-base">4.0M</td><td class="num scenario-base">$0.55</td><td class="num scenario-base">$2.2M</td><td class="num scenario-upside">7.2M</td><td class="num scenario-upside">$0.75</td><td class="num scenario-upside">$5.4M</td><td>下载贡献大，RPD中低档。</td></tr>
+          <tr><td>SEA</td><td>泰国</td><td class="num">$0.59</td><td class="num">$0.22</td><td class="num">$2.22</td><td class="num scenario-base">4.4M</td><td class="num scenario-base">$1.20</td><td class="num scenario-base">$5.3M</td><td class="num scenario-upside">8.0M</td><td class="num scenario-upside">$1.70</td><td class="num scenario-upside">$13.6M</td><td>SEA主要收入来源，明显高于其他SEA国家。</td></tr>
+          <tr><td>SEA</td><td>菲律宾</td><td class="num">$0.14</td><td class="num">$0.36</td><td class="num">$0.20</td><td class="num scenario-base">3.2M</td><td class="num scenario-base">$0.45</td><td class="num scenario-base">$1.4M</td><td class="num scenario-upside">5.0M</td><td class="num scenario-upside">$0.60</td><td class="num scenario-upside">$3.0M</td><td>社交传播可验证，RPD低半档。</td></tr>
+          <tr><td>SEA</td><td>越南</td><td class="num">$0.09</td><td class="num">$0.02</td><td class="num">$0.36</td><td class="num scenario-base">4.0M</td><td class="num scenario-base">$0.55</td><td class="num scenario-base">$2.2M</td><td class="num scenario-upside">6.5M</td><td class="num scenario-upside">$0.75</td><td class="num scenario-upside">$4.9M</td><td>在线组队强，RPD按印尼同档。</td></tr>
+          <tr><td>SEA</td><td>马来/新加坡</td><td class="num">$0.52</td><td class="num">$2.20</td><td class="num">$2.88</td><td class="num scenario-base">1.0M</td><td class="num scenario-base">$1.38</td><td class="num scenario-base">$1.4M</td><td class="num scenario-upside">1.6M</td><td class="num scenario-upside">$1.87</td><td class="num scenario-upside">$3.0M</td><td>小市场高价值，收入效率高。</td></tr>
+          <tr><td>LATAM</td><td>巴西</td><td class="num">$0.07</td><td class="num">$0.20</td><td class="num">$0.53</td><td class="num scenario-base">4.2M</td><td class="num scenario-base">$0.85</td><td class="num scenario-base">$3.6M</td><td class="num scenario-upside">7.2M</td><td class="num scenario-upside">$1.20</td><td class="num scenario-upside">$8.6M</td><td>下载仍大，收入按较低RPD处理。</td></tr>
+          <tr><td>LATAM</td><td>墨西哥</td><td class="num">$0.21</td><td class="num">$0.27</td><td class="num">$5.71</td><td class="num scenario-base">3.8M</td><td class="num scenario-base">$1.05</td><td class="num scenario-base">$4.0M</td><td class="num scenario-upside">6.8M</td><td class="num scenario-upside">$1.45</td><td class="num scenario-upside">$9.9M</td><td>中高RPD，收入质量高于巴西。</td></tr>
+          <tr><td>LATAM</td><td>其他拉美</td><td class="num">$0.09</td><td class="num">$0.20</td><td class="num">$1.70</td><td class="num scenario-base">2.8M</td><td class="num scenario-base">$0.34</td><td class="num scenario-base">$1.0M</td><td class="num scenario-upside">5.0M</td><td class="num scenario-upside">$0.55</td><td class="num scenario-upside">$2.8M</td><td>补量区域，收入按低档。</td></tr>
+          <tr><td>MENA+</td><td>沙特/Gulf</td><td class="num">$0.06</td><td class="num">$1.21</td><td class="num">$1.64</td><td class="num scenario-base">0.6M</td><td class="num scenario-base">$1.60</td><td class="num scenario-base">$1.0M</td><td class="num scenario-upside">1.1M</td><td class="num scenario-upside">$2.40</td><td class="num scenario-upside">$2.6M</td><td>付费能力强，定位为小流量验证。</td></tr>
+          <tr><td>MENA+</td><td>伊拉克/埃及/土耳其</td><td class="num">$0.03</td><td class="num">$0.02</td><td class="num">$0.23</td><td class="num scenario-base">1.2M</td><td class="num scenario-base">$0.52</td><td class="num scenario-base">$0.6M</td><td class="num scenario-upside">1.9M</td><td class="num scenario-upside">$0.80</td><td class="num scenario-upside">$1.5M</td><td>低优先级自然下载，不主推。</td></tr>
+          <tr><td><b>Total</b></td><td><b>全区域</b></td><td class="num">-</td><td class="num">-</td><td class="num">-</td><td class="num scenario-base"><b>29.2M</b></td><td class="num scenario-base"><b>$0.77</b></td><td class="num scenario-base"><b>$22.6M</b></td><td class="num scenario-upside"><b>50.3M</b></td><td class="num scenario-upside"><b>$1.10</b></td><td class="num scenario-upside"><b>$55.3M</b></td><td>泰国为SEA主要收入国家；墨西哥收入质量高于巴西。</td></tr>
         </tbody>
       </table>
-      <div class="foot">计算方式：国家收入 = 国家下载 × 国家RPD；所有收入为首年总收入机会测算，不含平台分成和买量成本。</div>
-    </div>
-  </section>
-
-  <section class="slide">
-    <div class="content tight">
-      <div class="kicker">Regional revenue summary</div>
-      <h2>SEA收入看泰国，LATAM收入看墨西哥</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>区域</th><th class="num">保守收入</th><th class="num">保守占比</th><th class="num">乐观收入</th><th class="num">乐观占比</th><th>主要贡献国家</th><th>判断</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>SEA</td><td class="num">$12.5M</td><td class="num">55%</td><td class="num">$29.9M</td><td class="num">54%</td><td>泰国 $5.3M；印尼/越南各 $2.2M；马新 $1.4M</td><td>收入主要来自泰国，其余国家负责下载和组队传播。</td></tr>
-          <tr><td>LATAM</td><td class="num">$8.5M</td><td class="num">38%</td><td class="num">$21.3M</td><td class="num">39%</td><td>墨西哥 $4.0M；巴西 $3.6M；其他拉美 $1.0M</td><td>墨西哥贡献质量，巴西贡献量；整体是第二主推区域。</td></tr>
-          <tr><td>MENA+</td><td class="num">$1.6M</td><td class="num">7%</td><td class="num">$4.2M</td><td class="num">8%</td><td>Gulf $1.0M；伊拉克/埃及/土耳其 $0.6M</td><td>付费能力存在，但品类小众和女性用户接受度风险高，定位为小流量验证。</td></tr>
-          <tr><td><b>Total</b></td><td class="num"><b>$22.6M</b></td><td class="num"><b>100%</b></td><td class="num"><b>$55.3M</b></td><td class="num"><b>100%</b></td><td>SEA + LATAM保守合计 $21.0M</td><td>首轮资源应集中在 SEA / LATAM，MENA不作为规模假设。</td></tr>
-        </tbody>
-      </table>
-      <div class="grid-3" style="margin-top:28px;">
-        <div class="pillar">
-          <h3>SEA</h3>
-          <p>收入主要来自泰国，下载主要来自印尼/越南/菲律宾。泰国皮肤转化决定SEA收入上限。</p>
-        </div>
-        <div class="pillar">
-          <h3>LATAM</h3>
-          <p>墨西哥决定RPD上限，巴西决定内容传播效率。两者都成立，LATAM才会成为第二主推区域。</p>
-        </div>
-        <div class="pillar">
-          <h3>MENA</h3>
-          <p>不做主推区域，只用小流量验证合规、女性用户接受度和评论情绪。</p>
-        </div>
+      <div class="revenue-notes">
+        <div>下载差异：乐观版主要来自产品更偏社交派对后，好友邀请和短视频传播带来的增量。</div>
+        <div>收入差异：乐观版主要来自泰国、墨西哥等高RPD国家的皮肤付费提升。</div>
       </div>
-      <div class="foot">区域收入按上一页国家收入加总；占比基于首年总收入机会测算。</div>
-    </div>
-  </section>
-
-  <section class="slide">
-    <div class="content tight">
-      <div class="kicker">Year 1 Forecast</div>
-      <h2>首年保守29.2M下载/$22.6M收入，乐观50.3M下载/$55.3M收入</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>版本</th><th class="num">SEA下载</th><th class="num">LATAM下载</th><th class="num">MENA+下载</th><th class="num">总下载</th><th class="num">综合RPD</th><th class="num">总收入</th><th>收入参考 / 成立条件</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td><span class="tag blue">保守</span></td><td class="num">16.6M</td><td class="num">10.8M</td><td class="num">1.8M</td><td class="num">29.2M</td><td class="num">$0.77</td><td class="num">$22.6M</td><td>泰国成为SEA主要收入国家；墨西哥承担LATAM收入质量，巴西承担传播量</td></tr>
-          <tr><td><span class="tag red">乐观</span></td><td class="num">28.3M</td><td class="num">19.0M</td><td class="num">3.0M</td><td class="num">50.3M</td><td class="num">$1.10</td><td class="num">$55.3M</td><td>SEA/LATAM传播较好；MENA只做低优先级放大</td></tr>
-        </tbody>
-      </table>
-      <div class="grid-3" style="margin-top:30px;">
-        <div class="pillar">
-          <h3>下载差异</h3>
-          <p>主要来自年轻用户、短视频、好友邀请。下载强不自动等于RPD强。</p>
-        </div>
-        <div class="pillar">
-          <h3>RPD差异</h3>
-          <p>主要来自泰国明显领先的收入、墨西哥中高RPD、马来小市场高价值；MENA不纳入主要收入假设。</p>
-        </div>
-        <div class="pillar">
-          <h3>判断重点</h3>
-          <p>先用测试验证下载层，再用国家付费和皮肤转化验证RPD层。</p>
-        </div>
-      </div>
-      <div class="foot">所有收入为首年总收入机会测算，不含买量成本和平台分成扣除。</div>
+      <div class="foot">计算方式：国家收入 = 国家下载 × 国家RPD；第五人格/MLBB为首年RPD，FF为可比参考RPD；收入不含平台分成和买量成本。</div>
     </div>
   </section>
 
@@ -1179,6 +1166,15 @@
         </div>
       </div>
       <div class="foot">商业化原则：外观强付费，数值弱付费，社交展示优先；产品侧先降低第一局挫败和重复感。</div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="content appendix-cover">
+      <div>
+        <div class="kicker">Appendix</div>
+        <h2>Appendix</h2>
+      </div>
     </div>
   </section>
 
