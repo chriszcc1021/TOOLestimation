@@ -1,5 +1,21 @@
 # supernatural-overseas-opportunity-deck version log
 
+## v1.4.0 - 2026-05-12 11:30 CST
+
+Snapshot: `supernatural-overseas-opportunity-deck_v1.4.0.html`
+
+Changelist:
+- Updated `Comparable Product References` so every product image under the key-region cards is clickable.
+- Added Mexico's `2/3/4 Player` party-game reference back into the Mexico card.
+- Expanded `Appendix · Market Product References` from 4 cards to 12 compact product cards covering the key-region comparable pool:
+  `Identity V`, `Granny`, `Specimen Zero`, `The Ghost`, `Stumble Guys`, `Free Fire`, `Minecraft`, `Play Together`, `Among Us`, `2/3/4 Player`, `Lethal Company`, and `Content Warning`.
+- Each appendix product card links to a gameplay video or gameplay video search page.
+- Verified HTML tag balance, 16 clickable regional product images, 12 appendix product cards, and no API token patterns in the HTML.
+
+Rollback:
+- To restore this version, replace `D:\toolestimation\public\estimates\supernatural-overseas-opportunity-deck.html` with the snapshot above.
+- To roll back to the previous version, restore `supernatural-overseas-opportunity-deck_v1.3.0.html`.
+
 ## v1.3.0 - 2026-05-06 21:48 CST
 
 Snapshot: `supernatural-overseas-opportunity-deck_v1.3.0.html`
