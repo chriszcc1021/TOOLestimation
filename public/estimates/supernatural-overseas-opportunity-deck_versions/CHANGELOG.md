@@ -1,5 +1,19 @@
 # supernatural-overseas-opportunity-deck version log
 
+## v1.4.1 - 2026-05-12 11:34 CST
+
+Snapshot: `supernatural-overseas-opportunity-deck_v1.4.1.html`
+
+Changelist:
+- Removed `Free Fire` from `Comparable Product References`.
+- Removed the `Free Fire` product card from `Appendix · Market Product References`.
+- Verified the two requested pages no longer contain `Free Fire`, `Free+Fire`, `freefire`, or `free-fire`.
+- Verified HTML tag balance, 15 clickable regional product images, 11 appendix product cards, and no API token patterns in the current HTML.
+
+Rollback:
+- To restore this version, replace `D:\toolestimation\public\estimates\supernatural-overseas-opportunity-deck.html` with the snapshot above.
+- To roll back to the previous version, restore `supernatural-overseas-opportunity-deck_v1.4.0.html`.
+
 ## v1.4.0 - 2026-05-12 11:30 CST
 
 Snapshot: `supernatural-overseas-opportunity-deck_v1.4.0.html`
